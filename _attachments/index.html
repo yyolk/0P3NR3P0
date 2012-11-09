@@ -22,7 +22,12 @@
     <!-- templates -->
     <script id="new-link" type="text/x-mustache" charset="utf-8">
         <form id="create-link">
-        <label>New link: <input type="text" name="url" size=77 value=""></label>
+            <label for="url">New link: </label><input type="text" name="url" size=77 value=""
+            id="name">
+        <label for="homepage_url">Your homepage: </label><input type="text" name="homepage_url" value=""
+            id="homepage_url">
+            <label for="Description">Description</label><input type="text" name="Description" value="" id="Description">
+            <label for="tags">tags</label><input type="text" name="tags" value="" id="tags">
         </form>
         <div style="clear:both;"></div>
     </script>
@@ -30,7 +35,12 @@
     <script id="recent-links" type="text/x-mustache" charset="utf-8">
         <ul id="items">
         {{#items}}
-        <li><p>{{url}}</p></li>
+        <li>
+            <p class='url'>{{url}}</p>
+            <p class='homepage_url'>{{homepage_url}}</p>
+            <p class="Description">{{Description}}</p>
+            <p class="tags">{{tags}}</p>
+        </li>
         {{/items}}
         </ul>
     </script>
