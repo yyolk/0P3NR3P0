@@ -1,6 +1,6 @@
 function(doc) {
   if (doc.created_at) {
-      emit(doc.created_at, {link : doc.link});
+      emit(doc.created_at, {url : doc.url});
   }
 };
 

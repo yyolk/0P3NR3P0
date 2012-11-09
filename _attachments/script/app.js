@@ -26,10 +26,11 @@ $(function() {
             limit : 50,
             update_seq : true,
             success : function(data) {
-                setupChanges(data.update_seq);
+                //setupChanges(data.update_seq);
                 var them = $.mustache($("#recent-links").html(), {
                     items : data.rows.map(function(r) {return r.value;})
                 });
+                console.log(them);
                 $("#content").html(them);
             }
         });
