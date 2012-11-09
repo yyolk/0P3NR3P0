@@ -7,7 +7,8 @@
     </head>
 
     <body id="Hallo" onload="">
-        <h1 id="sup">sup</h1>        
+        <h1 id="sup">sup</h1>
+        <div id="newitemform"></div>
         <div id="items">
             <!-- items are put here from the db -->
         </div>
@@ -17,5 +18,14 @@
     
     
     <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
+
+    <!-- templates -->
+    <script type="text/javascript" charset="utf-8">
+        <form id="create-link">
+        <label>New link: <input type="text" name="link" size=77
+        value=""></label>
+        </form>
+        <div style="clear:both;"></div>
+    </script>
 
 </html>
