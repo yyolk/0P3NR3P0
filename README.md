@@ -1,7 +1,7 @@
 # UI to 0p3nr3p0
 * * *
 
-Install `[pip](http://pypi.python.org/pypi/pip)`
+Install [`pip`](http://pypi.python.org/pypi/pip)
 
     sudo easy_install pip
 
