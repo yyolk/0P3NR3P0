@@ -4,5 +4,6 @@
    ".*~$",
    ".*\\.swp$",
    ".*\\.bak$",
-   "README.md"
+   "README.md",
+   ".DS_Store"
 ]

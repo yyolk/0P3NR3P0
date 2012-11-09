@@ -27,7 +27,7 @@ $(function() {
             update_seq : true,
             success : function(data) {
                 setupChanges(data.update_seq);
-                var them = $.mustache($("#recent-messages").html(), {
+                var them = $.mustache($("#recent-links").html(), {
                     items : data.rows.map(function(r) {return r.value;})
                 });
                 $("#content").html(them);
@@ -35,7 +35,12 @@ $(function() {
         });
     };
     drawItems();
+
+
     var changesRunning = false;
+    $("#newitemform").html($.mustache($("#new-link").html()));
+
+
     function setupChanges(since) {
         if (!changesRunning) {
             var changeHandler = db.changes(since);
@@ -47,6 +52,8 @@ $(function() {
         e.preventDefault();
         var form = this, doc = $(form).serializeObject();
         doc.created_at = new Date();
-        doc.saveDoc(doc, {success : function() {form.reset();}});
+        db.saveDoc(doc, {success : function() {form.reset();}});
     }).find("input").focus();
 
+
+});
