@@ -56,7 +56,7 @@ db = $.couch.db(path[1]);
             alert('please insert a valid url');
             $(this).find("input[name=url]").focus();}
         else{
-            console.log(doc);
+            //console.log(doc);
             db.saveDoc(doc, {success : function() {form.reset();}});}
     }).find("input").focus();
 
