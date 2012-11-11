@@ -17,8 +17,8 @@ $(function() {
     };
 
     var path = unescape(document.location.pathname).split('/'),
-design = path[3],
-db = $.couch.db(path[1]);
+    design = path[3],
+    db = $.couch.db(path[1]);
 
     function drawItems() {
         db.view(design + "/recent-items", {
@@ -33,6 +33,7 @@ db = $.couch.db(path[1]);
                 $("#content").html(them);
             }
         });
+
     };
     drawItems();
     var changesRunning = false;
@@ -41,6 +42,12 @@ db = $.couch.db(path[1]);
     $("#newitemform").html($.mustache($("#new-link").html()));
 
 
+    function findLinks(){
+        $("p.url").each(function() {
+            $(this).html(linkify($(this).text()));
+        });
+
+    }
     function setupChanges(since) {
         if (!changesRunning) {
             var changeHandler = db.changes(since);
@@ -78,11 +85,5 @@ db = $.couch.db(path[1]);
         return replacedText
     }
 
-    // test function
-    function findLinks(){
-        $("p.url").each(function() {
-                $(this).html(linkify($(this).text()));
-                });
 
-    }
 });
