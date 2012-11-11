@@ -3,7 +3,7 @@ function(doc) {
       emit(doc.created_at, {
           url : doc.url,
           homepage_url : doc.homepage_url,
-          Description : doc.Description,
+          description : doc.description,
           tags : doc.tags
       });
   }
