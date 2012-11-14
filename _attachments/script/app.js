@@ -58,7 +58,7 @@ $(function() {
 
                 case 'url':
                     if (!ValidURL(doc[i])) valid=false;
-                    else doc[i] = linkify(doc[i]);
+                    //else doc[i] = linkify(doc[i]);
                     break;
                 case 'homepage_url':
                     if (!ValidURL(doc[i])) valid=false;
