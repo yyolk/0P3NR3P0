@@ -37,10 +37,16 @@
         <ul id="items">
         {{#items}}
         <li>
-            <p class='url'>{{url}}</p>
-            <p class='homepage_url'>{{homepage_url}}</p>
+            <p class='url'>{{{url}}}</p>
+            <p class='homepage_url'>{{{homepage_url}}}</p>
             <p class="description">{{description}}</p>
-            <p class="tags">{{tags}}</p>
+            <p class="tags">
+            <ul>
+            {{#tags}}
+            <li>{{.}}</li>
+            {{/tags}}
+            </ul>
+            </p>
         </li>
         {{/items}}
         </ul>

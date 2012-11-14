@@ -57,19 +57,19 @@ $(function() {
             switch (i){
 
                 case 'url':
-                    console.log('the url is '+doc[i]);
+                    if (!ValidURL(doc[i])) valid=false;
+                    else doc[i] = linkify(doc[i]);
                     break;
                 case 'homepage_url':
-                    console.log('the homepage is '+doc[i]);
+                    if (!ValidURL(doc[i])) valid=false;
+                    else doc[i] = linkify(doc[i]);
                     break;
                 case 'description':
-                    console.log('the description is '+doc[i]);
                     break;
                 case 'tags':
-                    console.log('the tag(s) are '+doc[i]);
+                    doc[i] = doc[i].split(",");
                     break;
                 case 'created_at':
-                    console.log('created at '+doc[i]);
                     break;
                 default:
                     console.log('nothing hit!');
@@ -79,13 +79,16 @@ $(function() {
         return valid;
     }
 
+
     $("#create-link").submit(function(e){
         e.preventDefault();
         var form = this, doc = $(form).serializeObject();
         doc.created_at = new Date();
         if (!checkFields(doc)) { 
             alert('please insert valid items into the form!');
-            $(this).find("input[name=url]").focus();}
+            //would like this to go directly to the messed up field.
+            //$(this).find("input[name=url]").focus();
+            }
         else{
             db.saveDoc(doc, {success : function() {form.reset();}});}
     }).find("input").focus();
@@ -112,6 +115,16 @@ $(function() {
         replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 
         return replacedText
+    }
+
+    function ValidURL(str) {
+        var pattern = new RegExp('http://[a-z].[a-z].?[a-z].?[a-z]'); // fragment locater
+        if(!pattern.test(str)) {
+            //alert("Please enter a valid URL.");
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
