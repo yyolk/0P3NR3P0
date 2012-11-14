@@ -58,7 +58,9 @@ $(function() {
 
                 case 'url':
                     if (!ValidURL(doc[i])) valid=false;
-                    //else doc[i] = linkify(doc[i]);
+                    //not needed since we're
+                    //going straight to iframe
+                    //else doc[i] = linkify(doc[i]); 
                     break;
                 case 'homepage_url':
                     if (!ValidURL(doc[i])) valid=false;

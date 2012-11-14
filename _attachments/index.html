@@ -4,32 +4,54 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <title>0p3nr3p0</title>
 
+        <style type="text/css" media="screen">
+            form div label {
+                display: table-cell;
+                vertical-align: middle;
+                height: 50px;
+            }
+            #container {
+                width:960px;
+            }
+        </style>
     </head>
 
     <body id="Hallo" onload="">
         <h1 id="sup">sup</h1>
-        <div id="newitemform"></div>
+        <div id="container">
+            <div id="newitemform"></div>
+        </div>
         <div id="content">
             <!-- items are put here from the db -->
         </div>
-    
+
     </body>
-    
-    
+
+
     <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
 
     <!-- templates -->
     <script id="new-link" type="text/x-mustache" charset="utf-8">
         <form id="create-link">
-            <label for="url">New link: </label>
-                <input type="text" name="url" size=77 value="" id="name"><br>
+            <div>
+                <label for="url">New link: </label>
+                <input type="text" name="url" size="77" value=""
+                placeholder="http://" id="name">
+            </div>
+            <div>
                 <label for="homepage_url">Your homepage: </label>
-                <input type="text" name="homepage_url" value="" id="homepage_url"><br>
+                <input type="text" name="homepage_url" value=""
+                placeholder="http://" id="homepage_url" size="77">
+            </div>
+            <div>
                 <label for="description">Description</label>
-                <textarea name="description" value=""
-                    id="description"></textarea><br>
+                <textarea name="description" cols="53" rows="5" value=""
+                    id="description"></textarea>
+            </div>
+            <div>
                 <label for="tags">tags</label>
-                <input type="text" name="tags" value="" id="tags">
+                <input type="text" name="tags" placeholder="separate tags with spaces" size="77" value="" id="tags">
+            </div>
             <input type="submit" name="submit" value="Submit!" id="submit">
         </form>
         <div style="clear:both;"></div>
@@ -37,21 +59,21 @@
 
     <script id="recent-links" type="text/x-mustache" charset="utf-8">
         <ul id="items">
-        {{#items}}
-        <li>
-        <p class='url'><iframe src='{{url}}'></iframe></p>
+            {{#items}}
+            <li>
+            <p class='url'><iframe src='{{url}}'></iframe></p>
             <p class='homepage_url'>{{{homepage_url}}}</p>
             <p class="description">{{description}}</p>
             <p class="tags">
-                <ul>
-                    {{#tags}}
-                    <li><a
-                        href='_view/by_tags?key=["{{.}}"]'>{{.}}</a></li>
-                    {{/tags}}
-                </ul>
+            <ul>
+                {{#tags}}
+                <li><a
+                    href='_view/by_tags?key=["{{.}}"]'>{{.}}</a></li>
+                {{/tags}}
+            </ul>
             </p>
-        </li>
-        {{/items}}
+            </li>
+            {{/items}}
         </ul>
     </script>
 
