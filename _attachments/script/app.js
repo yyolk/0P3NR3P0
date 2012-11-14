@@ -67,7 +67,7 @@ $(function() {
                 case 'description':
                     break;
                 case 'tags':
-                    doc[i] = doc[i].split(",");
+                    doc[i] = doc[i].split(" ");
                     break;
                 case 'created_at':
                     break;
