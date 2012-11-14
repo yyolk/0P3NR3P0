@@ -12,4 +12,4 @@ Use `pip` to install `couchapp`
 
 Push changes to couchDB
 
-    couchapp push  https://USER:PASS@glitch.iriscouch.com:6984/openrep
+    couchapp push  https://USER:PASS@glitch.iriscouch.com:6984/openrepo
