@@ -42,12 +42,6 @@ $(function() {
     $("#newitemform").html($.mustache($("#new-link").html()));
 
 
-    function findLinks(){
-        $("p.url").each(function() {
-            $(this).html(linkify($(this).text()));
-        });
-
-    }
     function setupChanges(since) {
         if (!changesRunning) {
             var changeHandler = db.changes(since);
@@ -55,18 +49,53 @@ $(function() {
             changeHandler.onChange(drawItems);
         }
     }
+
+    function checkFields(doc){
+        var valid = true;
+        for (var i in doc){
+            if (!doc[i]) valid=false;
+            switch (i){
+
+                case 'url':
+                    console.log('the url is '+doc[i]);
+                    break;
+                case 'homepage_url':
+                    console.log('the homepage is '+doc[i]);
+                    break;
+                case 'description':
+                    console.log('the description is '+doc[i]);
+                    break;
+                case 'tags':
+                    console.log('the tag(s) are '+doc[i]);
+                    break;
+                case 'created_at':
+                    console.log('created at '+doc[i]);
+                    break;
+                default:
+                    console.log('nothing hit!');
+
+            }
+        }
+        return valid;
+    }
+
     $("#create-link").submit(function(e){
         e.preventDefault();
         var form = this, doc = $(form).serializeObject();
         doc.created_at = new Date();
-        if (!doc.url) { 
-            alert('please insert a valid url');
+        if (!checkFields(doc)) { 
+            alert('please insert valid items into the form!');
             $(this).find("input[name=url]").focus();}
         else{
-            //console.log(doc);
             db.saveDoc(doc, {success : function() {form.reset();}});}
     }).find("input").focus();
 
+    function findLinks(){
+        $("p.url").each(function() {
+            $(this).html(linkify($(this).text()));
+        });
+
+    }
     function linkify(inputText) {
         var replaceText, replacePattern1, replacePattern2, replacePattern3;
 
