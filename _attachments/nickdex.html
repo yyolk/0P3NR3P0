@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Demo Gallery</title>
+    
+    <style>
+    
+        body, html {
+            margin: 0; padding: 0; 
+            height: 100%; overflow: hidden;
+            background-color:#000;
+        }
+        
+        
+        iframe {
+            position:absolute;
+            top:0px; left:0px; 
+            border: 0; 
+            width:100%;
+            height:100%;
+            min-height:100%;
+        }
+    
+    
+        #nfo_wrap {
+            position:absolute;
+            top:0px; left:0px; z-index:9999;
+            background-color:rgba(255,255,255,0.8);
+            width:100%; 
+        }
+        #nfo {
+            padding:25px;
+            color:#444;
+            font-family:monospace;
+        }
+    
+    </style>
+    
+    
+</head>
+
+<body>
+
+    <div id="nfo_wrap">
+        <div id='nfo'></div>
+    </div>
+
+    <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
+
+    <script>
+        var url =[];        // the work url
+        var title = [];     // the title of the work
+        var nfo =[];        // the description of the work
+        var auth = [];      // the author[s] of the work
+        var auth_url = [];  // the author[s] webpage
+        
+        var i = 0;          // item for runGallery loop
+        var t = 5000;       // time speng per work
+
+        //$.getJSON("_list/works/recent-items", function(data){
+
+        //    $.each(data, function(k,v){
+
+        //            console.log(this);
+        //            if (this.title != undefined){
+        //                url.push(this.url);
+        //                title.push(this.title);
+        //                nfo.push(this.description);
+        //                auth.push(this.author);
+        //                auth_url.push(this.homepage_url);
+        //            }
+        //            });});
+        // this ajax function populates the arrays above with all the entires in the 0P3NR3P0
+        $.ajax({
+            url: '_view/recent-items',
+            type: 'get',
+            dataType: 'jsonp',
+            success: function(data) {            
+                $.each(data, function() {
+                    $.each(this, function(key, val){
+                         $.each(this, function(k, v){
+                            //alert(v.title);
+                            if(v.title != undefined) {
+                                url.push(v.url);
+                                title.push(v.title);
+                                nfo.push(v.description);
+                                auth.push(v.author);
+                                auth_url.push(v.homepage_url);
+                            }
+                         });
+                    });
+                    runGallery();
+                });
+            }
+        });
+        
+
+        function runGallery() {
+            
+            l = url.length;
+            
+            $('#frame').attr('src', url[i]);
+            $('#nfo').html(title[i] + ' by '+ auth[i]);
+            
+            setInterval(function () {
+                $('#frame').attr('src', url[++i % l]);
+                $('#nfo').html(title[i] + ' by '+ auth[i]);
+                if(i>=l){i=0;}
+            }, t);
+            
+        }
+             
+    </script>
+    
+     <iframe id="frame" height="100%" width="100%" />
+
+
+
+</body>
+
+
