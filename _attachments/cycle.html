@@ -58,7 +58,7 @@
             });
 
             console.log(links);
-                $.get("https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/"+links[Math.floor(Math.random()*4)], function(data){
+                $.get("https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/"+links[Math.floor(Math.random()*links.length-1)], function(data){
                     $("#miniwindow").html(data);
                     });
             //setTimeout('cick_click', 500); 

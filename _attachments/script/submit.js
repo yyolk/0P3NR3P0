@@ -65,9 +65,11 @@ $(function() {
                     //going straight to iframe
                     //else doc[i] = linkify(doc[i]); 
                     break;
+                case 'author':
+                    break;
                 case 'homepage_url':
                     if (!ValidURL(doc[i])) valid=false;
-                    else doc[i] = linkify(doc[i]);
+                    //else doc[i] = linkify(doc[i]);
                     break;
                 case 'description':
                     break;
