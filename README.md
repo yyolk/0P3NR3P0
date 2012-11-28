@@ -1,7 +1,7 @@
 # UI to 0p3nr3p0
 * * *
 
-[Visit current proto](http://www.0p3nr3p0.net/)
+[Visit current proto](http://www.0p3nr3p0.net/index.html)
 
 Install [`pip`](http://pypi.python.org/pypi/pip)
 
