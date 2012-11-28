@@ -1,62 +1,107 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <title>0p3nr3p0</title>
+<head>
+    
+    <title>0p3nr3p0</title>
+    <meta name="description" content=" DESCRIPTION ">
+    <meta name="author" content=" NAME ">
+    <meta name="keywords" content=" KEYWORDS ">
+    <link rel="image_src" href="http://www.domain.com/images/FaceBookthumb.jpg" ><!--------- DIRECT URL to img that'll show up when posted on Facebook ------>
+    
+    <meta name="viewport" content="width=device-width">
+        
+    <style>
+        
+        @font-face {
+            font-family: 'chicagoregular';
+            src: url('fonts/chicago-46113-webfont.eot');
+            src: url('fonts/chicago-46113-webfont.eot?#iefix') format('embedded-opentype'),
+                 url('fonts/chicago-46113-webfont.woff') format('woff'),
+                 url('fonts/chicago-46113-webfont.ttf') format('truetype'),
+                 url('fonts/chicago-46113-webfont.svg#chicagoregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        body, html {
+            margin: 0; padding: 0; 
+            height: 100%; overflow: hidden;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300; letter-spacing: 1px; line-height: 130%; 
+        }
+        
+        h1 { font-family: 'chicagoregular'; font-weight: normal; }
 
-        <style type="text/css" media="screen">
-            form div label {
-                display: table-cell;
-                vertical-align: middle;
-                height: 50px;
+        a:link, a:visited{ text-decoration: none; color: #ddd; border-bottom:2px dotted; }
+        a:hover, a:active{ text-decoration: none; color: #ddd; outline: 0; border:0px; cursor: pointer; }        
+        
+        #banner {
+            position: absolute; top:50%; left:50%;
+            width:700px; height:450px; 
+            margin-left:-375px; margin-top:-250px;
+            
+            border: 2px solid #fff; padding:25px;
+                        
+            color:#ddd;
+            background-color:rgba(0,0,0,0.8);            
+        }
+            ul {
+                margin: 0.75em 1em;
+                padding: 0 1em;
+                list-style: none;
             }
-            #container {
-                width:960px;
-            }
-        </style>
-    </head>
+            i { margin-left: -1em; font-style: normal; }
 
-    <body id="Hallo" onload="">
-        <h1 id="sup">sup</h1>
-        <h2><a href="submit.html">Submit</a></h2>
-        <div id="container">
-            <div id="newitemform"></div>
-        </div>
-        <div id="content">
-            <!-- items are put here from the db -->
-        </div>
+    
+    </style>
+</head>
 
-    </body>
-
-
-    <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
-
-    <!-- templates -->
-
-    <script id="recent-links" type="text/x-mustache" charset="utf-8">
-        <ul id="items">
-            {{#items}}
+<body>
+    
+    
+    <div id="banner">
+        
+        <h1>0P3NR3P0.NET</h1>
+        
+        The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals
+        <ul>
             <li>
-            <p class="id"><a href="_show/post/{{id}}">{{id}}</a></p>
-            <p class="title">{{title}}</p>
-            <p class='url'><iframe src='{{url}}'></iframe></p>
-            <p class='author'>{{author}}</p>
-            <p class='homepage_url'>{{homepage_url}}</p>
-            <p class="description">{{description}}</p>
-            <p class="tags">
-            <ul>
-                {{#tags}}
-                <li><a
-                    href='_view/by_tags?key=["{{.}}"]'>{{.}}</a></li>
-                {{/tags}}
-            </ul>
-            </p>
+                <i>&#9670;</i> it's been developed as an open port for anyone anywhere to submit glitch art worx (that can be represented by a URL:  i.e. video, images, sound, web) and have it exhibited/shared at <a href="http://gli.tc/h/">GLI.TC/H 2112</a> (Dec 6 - 9, Chicago IL)
             </li>
-            {{/items}}
+            <li>
+                <i>&#9670;</i> after GLI.TC/H 2112 it will continue as an ongoing archive where artists can continue to submit work and likewise curators can program/source from
+            </li>
         </ul>
+        <br>
+        if you're an artist and want to include your work in the 0P3NR3P0 submit <a href="submit.html">here</a>
+        <br><br>
+        if you're a curator/programer interested in glitch worx search the 0P3NR3P0 <a href="search.html">here</a>
+        <ul>
+            <li>
+                <i>&#9670;</i> if you want to curate a web gallery that sources from the 0P3NR3P0, see our API documentation <a href="">here</a> + download our templates <a href="">here</a> + check out our sample page <a href="">here</a>
+            </li>
+            <li>
+                <i>&#9670;</i> if you want to curate a gallery exhibition, check out our app.exe / exe.app, an artware for exhibiting works from the 0P3NR3P0 in physical space (coming soon)
+            </li>
+        </ul>
+        
+
+    </div>
+    
+    
+    
+    
+    <script>
+        var ranNum = Math.floor(Math.random() *25)+1;
+        document.write('<body background="http://gli.tc/h/images/sm-bg-imgs/' + ranNum + '.gif" text="white">');
     </script>
 
 
-    <script src="script/app.js"></script>
+    <script>
+        var _gaq=[['_setAccount','UA-17443365-1'],['_trackPageview']]; //------------------------_ ADD GOOGLE UA _-------------------------------
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
 
+</body>
 </html>
