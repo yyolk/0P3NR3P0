@@ -1,23 +1,36 @@
 [
 {
-"from": "favicon.ico",
-"to": "favicon.ico"
+  "from": "favicon.ico",
+  "to": "favicon.ico"
 },
 {
-"from": "style/*",
-"to": "style/*"
+  "from": "style/*",
+  "to": "style/*"
 },
 {
-"from": "images/*",
-"to": "images/*"
+  "from": "images/*",
+  "to": "images/*"
 },
 {
-"from": "vendor/*",
-"to": "vendor/*"
+  "from": "vendor/*",
+  "to": "vendor/*"
 },
 {
-"from": "/",
-"to": "index.html"
+  "from": "script/*",
+  "to": "script/*"
+},
+{
+  "from": "/",
+  "to": "index.html"
+},
+{
+  "from": "_views/*",
+  "to": "../../../_views/recent-items/*",
+  "query" : {
+    "descending" : true,
+    "limit" : 5,
+    "front" : true
+  }
 },
 {
   "from": "/*",
