@@ -1,0 +1,26 @@
+[
+{
+"from": "favicon.ico",
+"to": "favicon.ico"
+},
+{
+"from": "style/*",
+"to": "style/*"
+},
+{
+"from": "images/*",
+"to": "images/*"
+},
+{
+"from": "vendor/*",
+"to": "vendor/*"
+},
+{
+"from": "/",
+"to": "index.html"
+},
+{
+  "from": "/*",
+  "to": "*"
+}
+]
