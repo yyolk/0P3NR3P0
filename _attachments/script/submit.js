@@ -37,7 +37,7 @@ $(function() {
   }
 
   function ValidURL(str) {
-    var pattern = new RegExp('http://[a-z].[a-z].?[a-z].?[a-z]'); // fragment locater
+    var pattern = new RegExp('http[s]?://[a-z].[a-z].?[a-z].?[a-z]'); // fragment locater
       if(!pattern.test(str)) {
         //alert("Please enter a valid URL.");
         return false;
@@ -47,20 +47,28 @@ $(function() {
   }
 
   function youtubeURL(str) { 
-    var pattern = new RegExp('^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=(\w+))(?:[^\s?]+)?$');
+    var pattern = new RegExp(/^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=(\w+))(?:[^\s?]+)?$/);
     if (!pattern.test(str)) {
       return false;
     } else { 
-      return true;
+      // return new embed code
+      var match = pattern.exec(str);
+      //alert('youtube id'+match[1]);
+      return "http://www.youtube.com/embed/"+match[1];
+      //return true;
     }
   }
 
   function vimeoURL(str) {
-    var pattern = new RegExp('^http[s?]://[www\.]?vimeo\.com/(\d+)');
+    var pattern = new RegExp(/^http[s?]:\/\/[www\.]?vimeo\.com\/(\d+)$/);
     if (!pattern.test(str)) {
       return false;
     } else { 
-      return true;
+      // return new embed code
+      var match = pattern.exec(str);
+      //alert('vimeo id'+match[1]);
+      return "http://player.vimeo.com/video/"+match[1];
+      //return true;
     }
   }
 
@@ -72,39 +80,50 @@ $(function() {
 
   function checkFields(doc){
     var valid = true;
+    var invalid = "";
     for (var i in doc){
       if (!doc[i]) valid=false;
       switch (i){
 
         case 'url':
-          if (!ValidURL(doc[i])) valid=false;
+          // is this a valid url?
+          if (!ValidURL(doc[i])) invalid='url';
           // is this a youtube URL?
-          
+          if (youtubeURL(doc[i])) doc[i] = youtubeURL(doc[i]);
           // is this a vimeo URL?
-
+          if (vimeoURL(doc[i])) doc[i] = vimeoURL(doc[i]);
           //not needed since we're
           //going straight to iframe
           //else doc[i] = linkify(doc[i]); 
           break;
         case 'author':
+          if (doc[i] == "") invalid = 'author';
+          
           break;
         case 'homepage_url':
-          if (!ValidURL(doc[i])) valid=false;
+          if (!ValidURL(doc[i])) invalid='homepage_url';
           //else doc[i] = linkify(doc[i]);
           break;
         case 'description':
+          if (doc[i] == "") invalid = 'description';
           break;
         case 'tags':
-          doc[i] = doc[i].split(" ");
+          if (doc[i] == '') invalid = 'tags';
+          else doc[i] = doc[i].split(" ");
           break;
         case 'created_at':
           break;
         default:
-          console.log('nothing hit!');
+          break;
 
+        
       }
     }
-    return valid;
+    if (!valid){
+    return invalid;
+    } else{
+    return true;
+    }
   }
 
   var path = unescape(document.location.pathname).split('/'),
@@ -140,13 +159,22 @@ $(function() {
     e.preventDefault();
     var form = this, doc = $(form).serializeObject();
     doc.created_at = new Date();
-    if (!checkFields(doc)) { 
-      alert('Please insert valid items into the form!');
+    // check to see if everything is filled in
+    var valid = checkFields(doc);
+    if (valid === true) { 
+      // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
+       doc._id = doc.url;
+       db.saveDoc(doc, {
+         success : function() {form.reset();},
+         error: function(){ alert("This link is already in the repo!");}
+       });
     }
     else{
-      db.saveDoc(doc, {success : function() {form.reset();}});}
+      alert("Please enter something valid for "+valid); 
+      $(this).find("[name="+valid+"]").focus();
+    }
   }).find("input").focus();
 
 
