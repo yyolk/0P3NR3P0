@@ -1,7 +1,7 @@
 # UI to 0p3nr3p0
 * * *
 
-[Visit current proto](https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/index.html)
+[Visit current proto](http://www.0p3nr3p0.net/)
 
 Install [`pip`](http://pypi.python.org/pypi/pip)
 
