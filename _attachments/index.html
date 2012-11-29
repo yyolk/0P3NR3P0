@@ -25,6 +25,7 @@
         body, html {
             margin: 0; padding: 0; 
             height: 100%; overflow: hidden;
+            background-color:#fff;
             font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
             font-weight: 300; letter-spacing: 1px; line-height: 130%; 
         }
@@ -50,6 +51,27 @@
                 list-style: none;
             }
             i { margin-left: -1em; font-style: normal; }
+            
+        #submit {
+            position: relative; z-index: 99999;
+            width: 650px; height: 85%;
+            margin: 50px auto;
+            background-color: #fff;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            display: none;
+        }
+            #submit_frame {
+                overflow-x: hidden; overflow-y: scroll;
+                width:100%; height:90%;
+                border:0;
+            }
+            .close {
+                color:#000;
+                padding: 15px 20px 0px 5px;
+                float: right;
+            } .close:hover { cursor: pointer;}
 
     
     </style>
@@ -72,12 +94,12 @@
             </li>
         </ul>
         <br>
-        if you're an artist and want to include your work in the 0P3NR3P0 submit <a href="submit.html">here</a>
+        if you're an artist and want to include your work in the 0P3NR3P0 submit <a href="#" onclick="submit()">here</a>
         <br><br>
         if you're a curator/programer interested in glitch worx search the 0P3NR3P0 <a href="search.html">here</a>
         <ul>
             <li>
-                <i>&#9670;</i> if you want to curate a web gallery that sources from the 0P3NR3P0, see our API documentation <a href="">here</a> + download our templates <a href="">here</a> + check out our sample page <a href="">here</a>
+                <i>&#9670;</i> if you want to curate a web gallery that sources from the 0P3NR3P0, see our API documentation <a href="">here</a> + download our templates <a href="">here</a> + check out our sample page <a href="http://gli.tc/h/0P3NR3P0_sample_gallery/" target="blank">here</a>
             </li>
             <li>
                 <i>&#9670;</i> if you want to curate a gallery exhibition, check out our app.exe / exe.app, an artware for exhibiting works from the 0P3NR3P0 in physical space (coming soon)
@@ -87,9 +109,27 @@
     </div>
     
     
+    <div id="submit">
+            <span onclick="closeSubmit()" class="close">[close]</span>
+            <iframe id="submit_frame" src="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/submit.html"></iframe>
+
+    </div>
+    
     <script>
         var ranNum = Math.floor(Math.random() *25)+1;
         document.write('<body background="http://gli.tc/h/images/sm-bg-imgs/' + ranNum + '.gif" text="white">');
+        
+        
+        function submit() {
+            var x = document.getElementById('submit');
+            x.style.display = "block";
+        }
+        
+        function closeSubmit() {
+            var x = document.getElementById('submit');
+            x.style.display = "none";            
+        }
+        
     </script>
 
 
