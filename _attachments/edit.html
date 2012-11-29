@@ -14,10 +14,10 @@
         width:960px;
       }
     </style>
-    <link href="style/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <link href="style/print.css" media="print" rel="stylesheet" type="text/css" />
+    <link href="<%= attachRoot %>/style/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="s<%= attachRoot %>/tyle/print.css" media="print" rel="stylesheet" type="text/css" />
     <!--[if IE]>
-    <link href="style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="<%= attachRoot %>/style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <![endif]-->
   </head>
 
@@ -25,7 +25,49 @@
     <h1>welcome to the 0p3nr3p0 submission page, fill out all the following
       fields && your work will automatically be included in the archive</h1>
     <div id="container">
-      <div id="newitemform"></div>
+      <div id="newitemform">
+
+        <form id="create-link">
+          <input type="hidden" name="multipass" value="x" id="multipass">
+
+          <div>
+            <label for="url">link to work</label>
+            <input type="text" name="url" size="77" value="<%= url %>"
+            placeholder="http://" id="name">
+          </div>
+          <div>
+            <label for="title">title (of the work)</label><input type="text" name="title"
+            size="77" value="" id="title">
+          </div>
+          <div>
+            <label for="author">author (your name)</label>
+            <input type="text" name="author"
+            size="77" value="" id="author">
+
+          </div>
+          <div>
+            <label for="homepage_url">your homepage</label>
+            <input type="text" name="homepage_url" value=""
+            placeholder="http://" id="homepage_url" size="77">
+          </div>
+          <div>
+            <label for="email">email</label>
+            <input type="text" name="email" size="77" value="" id="email">
+          </div>
+          <div>
+            <label for="description">description</label>
+            <textarea name="description" cols="53" rows="5" value=""
+              id="description"></textarea>
+          </div>
+          <div>
+            <label for="tags">tags</label>
+            <input type="text" name="tags" placeholder="separate tags with spaces" size="77" value="" id="tags">
+          </div>
+          <input type="submit" name="submit" value="Submit!" id="submit">
+        </form>
+        <div style="clear:both;"></div>
+
+      </div>
     </div>
 
   </body>
@@ -36,7 +78,7 @@
   <!-- templates -->
   <script id="new-link" type="text/x-mustache" charset="utf-8">
     <form id="create-link">
-      <input type="hidden" name="multipass" value="x" id="multipass">
+      <input type="hidden" name="keypass" value="x" id="keypass">
       
       <div>
         <label for="url">link to work</label>
@@ -77,7 +119,8 @@
   </script>
 
 
-  <script src="script/submit.js"></script>
+  <script src="script/edit.js"></script>
 
 </html>
+
 

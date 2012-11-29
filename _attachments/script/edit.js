@@ -80,7 +80,11 @@ $(function() {
     }
   }
 
-
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
   //begin meaty couch js code
   $("#newitemform").html($.mustache($("#new-link").html()));
 
@@ -141,6 +145,7 @@ $(function() {
       design = path[3],
       db = $.couch.db(path[1]);
 
+
   $("#create-link").submit(function(e){
     e.preventDefault();
     var form = this, doc = $(form).serializeObject();
@@ -152,9 +157,8 @@ $(function() {
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
        doc._id = doc.url;
-       doc.multipass = hex_md5(Date()); 
        db.saveDoc(doc, {
-         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title},
+         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_webgallery_beta/email.php?email="+doc.email},
          error: function(){ alert("This link is already in the repo!");}
        });
     }
@@ -166,3 +170,4 @@ $(function() {
   });
 
 });
+
