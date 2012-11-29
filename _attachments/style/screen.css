@@ -83,7 +83,7 @@ h1 {
 }
 
 /* line 17, ../../sass/screen.scss */
-input {
+input, textarea {
   border: 1px solid #CCC;
   background-color: whiteSmoke;
   -webkit-border-radius: 6px;
@@ -93,4 +93,17 @@ input {
   border-radius: 6px;
   margin-top: 10px;
   padding: 10px;
+}
+
+/* line 30, ../../sass/screen.scss */
+form div label {
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+}
+
+/* line 35, ../../sass/screen.scss */
+#container {
+  width: 960px;
+  background-color: inherit;
 }

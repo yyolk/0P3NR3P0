@@ -22,6 +22,8 @@
   </head>
 
   <body id="Hallo" onload="">
+    <h1>welcome to the 0p3nr3p0 submission page, fill out all the following
+      fields && your work will automatically be included in the archive</h1>
     <div id="container">
       <div id="newitemform"></div>
     </div>
@@ -34,29 +36,34 @@
   <!-- templates -->
   <script id="new-link" type="text/x-mustache" charset="utf-8">
     <form id="create-link">
+      <input type="hidden" name="keypass" value="" id="keypass">
+      
       <div>
-        <label for="url">New link: </label>
+        <label for="url">link to work</label>
         <input type="text" name="url" size="77" value=""
         placeholder="http://" id="name">
       </div>
       <div>
-        <label for="author">Author: </label>
+        <label for="title">title (of the work)</label><input type="text" name="title"
+        size="77" value="" id="title">
+      </div>
+      <div>
+        <label for="author">author (your name)</label>
         <input type="text" name="author"
         size="77" value="" id="author">
 
       </div>
       <div>
-        <label for="title">Title</label><input type="text" name="title"
-        size="77" value="" id="title">
-
-      </div>
-      <div>
-        <label for="homepage_url">Your homepage: </label>
+        <label for="homepage_url">your homepage</label>
         <input type="text" name="homepage_url" value=""
         placeholder="http://" id="homepage_url" size="77">
       </div>
       <div>
-        <label for="description">Description</label>
+        <label for="email">email</label>
+        <input type="text" name="email" size="77" value="" id="email">
+      </div>
+      <div>
+        <label for="description">description</label>
         <textarea name="description" cols="53" rows="5" value=""
           id="description"></textarea>
       </div>

@@ -7,21 +7,32 @@
 
 
 body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300; letter-spacing: 1px; line-height: 120%;
-    padding-left: 100px; padding-top: 20px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300; letter-spacing: 1px; line-height: 120%;
+  padding-left: 100px; padding-top: 20px;
 }
 
 h1 { font-weight: normal;}
 
-input {
-    border: 1px solid #CCC;
-    background-color: whiteSmoke;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-    border-radius: 6px;
-    margin-top: 10px;
-    padding: 10px;
-  }
+input, textarea{
+  border: 1px solid #CCC;
+  background-color: whiteSmoke;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 10px;
+
+}
+
+form div label {
+  display: table-cell;
+  vertical-align: middle;
+  height: 50px;
+}
+#container {
+  width:960px;
+  background-color:inherit;
+}

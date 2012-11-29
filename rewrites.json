@@ -33,7 +33,12 @@
   }
 },
 {
-  "from": "/*",
+  "from": "submit.html/*",
+  "to": "/openrepo/*"
+
+}, 
+{
+  "from": "*",
   "to": "*"
 }
 ]

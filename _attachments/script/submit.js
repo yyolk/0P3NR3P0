@@ -60,7 +60,7 @@ $(function() {
   }
 
   function vimeoURL(str) {
-    var pattern = new RegExp(/^http[s?]:\/\/[www\.]?vimeo\.com\/(\d+)$/);
+    var pattern = new RegExp(/^http[s]?:\/\/[www\.]?vimeo\.com\/(\d+)$/);
     if (!pattern.test(str)) {
       return false;
     } else { 
@@ -69,6 +69,14 @@ $(function() {
       //alert('vimeo id'+match[1]);
       return "http://player.vimeo.com/video/"+match[1];
       //return true;
+    }
+  }
+  function ValidEmail(str) {
+    var pattern = new RegExp(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/);
+    if (!pattern.test(str)) {
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -104,6 +112,9 @@ $(function() {
           if (!ValidURL(doc[i])) invalid='homepage_url';
           //else doc[i] = linkify(doc[i]);
           break;
+        case 'email':
+          //if (!ValidEmail(doc[i])) invalid='email';
+          break;
         case 'description':
           if (doc[i] == "") invalid = 'description';
           break;
@@ -128,34 +139,8 @@ $(function() {
 
   var path = unescape(document.location.pathname).split('/'),
       design = path[3],
-      name =  'openrepo/_design/0P3NR3P0',
-      db = $.couch.db(name);
+      db = $.couch.db(path[1]);
 
-//  function drawItems() {
-//    db.view(design + "/recent-items", {
-//      descending : "true",
-//      limit : 50,
-//      update_seq : true,
-//      success : function(data) {
-//        setupChanges(data.update_seq);
-//        var them = $.mustache($("#recent-links").html(), {
-//          items : data.rows.map(function(r) {return r.value;})
-//        });
-//        $("#content").html(them);
-//      }
-//    });
-//
-//  };
-//  drawItems();
-//  var changesRunning = false;
-//
-//  function setupChanges(since) {
-//    if (!changesRunning) {
-//      var changeHandler = db.changes(since);
-//      changesRunning = true;
-//      changeHandler.onChange(drawItems);
-//    }
-//  }
   $("#create-link").submit(function(e){
     e.preventDefault();
     var form = this, doc = $(form).serializeObject();
@@ -173,10 +158,11 @@ $(function() {
        });
     }
     else{
-      alert("Please enter something valid for "+valid); 
+      if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");
+      else alert("Please enter something valid for "+valid); 
       $(this).find("[name="+valid+"]").focus();
     }
-  }).find("input").focus();
+  });
 
 
 
