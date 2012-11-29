@@ -113,7 +113,7 @@ $(function() {
           //else doc[i] = linkify(doc[i]);
           break;
         case 'email':
-          //if (!ValidEmail(doc[i])) invalid='email';
+          if (!ValidEmail(doc[i])) invalid='email';
           break;
         case 'description':
           if (doc[i] == "") invalid = 'description';
@@ -153,7 +153,7 @@ $(function() {
       //$(this).find("input[name=url]").focus();
        doc._id = doc.url;
        db.saveDoc(doc, {
-         success : function() {form.reset();},
+         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_webgallery_beta/email.php?email="+doc.email},
          error: function(){ alert("This link is already in the repo!");}
        });
     }
@@ -164,7 +164,4 @@ $(function() {
     }
   });
 
-
-
 });
-
