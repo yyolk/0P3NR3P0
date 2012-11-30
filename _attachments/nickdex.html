@@ -58,42 +58,42 @@
         var i = 0;          // item for runGallery loop
         var t = 5000;       // time speng per work
 
-        //$.getJSON("_list/works/recent-items", function(data){
+        $.getJSON("_list/works/recent-items", function(data){
 
-        //    $.each(data, function(k,v){
+            $.each(data, function(k,v){
 
-        //            console.log(this);
-        //            if (this.title != undefined){
-        //                url.push(this.url);
-        //                title.push(this.title);
-        //                nfo.push(this.description);
-        //                auth.push(this.author);
-        //                auth_url.push(this.homepage_url);
-        //            }
-        //            });});
+                    console.log(this);
+                    if (this.title != undefined){
+                        url.push(this.url);
+                        title.push(this.title);
+                        nfo.push(this.description);
+                        auth.push(this.author);
+                        auth_url.push(this.homepage_url);
+                    }
+                    });});
         // this ajax function populates the arrays above with all the entires in the 0P3NR3P0
-        $.ajax({
-            url: '_view/recent-items',
-            type: 'get',
-            dataType: 'jsonp',
-            success: function(data) {            
-                $.each(data, function() {
-                    $.each(this, function(key, val){
-                         $.each(this, function(k, v){
-                            //alert(v.title);
-                            if(v.title != undefined) {
-                                url.push(v.url);
-                                title.push(v.title);
-                                nfo.push(v.description);
-                                auth.push(v.author);
-                                auth_url.push(v.homepage_url);
-                            }
-                         });
-                    });
-                    runGallery();
-                });
-            }
-        });
+      //  $.ajax({
+      //      url: '_view/recent-items',
+      //      type: 'get',
+      //      dataType: 'jsonp',
+      //      success: function(data) {            
+      //          $.each(data, function() {
+      //              $.each(this, function(key, val){
+      //                   $.each(this, function(k, v){
+      //                      //alert(v.title);
+      //                      if(v.title != undefined) {
+      //                          url.push(v.url);
+      //                          title.push(v.title);
+      //                          nfo.push(v.description);
+      //                          auth.push(v.author);
+      //                          auth_url.push(v.homepage_url);
+      //                      }
+      //                   });
+      //              });
+      //              runGallery();
+      //          });
+      //      }
+      //  });
         
 
         function runGallery() {
