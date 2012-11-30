@@ -151,10 +151,13 @@ $(function() {
       // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
-       doc._id = doc.url;
+       var pattern = new RegExp(/^http[s]?:\/\/(.*)$/);
+       var match = pattern.exec(doc.url);
+       var uurl = match[1];
+       doc._id = uurl;
        doc.multipass = hex_md5(Date()); 
        db.saveDoc(doc, {
-         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title},
+         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl},
          error: function(){ alert("This link is already in the repo!");}
        });
     }

@@ -146,28 +146,29 @@ function getURLParameter(name) {
       db = $.couch.db(path[1]);
 
 
-  $("#create-link").submit(function(e){
-    e.preventDefault();
-    var form = this, doc = $(form).serializeObject();
-    doc.created_at = new Date();
-    // check to see if everything is filled in
-    var valid = checkFields(doc);
-    if (valid === true) { 
-      // need to return valid as well as where it fuxs up
-      //would like this to go directly to the messed up field.
-      //$(this).find("input[name=url]").focus();
-       doc._id = doc.url;
-       db.saveDoc(doc, {
-         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_webgallery_beta/email.php?email="+doc.email},
-         error: function(){ alert("This link is already in the repo!");}
-       });
-    }
-    else{
-      if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");
-      else alert("Please enter something valid for "+valid); 
-      $(this).find("[name="+valid+"]").focus();
-    }
-  });
+//  $("#create-link").submit(function(e){
+//    e.preventDefault();
+//    var form = this, doc = $(form).serializeObject();
+//    doc.created_at = new Date();
+//    // check to see if everything is filled in
+//    var valid = checkFields(doc);
+//    if (valid === true) { 
+//      // need to return valid as well as where it fuxs up
+//      //would like this to go directly to the messed up field.
+//      //$(this).find("input[name=url]").focus();
+//      if(!
+//       doc._id = doc.url;
+//       db.saveDoc(doc, {
+//         success : function() { alert('Saved!'); },
+//         error: function(){ alert("This link is already in the repo!");}
+//       });
+//    }
+//    else{
+//      if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");
+//      else alert("Please enter something valid for "+valid); 
+//      $(this).find("[name="+valid+"]").focus();
+//    }
+//  });
 
 });
 
