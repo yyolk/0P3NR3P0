@@ -19,6 +19,12 @@
         right:0;
         top:40%;
       }
+      #docid{
+        display:inline-block;
+        padding:4px;
+        background-color:black;
+        color:white;
+      }
     </style>
     <link href="/openrepo/_design/0P3NR3P0/style/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="/openrepo/_design/0P3NR3P0/style/print.css" media="print" rel="stylesheet" type="text/css" />
@@ -30,8 +36,7 @@
   <body id="Hallo" onload="">
     <div id="saved">
     </div>
-    <h1>welcome to the 0p3nr3p0 submission page, fill out all the following
-      fields && your work will automatically be included in the archive</h1>
+    <h1>editing: <span id="docid">{{id}}</span></h1>
     <div id="container">
       <div id="newitemform">
 
@@ -102,9 +107,7 @@ couchapp_load([
     "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.util.js",
     ]);
   </script>
-<!--
-  <script src="/openrepo/_design/0P3NR3P0/script/edit.js"></script>
- -->
+
   <script type="text/javascript" charset="utf-8">
   // friendly helper http://tinyurl.com/6aow6yn
   $.fn.serializeObject = function() {
