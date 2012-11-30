@@ -18,6 +18,7 @@ function(doc, req) {
   if (doc.multipass == ''+req.query.multipass) {
     data.doc = JSON.stringify(doc);
     data.id = doc._id;
+    data.created_at = doc.created_at;
     data.multipass = doc.multipass;
     data.title= doc.title;
     data.url = doc.url;

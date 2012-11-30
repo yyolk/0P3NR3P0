@@ -54,7 +54,7 @@ $(function() {
       // return new embed code
       var match = pattern.exec(str);
       //alert('youtube id'+match[1]);
-      return "http://www.youtube.com/embed/"+match[1];
+      return "http://youtube.googleapis.com/v/"+match[1]+"&autoplay=1";
       //return true;
     }
   }
@@ -67,7 +67,7 @@ $(function() {
       // return new embed code
       var match = pattern.exec(str);
       //alert('vimeo id'+match[1]);
-      return "http://player.vimeo.com/video/"+match[1];
+      return "http://player.vimeo.com/video/"+match[1]+"?autoplay=1";
       //return true;
     }
   }
@@ -151,7 +151,7 @@ $(function() {
       // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
-       var pattern = new RegExp(/^http[s]?:\/\/(.*)$/);
+       var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
        var match = pattern.exec(doc.url);
        var uurl = match[1];
        doc._id = uurl;
