@@ -249,12 +249,9 @@ couchapp_load([
   $("#create-link").submit(function(e){
     e.preventDefault();
     var form = this;
-    console.log(form);
     var newdoc = $(form).serializeObject();
     
-    console.log(newdoc);
     newdoc._rev = doc._rev;
-    console.log(doc._rev);
     if(!doc.created_at){
       doc.created_at = new Date();
     }
