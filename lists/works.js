@@ -1,19 +1,13 @@
 function (head, req) {
      
     // specify that we're providing a JSON response
+
+    
     provides('json', function() {
         // create an array for our result set
         var results = [];
         //var configHeader, configFoot;
         var row;
-        start({
-          "headers": {
-            "Access-Control-Allow-Origin": "\"*\""
-          }});
-//      configHeader = {"headers":{"Access-Control-Allow-Origin": "\"*\""}}
-  //      send(configHeader);
-        
-        //send(head);
         
         //return{"headers": {{"Access-Control-Allow-Origin": "\"*\""}}}
         while (row = getRow()) {
@@ -26,9 +20,9 @@ function (head, req) {
                 description : row.value.description,
                 tags : row.value.tags
             });
-        send(JSON.stringify(results));
         }
 
+        send(JSON.stringify(results));
         // make sure to stringify the results :)
         
 
