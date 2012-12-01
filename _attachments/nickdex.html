@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Demo Gallery</title>
+    <title>0P3NR3P0 Demo Gallery</title>
     
     <style>
     
@@ -10,9 +10,48 @@
             margin: 0; padding: 0; 
             height: 100%; overflow: hidden;
             background-color:#000;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            font-weight: 300; letter-spacing: 1px; line-height: 120%; color:#222;
         }
+        h1 { font-weight: 300; margin-bottom:-15px; margin-top:-15px;}
+        h4 { font-weight: 300; }
+        a:link, a:visited{ text-decoration: none; color: #222; border-bottom:2px dotted; }
+        a:hover, a:active{ text-decoration: none; color: #3993CC; outline: 0; border:0px; cursor: pointer; }
+        input{border: 0; width: 30px; background-color: rgba(255, 255, 255, 0.5);}
         
         
+        #banner {
+            position: absolute; top:50%; left:50%;
+            width:500px; height:300px; z-index:9999;
+            margin-left:-275px; margin-top:-175px;
+            background-color:rgba(255,255,255,0.8);
+            border: 2px solid #fff;
+            padding:25px;
+        }
+
+            #enter {
+                border:1px solid #444;
+                padding: 3px;
+                width:100px;
+            }
+            #enter:hover {
+                border:1px solid #3993CC;
+                color: #3993CC; cursor:pointer;
+            }
+    
+        #nfo_wrap {
+            position:absolute; display:none;
+            top:0px; left:0px; z-index:9999;
+            background-color:rgba(255,255,255,0.9);
+            width:100%; 
+        }
+            #nfo {
+                padding:25px;
+            }
+                #leftNfo {  float:left; margin-right:25px; padding-bottom:25px; line-height:180%;}
+                #rightNfo { width:700px;}
+                .title { font-size:24px; margin-bottom:10px; }
+                .author { font-size: 18px; }            
         iframe {
             position:absolute;
             top:0px; left:0px; 
@@ -22,74 +61,97 @@
             min-height:100%;
         }
     
-    
-        #nfo_wrap {
-            position:absolute;
-            top:0px; left:0px; z-index:9999;
-            background-color:rgba(255,255,255,0.8);
-            width:100%; 
-        }
-        #nfo {
-            padding:25px;
-            color:#444;
-            font-family:monospace;
-        }
-    
     </style>
     
     
 </head>
 
 <body>
-
-    <div id="nfo_wrap">
-        <div id='nfo'></div>
+    
+    <div id="banner">
+        <h4 style="margin-top:-5px;">GLI.TC/H</h4>
+        <h1>&#10162; 0P3NR3P0</h1>
+        <h4>sample web gallery</h4>
+                
+        The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch worx. Anyone can <a href="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/submit.html" target="blank">submit</a> their worx to the 0P3NR3P0
+        and curate/program/source work from the 0P3NR3P0 for inclusion in their own glitch art events. This page is a sample web-gallery
+        template to use with the 0P3NR3P0. You can <a href="#">download</a> this template and/or fork it on <a href="#">github</a>.
+        <br><br>
+        piece interval <input id="secs" value="10"> seconds<br>
+        press the [ i ] key to toggle piece info
+        <br><br>
+        <div id="enter" onclick="runGallery()">Enter Gallery</div>
+        
     </div>
 
-    <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
+    <div id="nfo_wrap">
+        <div id='nfo'><div id="leftNfo"></div><div id="rightNfo"></div></div> <!-- this is where the particular piece's info will appear: author, title, description, etc -->
+    </div>
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
-      var url =[];        // the work url
-      var title = [];     // the title of the work
-      var nfo =[];        // the description of the work
-      var auth = [];      // the author[s] of the work
-      var auth_url = [];  // the author[s] webpage
+    
+        var url =[];                    // the work url
+        var title = [];                 // the title of the work
+        var nfo =[];                    // the description of the work
+        var auth = [];                  // the author[s] of the work
+        var auth_url = [];              // the author[s] webpage
+        
+        var i = 0;                      // item number for arrays
+        var t = $('#secs').val()*1000;  // time spent per work
+        var isNfo = false;
+          $.getJSON("https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_list/works/recent-items", function(data){
 
-      var i = 0;          // item for runGallery loop
-      var t = 5000;       // time speng per work
+            $.each(data, function(k,v){
 
-      // rewritten with getJSON()
-      $.getJSON("_list/works/recent-items", function(data){
-        $.each(data, function(k,v){
-          if (this.title != undefined){
-            url.push(this.url);
-            title.push(this.title);
-            nfo.push(this.description);
-            auth.push(this.author);
-            auth_url.push(this.homepage_url);
-          }
-      });});
+              console.log(this);
+              if (this.title != undefined){
+                url.push(this.url);
+                title.push(this.title);
+                nfo.push(this.description);
+                auth.push(this.author);
+                auth_url.push(this.homepage_url);
+              }
+          });}); 
 
-
-      function runGallery() {
-
-        l = url.length;
-
-        $('#frame').attr('src', url[i]);
-        $('#nfo').html(title[i] + ' by '+ auth[i]);
-
-        setInterval(function () {
-          $('#frame').attr('src', url[++i % l]);
-          $('#nfo').html(title[i] + ' by '+ auth[i]);
-          if(i>=l){i=0;}
-        }, t);
-
+        function runGallery() {
+            t = $('#secs').val()*1000; 
+            l = url.length;
+            
+            $('body').css('backgroundColor','#fff');
+            
+            $('#banner').fadeOut(300);
+            $('#frame').attr('src', url[i]);
+            $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
+            $('#rightNfo').html(nfo[i]); 
+            $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+            
+            setInterval(function () {
+                i++; if(i>=l){i=0;}
+                $('#frame').attr('src', url[i]);
+                $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
+                $('#rightNfo').html(nfo[i]);
+                $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+                isNfo = false;
+            }, t);
+            
+        }
+            
+        // toggle the piece info when [ i ] is clicked    
+        document.onkeypress=function(e){
+            var e=window.event || e
+            if(e.charCode == 105 && isNfo == false) {
+                $('#nfo_wrap').slideDown(500); isNfo = true;
+            } else if(e.charCode == 105 && isNfo == true) {
+                $('#nfo_wrap').slideUp(500); isNfo = false;
+            }
         }
              
     </script>
-    
-     <iframe id="frame" height="100%" width="100%" />
 
+    
+    <iframe id="frame" height="100%" width="100%" allowfullscreen/> <!-- this iframe rotates between pieces in the 0P3NR3P0 -->
 
 
 </body>
