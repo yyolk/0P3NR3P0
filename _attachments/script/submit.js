@@ -15,7 +15,12 @@ $(function() {
     });
     return o;
   };
-
+  function stripTrailingSlash(str) {
+    if(str.substr(-1) == '/') {
+      return str.substr(0, str.length - 1);
+    }
+    return str;
+  }
 
   //helper functions
   function linkify(inputText) {
@@ -96,6 +101,9 @@ $(function() {
         case 'url':
           // is this a valid url?
           if (!ValidURL(doc[i])) invalid='url';
+          // remove any trailing slashes //fixes bug with setting this as the
+          // _doc.id
+          doc[i] = stripTrailingSlash(doc[i]);
           // is this a youtube URL?
           if (youtubeURL(doc[i])) doc[i] = youtubeURL(doc[i]);
           // is this a vimeo URL?
@@ -106,7 +114,7 @@ $(function() {
           break;
         case 'author':
           if (doc[i] == "") invalid = 'author';
-          
+
           break;
         case 'homepage_url':
           if (!ValidURL(doc[i])) invalid='homepage_url';
@@ -127,13 +135,13 @@ $(function() {
         default:
           break;
 
-        
+
       }
     }
     if (!valid){
-    return invalid;
+      return invalid;
     } else{
-    return true;
+      return true;
     }
   }
 
@@ -151,15 +159,15 @@ $(function() {
       // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
-       var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
-       var match = pattern.exec(doc.url);
-       var uurl = match[1];
-       doc._id = uurl;
-       doc.multipass = hex_md5(Date()); 
-       db.saveDoc(doc, {
-         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl},
-         error: function(){ alert("This link is already in the repo!");}
-       });
+      var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
+      var match = pattern.exec(doc.url);
+      var uurl = match[1];
+      doc._id = uurl;
+      doc.multipass = hex_md5(Date()); 
+      db.saveDoc(doc, {
+        success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl},
+        error: function(){ alert("This link is already in the repo!");}
+      });
     }
     else{
       if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");

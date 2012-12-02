@@ -87,15 +87,15 @@
 
   </body>
 
-<!--
+  <!--
   <script type="text/javascript" src="../../vendor/couchapp/loader.js" charset="utf-8"></script>
--->
+  -->
 
   <script type="text/javascript" charset="utf-8">
     function couchapp_load(scripts) {
-  for (var i=0; i < scripts.length; i++) {
-    document.write('<script src="'+scripts[i]+'"><\/script>')
-  };
+      for (var i=0; i < scripts.length; i++) {
+        document.write('<script src="'+scripts[i]+'"><\/script>')
+      };
     };
 
 couchapp_load([
@@ -106,34 +106,40 @@ couchapp_load([
     "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.js",
     "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.util.js",
     ]);
-  </script>
+</script>
 
-  <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
   // friendly helper http://tinyurl.com/6aow6yn
-  $.fn.serializeObject = function() {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
+$.fn.serializeObject = function() {
+  var o = {};
+  var a = this.serializeArray();
+  $.each(a, function() {
       if (o[this.name]) {
-        if (!o[this.name].push) {
-          o[this.name] = [o[this.name]];
-        }
-        o[this.name].push(this.value || '');
-      } else {
-        o[this.name] = this.value || '';
+      if (!o[this.name].push) {
+      o[this.name] = [o[this.name]];
       }
-    });
-    return o;
-  };
+      o[this.name].push(this.value || '');
+      } else {
+      o[this.name] = this.value || '';
+      }
+      });
+  return o;
+};
+function stripTrailingSlash(str) {
+  if(str.substr(-1) == '/') {
+    return str.substr(0, str.length - 1);
+  }
+  return str;
+}
 
-    $.couch.app(function(app) {
-      var path = app.require("vendor/couchapp/lib/path").init(app.req);
-      var postForm;
-      var doc = {{{doc}}};
+$.couch.app(function(app) {
+    var path = app.require("vendor/couchapp/lib/path").init(app.req);
+    var postForm;
+    var doc = {{{doc}}};
 
 
-  //helper functions
-  function linkify(inputText) {
+    //helper functions
+    function linkify(inputText) {
     var replaceText, replacePattern1, replacePattern2, replacePattern3;
 
     //URLs starting with http://, https://, or ftp://
@@ -149,139 +155,142 @@ couchapp_load([
     replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
 
     return replacedText;
-  }
+    }
 
-  function ValidURL(str) {
-    var pattern = new RegExp('http[s]?://[a-z].[a-z].?[a-z].?[a-z]'); // fragment locater
-      if(!pattern.test(str)) {
-        //alert("Please enter a valid URL.");
+    function ValidURL(str) {
+      var pattern = new RegExp('http[s]?://[a-z].[a-z].?[a-z].?[a-z]'); // fragment locater
+        if(!pattern.test(str)) {
+          //alert("Please enter a valid URL.");
+          return false;
+        } else {
+          return true;
+        }
+    }
+
+    function youtubeURL(str) { 
+      var pattern = new RegExp(/^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=(\w+))(?:[^\s?]+)?$/);
+      if (!pattern.test(str)) {
+        return false;
+      } else { 
+        // return new embed code
+        var match = pattern.exec(str);
+        //alert('youtube id'+match[1]);
+        return "http://youtube.googleapis.com/v/"+match[1]+"&autoplay=1";
+        //return true;
+      }
+    }
+
+    function vimeoURL(str) {
+      var pattern = new RegExp(/^http[s]?:\/\/[www\.]?vimeo\.com\/(\d+)$/);
+      if (!pattern.test(str)) {
+        return false;
+      } else { 
+        // return new embed code
+        var match = pattern.exec(str);
+        //alert('vimeo id'+match[1]);
+        return "http://player.vimeo.com/video/"+match[1]+"?autoplay=1";
+        //return true;
+      }
+    }
+    function ValidEmail(str) {
+      var pattern = new RegExp(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/);
+      if (!pattern.test(str)) {
         return false;
       } else {
         return true;
       }
-  }
-
-  function youtubeURL(str) { 
-    var pattern = new RegExp(/^http:\/\/(?:www\.)?youtube.com\/watch\?(?=[^?]*v=(\w+))(?:[^\s?]+)?$/);
-    if (!pattern.test(str)) {
-      return false;
-    } else { 
-      // return new embed code
-      var match = pattern.exec(str);
-      //alert('youtube id'+match[1]);
-      return "http://youtube.googleapis.com/v/"+match[1]+"&autoplay=1";
-      //return true;
     }
-  }
-
-  function vimeoURL(str) {
-    var pattern = new RegExp(/^http[s]?:\/\/[www\.]?vimeo\.com\/(\d+)$/);
-    if (!pattern.test(str)) {
-      return false;
-    } else { 
-      // return new embed code
-      var match = pattern.exec(str);
-      //alert('vimeo id'+match[1]);
-      return "http://player.vimeo.com/video/"+match[1]+"?autoplay=1";
-      //return true;
-    }
-  }
-  function ValidEmail(str) {
-    var pattern = new RegExp(/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/);
-    if (!pattern.test(str)) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
 
-  function checkFields(doc){
-    var valid = true;
-    var invalid = "";
-    for (var i in doc){
-      if (!doc[i]) valid=false;
-      switch (i){
+    function checkFields(doc){
+      var valid = true;
+      var invalid = "";
+      for (var i in doc){
+        if (!doc[i]) valid=false;
+        switch (i){
 
-        case 'url':
-          // is this a valid url?
-          if (!ValidURL(doc[i])) invalid='url';
-          // is this a youtube URL?
-          if (youtubeURL(doc[i])) doc[i] = youtubeURL(doc[i]);
-          // is this a vimeo URL?
-          if (vimeoURL(doc[i])) doc[i] = vimeoURL(doc[i]);
-          //not needed since we're
-          //going straight to iframe
-          //else doc[i] = linkify(doc[i]); 
-          break;
-        case 'author':
-          if (doc[i] == "") invalid = 'author';
-          
-          break;
-        case 'homepage_url':
-          if (!ValidURL(doc[i])) invalid='homepage_url';
-          //else doc[i] = linkify(doc[i]);
-          break;
-        case 'email':
-          if (!ValidEmail(doc[i])) invalid='email';
-          break;
-        case 'description':
-          if (doc[i] == "") invalid = 'description';
-          break;
-        case 'tags':
-          if (doc[i] == '') invalid = 'tags';
-          else doc[i] = doc[i].split(' ');
-          break;
-        case 'created_at':
-          break;
-        default:
-          break;
+          case 'url':
+            // is this a valid url?
+            if (!ValidURL(doc[i])) invalid='url';
+            // remove any trailing slashes //fixes bug with setting this as the
+            // _doc.id
+            doc[i] = stripTrailingSlash(doc[i]);
+            // is this a youtube URL?
+            if (youtubeURL(doc[i])) doc[i] = youtubeURL(doc[i]);
+            // is this a vimeo URL?
+            if (vimeoURL(doc[i])) doc[i] = vimeoURL(doc[i]);
+            //not needed since we're
+            //going straight to iframe
+            //else doc[i] = linkify(doc[i]); 
+            break;
+          case 'author':
+            if (doc[i] == "") invalid = 'author';
 
-        
+            break;
+          case 'homepage_url':
+            if (!ValidURL(doc[i])) invalid='homepage_url';
+            //else doc[i] = linkify(doc[i]);
+            break;
+          case 'email':
+            if (!ValidEmail(doc[i])) invalid='email';
+            break;
+          case 'description':
+            if (doc[i] == "") invalid = 'description';
+            break;
+          case 'tags':
+            if (doc[i] == '') invalid = 'tags';
+            else doc[i] = doc[i].split(' ');
+            break;
+          case 'created_at':
+            break;
+          default:
+            break;
+
+
+        }
+      }
+      if (!valid){
+        return invalid;
+      } else{
+        return true;
       }
     }
-    if (!valid){
-    return invalid;
-    } else{
-    return true;
-    }
-  }
 
 
 
-  $("#create-link").submit(function(e){
-    e.preventDefault();
-    var form = this;
-    var newdoc = $(form).serializeObject();
-    
-    newdoc._rev = doc._rev;
-    newdoc.created_at = doc.created_at;
-    var valid = checkFields(newdoc);
-    if (valid === true) { 
-      var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
-      var match = pattern.exec(newdoc.url);
-      var uurl = match[1];
+    $("#create-link").submit(function(e){
+        e.preventDefault();
+        var form = this;
+        var newdoc = $(form).serializeObject();
 
-      newdoc._id = uurl;
-      app.db.saveDoc(newdoc, {
-        success : function(resp) { 
-            $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
-        },
-         error: function(){ alert("This link is already in the repo!");}
-       });
-    }
-    else{
-      if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");
-      else alert("Please enter something valid for "+valid); 
-      $(this).find("[name="+valid+"]").focus();
-    }
-  });
+        newdoc._rev = doc._rev;
+        newdoc.created_at = doc.created_at;
+        var valid = checkFields(newdoc);
+        if (valid === true) { 
+        var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
+        var match = pattern.exec(newdoc.url);
+        var uurl = match[1];
 
-
-   
+        newdoc._id = uurl;
+        app.db.saveDoc(newdoc, {
+success : function(resp) { 
+$("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
+},
+error: function(){ alert("This link is already in the repo!");}
+});
+        }
+else{
+  if (valid === 'email') alert("we need your email in order to send you an edit link for your submission, and to provide potential curators with a way to contact you (it email will not be displayed anywhere else nor will it be added to any mailing lists)");
+  else alert("Please enter something valid for "+valid); 
+  $(this).find("[name="+valid+"]").focus();
+}
 });
 
-  </script>
+
+
+});
+
+</script>
   </html>
 
 
