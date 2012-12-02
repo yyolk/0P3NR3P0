@@ -267,6 +267,8 @@ $.couch.app(function(app) {
         newdoc.created_at = doc.created_at;
         var valid = checkFields(newdoc);
         if (valid === true) { 
+        $(this).find("input[type='submit']").attr("disabled", "disabled");
+        
         var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
         var match = pattern.exec(newdoc.url);
         var uurl = match[1];
@@ -275,6 +277,7 @@ $.couch.app(function(app) {
         app.db.saveDoc(newdoc, {
 success : function(resp) { 
 $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
+$(form).find("input[type='submit']").removeAttr("disabled");
 },
 error: function(){ alert("This link is already in the repo!");}
 });

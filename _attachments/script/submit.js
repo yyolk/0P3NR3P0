@@ -156,6 +156,7 @@ $(function() {
     // check to see if everything is filled in
     var valid = checkFields(doc);
     if (valid === true) { 
+      $(this).find("input[type='submit']").attr("disabled", "disabled");
       // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
