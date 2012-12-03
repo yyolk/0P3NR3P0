@@ -1,5 +1,5 @@
 function(doc) {
-  if (doc.created_at) {
+  
       emit(doc.created_at, {
           id : doc._id,
           title: doc.title,
@@ -9,6 +9,6 @@ function(doc) {
           description : doc.description,
           tags : doc.tags
       });
-  }
-};
+  
+}
 

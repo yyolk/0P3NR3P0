@@ -83,6 +83,11 @@
         <div style="clear:both;"></div>
 
       </div>
+      <!--
+      <div id='preview'>
+        <iframe src="{{{url}}}" width="500" height="500">
+      </div>
+      -->
     </div>
 
   </body>
@@ -225,7 +230,6 @@ $.couch.app(function(app) {
             break;
           case 'author':
             if (doc[i] == "") invalid = 'author';
-
             break;
           case 'homepage_url':
             if (!ValidURL(doc[i])) invalid='homepage_url';
@@ -278,6 +282,7 @@ $.couch.app(function(app) {
 success : function(resp) { 
 $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
 $(form).find("input[type='submit']").removeAttr("disabled");
+doc._rev=resp.rev;
 },
 error: function(){ alert("This link is already in the repo!");}
 });
