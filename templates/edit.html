@@ -110,6 +110,7 @@ couchapp_load([
     "/_utils/script/jquery.couch.js",
     "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.js",
     "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.util.js",
+    "/openrepo/_design/0P3NR3P0/vendor/couchapp/md5.js"
     ]);
 </script>
 
@@ -276,7 +277,7 @@ $.couch.app(function(app) {
         var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
         var match = pattern.exec(newdoc.url);
         var uurl = match[1];
-
+        uurl = hex_md5(uurl);
         newdoc._id = uurl;
         app.db.saveDoc(newdoc, {
 success : function(resp) { 

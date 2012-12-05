@@ -34,6 +34,6 @@ function(doc, req) {
   }
 
   //return Mustache.to_html(ddoc.templates.edit, data, ddoc.templates.partials);
- // return req.query.multipass;
+  //return req.query.multipass;
 }
 
