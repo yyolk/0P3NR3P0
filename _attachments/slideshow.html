@@ -80,7 +80,7 @@
         piece interval <input id="secs" value="10"> seconds<br>
         press the [ i ] key to toggle piece info
         <br><br>
-        <div id="enter" onclick="runGallery()">Enter Gallery</div>
+        <div id="enter" onclick="go()">Enter Gallery</div>
         
     </div>
 
@@ -89,64 +89,95 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script>
     
-        var url =[];                    // the work url
-        var title = [];                 // the title of the work
-        var nfo =[];                    // the description of the work
-        var auth = [];                  // the author[s] of the work
-        var auth_url = [];              // the author[s] webpage
-        
+        var slides = [];
+        var sids = [];
         var i = 0;                      // item number for arrays
         var t = $('#secs').val()*1000;  // time spent per work
         var isNfo = false;
-        
-
-        // this ajax function populates the arrays above with all the entires in the 0P3NR3P0
-        $.ajax({
+        $ = jQuery;
+        jQuery.ajax({
             url: 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_view/recent-items',
             type: 'get',
             dataType: 'jsonp',
-            success: function(data) {            
-                $.each(data, function() {
-                    $.each(this, function(key, val){
-                         $.each(this, function(k, v){
-                            if(v.title != undefined) {
-                                url.push(v.url);
-                                title.push(v.title);
-                                nfo.push(v.description);
-                                auth.push(v.author);
-                                auth_url.push(v.homepage_url);
-                            }
-                         });
-                    });                    
+            success: function(data) {
+                console.log("banging the server!!");
+
+                $.each(data, function(){
+                    $.each(this, function(){
+                        $.each(this, function(k,v){
+                            
+                            if (k=='value') slides.push(v);
+                            if (k=='id') sids.push(v);
+                        });
+                    });
                 });
             }
         });
-                
+        
+        function reset() {
+            i=0;
+            // shuffle items
+        }
+            
+
+
         function runGallery() {
             t = $('#secs').val()*1000; 
-            l = url.length;
+            // count slides
+            l = slides.length;
             
+            //run animation
             $('body').css('backgroundColor','#fff');
             
+
+            // i is always the current iteration of the slideshow we're on
             $('#banner').fadeOut(300);
-            $('#frame').attr('src', url[i]);
-            $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
-            $('#rightNfo').html(nfo[i]); 
+            $('#frame').attr('src', "http://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/"+ sids[i]);
+            $('#leftNfo').html('<a class="title" href="'+slides[i].url+'">'+slides[i].title+'</a><br> by <a class="author" href="'+slides[i].homepage_url+'">'+slides[i].author+'</a>');
+            $('#rightNfo').html(slides[i].description); 
             $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
             
-            setInterval(function () {
-                i++; if(i>=l){i=0;}
-                $('#frame').attr('src', url[i]);
-                $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
-                $('#rightNfo').html(nfo[i]);
-                $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
-                isNfo = false;
-            }, t);
-            
+
+            return{
+                //event-based
+                next: function () {
+                    if (i>l) reset();
+                    console.log(i);
+                    console.log(sids[i]);
+                    graburl = "http://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/"+sids[i];
+                    jQuery.ajax({
+                        url: graburl,
+                        type: 'get',
+                        success: function(data) {
+                            console.log('Load was performed.');
+                        },
+                        error: function(err){
+                            graburl = slides[i].url;
+                        }
+                    });
+
+                    
+                    $('#frame').attr('src', graburl); // set the iframe url
+                    
+                    $('#leftNfo').html('<a class="title" href="'+slides[i].url+'">'+slides[i].title+'</a><br> by <a class="author" href="'+slides[i].homepage_url+'">'+slides[i].author+'</a>');
+                    $('#rightNfo').html(slides[i].description);
+                    $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+                    isNfo = false;
+                    i++;
+                }
+            }
         }
+
+        function go(){
+            t = $("#secs").val();
+            gallery = runGallery();
+            setInterval("gallery.next()", t);
+        }
+        //event based
+        
             
         // toggle the piece info when [ i ] is clicked    
         document.onkeypress=function(e){
@@ -157,14 +188,12 @@
                 $('#nfo_wrap').slideUp(500); isNfo = false;
             }
         }
-             
+          
     </script>
 
     
-    <iframe id="frame" height="100%" width="100%" allowfullscreen/> <!-- this iframe rotates between pieces in the 0P3NR3P0 -->
+    <iframe id="frame" height="100%" width="100%" ></iframe>
+    <!-- this iframe rotates between pieces in the 0P3NR3P0 -->
 
 
 </body>
-
-
-
