@@ -11,7 +11,7 @@ function(doc, req) {
   }
     return {
 
-        body :  (checkImg(''+doc.url)) ? "<head><link rel='stylesheet' href='/openrepo/_design/0P3NR3P0/style/post.css' type='text/css' ></link></head><body style="+"background-image:url('" + doc.url +"');"+"></body>" : "<head><link rel='stylesheet' href='/openrepo/_design/0P3NR3P0/style/post.css' type='text/css' ></link></head><body><iframe src='"+doc.url+"'></iframe></body>"
+        body :  (checkImg(''+doc.url)) ? "<head><link rel='stylesheet' href='/openrepo/_design/0P3NR3P0/style/post.css' type='text/css' ></link></head><body style="+"background-image:url('" + doc.url +"');"+"></body>" : doc.url
 
     }
 }
