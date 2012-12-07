@@ -120,6 +120,7 @@
         function reset() {
             i=0;
             // shuffle items
+            i=i*Math.floor(Math.random()*slides.length);
         }
             
 
@@ -128,7 +129,7 @@
             t = $('#secs').val()*1000; 
             // count slides
             l = slides.length;
-            
+            reset();
             //run animation
             $('body').css('backgroundColor','#fff');
             
@@ -145,6 +146,7 @@
                 //event-based
                 next: function () {
                     if (i>l) reset();
+
                     console.log(i);
                     console.log(sids[i]);
                     graburl = "http://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/"+sids[i];
