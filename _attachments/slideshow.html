@@ -117,10 +117,10 @@
             }
         });
         
-        function reset() {
+        function resetGallery() {
             i=0;
             // shuffle items
-            i=i*Math.floor(Math.random()*slides.length);
+            i=Math.floor(Math.random()*l);
         }
             
 
@@ -129,7 +129,6 @@
             t = $('#secs').val()*1000; 
             // count slides
             l = slides.length;
-            reset();
             //run animation
             $('body').css('backgroundColor','#fff');
             
@@ -175,7 +174,9 @@
 
         function go(){
             t = $("#secs").val();
+
             gallery = runGallery();
+            resetGallery();
             setInterval("gallery.next()", t);
         }
         //event based
