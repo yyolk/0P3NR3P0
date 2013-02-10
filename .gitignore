@@ -1,4 +1,4 @@
 *.sw*
 .sass-cache
-
+.couchapprc
 .DS_Store
