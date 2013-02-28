@@ -163,12 +163,12 @@ $(function() {
       var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
       var match = pattern.exec(doc.url);
       var uurl = match[1];
-      doc._id = hex_md5(uurl);
+      doc._id = hex_md5(doc.author.toLowerCase().replace(/^\s+|\s+$/g, ''));
       doc.multipass = hex_md5(Date());
 
       db.saveDoc(doc, {
         success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl+"&docid="+doc._id},
-        error: function(){ alert("This link is already in the repo!");}
+        error: function(){ alert("You're already in the MCA!");}
       });
     }
     else{

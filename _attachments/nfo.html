@@ -93,38 +93,33 @@
 
 
 		<div id="slideshow">
-		   <div><img src="http://www.0p3nr3p0.net/images/bg0.jpg"></div>
-		   <div><img src="http://www.0p3nr3p0.net/images/bg1.jpg"></div>
-		   <div><img src="http://www.0p3nr3p0.net/images/bg2.jpg"></div>
-		   <div><img src="http://www.0p3nr3p0.net/images/bg3.jpg"></div>
-		   <div><img src="http://www.0p3nr3p0.net/images/bg4.jpg"></div>
-		   <div><img src="http://www.0p3nr3p0.net/images/bg5.jpg"></div>
+		   <div><img src="images/bg0.jpg"></div>
+		   <div><img src="images/bg1.jpg"></div>
+		   <div><img src="images/bg2.jpg"></div>
+		   <div><img src="images/bg3.jpg"></div>
+		   <div><img src="images/bg4.jpg"></div>
+		   <div><img src="images/bg5.jpg"></div>
 		</div>
 
 
 		<div class="wrap">
-			<div class="logo"><img src="http://www.0p3nr3p0.net/images/logob.png"></div><br>
+			<div class="logo"><img src="images/logob.png"></div><br>
 			<div>
-				The <a href="http://gli.tc/h/" target="blank">GLI.TC/H</a> 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving <a href="http://www.0p3nr3p0.net/nfo.html" target="blank">multiple goals</a>
+				The <a href="http://gli.tc/h/" target="blank">GLI.TC/H</a> 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals
 			</div>
 			<div class="line"></div>
 
-			<center><img src="http://www.0p3nr3p0.net/images/mca.gif" style="margin-right:20px;"><img src="http://www.0p3nr3p0.net/images/mca.png"></center>
-
 			<div>
-				<br>
-				The Museum of Contemporary Art Chicago will be hosting an IRL exhibition of glitch worx submitted to the 0P3NR3P0 as part of the <a href="http://www.mcachicago.org/programs/now/all/2012/e1078" target="blank">Internet Superheroes</a> series. Join us at the MCA on March 19 at 6pm to celebrate this bug collection AFK.
-				<br><Br>
-				To include your work in the 'Glitch Art 0P3NR3P0 Share Fest' <a href="#" onclick="submit()">submit a link</a> to any visually wwweb based file (html, jpg, gif, youtube, vimeo, etc.) and your piece will automatically be included in the line-up (one work per artist). 
-			</div>
-
-			<div class="line"></div>
-
-			<div class="lineup">
-				Including worx by:
-				<br><br>
-				<div id="artists"></div>
-
+			◆ it's been developed as an open port for anyone anywhere to submit glitch art worx (that can be represented by a URL: i.e. video, images, sound, web) 
+			<br><br>
+			◆ initially the 0P3NR3P0 served as a remote submission system for the 2112 GLI.TC/H festival/conference/gathering in Chicago.
+			<br><br>
+			◆ the next IRL exhibition will be held on March 19 at the Museum of Contemporary Art in Chicago at 6pm
+			<br><br>
+			◆ at present the 0P3NR3P0's archives are undergoing some maintenence, but in the future it will be perpetually open for submissions && perpetually available for curators intersted in exhibiting glitch worx from the archive. 
+			<br><Br><br>
+			send inqueries to gli<span></span>tch@gl<span></span>i.tc<br>
+			for asap.help email nickb<span></span>riz@gmail.com && jo<span></span>e@yo<span></span>lk.cc
 			</div>
 
 			<div class="line"></div>
@@ -141,14 +136,18 @@
 	    <div id="submit">
 	            <span onclick="closeSubmit()" class="close">[close]</span>
 
-	            <iframe id="submit_frame" src="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/mcasubmit.html"></iframe>
+<!-- 	         THIS SHOULD BE A NEW SUBMIT PAGE WHICH 
+		            1 - AUTO TAGS WITH 'mcainternetsuperheroes'
+		            2 - CHECKS IF ARTIST HAS ALREADY SUBMITTED A WORK BEFORE -->
+
+	            <iframe id="submit_frame" src="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/submit.html"></iframe>
 	    </div>	
 		
+
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script>
 
-				// TOGGLE SUBMIT PAGE
 		        function submit() {
 		            var x = document.getElementById('submit');
 		            x.style.display = "block";
@@ -158,38 +157,7 @@
 		            var x = document.getElementById('submit');
 		            x.style.display = "none";            
 		        }
-
-
-
-				// LIST OUT LINEUP
- 					var auth = [];                  // the author[s] of the work
-			        var auth_url = [];              // the author[s] webpage
-			        var lst = '';
-
-			        $.ajax({
-			            url: 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_view/mcainternetsuperheroes',
-			            type: 'get',
-			            dataType: 'jsonp',
-			            success: function(data) {            
-			                $(data).each(function(index, el) {
-								$(el.rows).each(function(k, v) {
-									$(v.value).each(function(k, v) {
-										auth.push(v.author);
-			                            auth_url.push(v.url);
-							        });
-						        });
-				            });
-
-					        for (i = 0; i < auth.length; i++) {
-					        	lst += '<div><a href="'+auth_url[i]+'" target="blank">'+auth[i]+'</a></div>';
-					        	$('#artists').html(lst);
-				        	};
-			            }
-			        });
-
-
-
-        	// BACKGROUND
+        
 			$(function() {
 
 				$("#slideshow > div:gt(0)").hide();

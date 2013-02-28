@@ -13,7 +13,5 @@ couchapp_load([
   "vendor/couchapp/jquery.couch.app.js",
   "vendor/couchapp/jquery.couch.app.util.js",
   "vendor/couchapp/jquery.mustache.js",
-  "vendor/couchapp/md5.js",
-  "vendor/couchapp/jquery.couchapp.js",
-  "vendor/couchapp/jquery.couchapp.couch.js"
+  "vendor/couchapp/md5.js"
 ]);
