@@ -1,12 +1,9 @@
-function(doc, req) {  
+function(doc, req) {
   var ddoc = this;
   var Mustache = require("vendor/couchapp/lib/mustache");
   var path = require("vendor/couchapp/lib/path").init(req);
 //
   var indexPath = path.list('index','recent-posts',{descending:true, limit:10});
-//  var feedPath = path.list('index','recent-posts',{descending:true, limit:10, format:"atom"});
-//  var commentsFeed = path.list('comments','comments',{descending:true, limit:10, format:"atom"});
-//
   var data = {
     header : {
       index : indexPath,

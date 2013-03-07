@@ -42,6 +42,8 @@
 
         <form id="create-link">
           <input type="hidden" name="multipass" value="{{multipass}}" id="multipass">
+          <input type="hidden" name="tags" size="77" value="mcainternetsuperheroes" id="tags">
+
 
           <div>
             <label for="url">link to work</label>
@@ -72,11 +74,6 @@
             <textarea name="description" cols="53" rows="5"
               value=""
               id="description">{{description}}</textarea>
-          </div>
-          <div>
-            <label for="tags">tags</label>
-            <input type="text" name="tags"
-            value="{{#tags}}{{.}} {{/tags}}" size="77" id="tags">
           </div>
           <input type="submit" name="submit" value="Update!" id="submit">
         </form>
@@ -277,8 +274,7 @@ $.couch.app(function(app) {
         var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
         var match = pattern.exec(newdoc.url);
         var uurl = match[1];
-        uurl = hex_md5(uurl);
-        newdoc._id = uurl;
+        newdoc._id = doc._id;
         app.db.saveDoc(newdoc, {
 success : function(resp) { 
 $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
