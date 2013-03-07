@@ -174,14 +174,14 @@
 			                $(data).each(function(index, el) {
 								$(el.rows).each(function(k, v) {
 									$(v.value).each(function(k, v) {
-										auth.push(v.author);
-			                            auth_url.push(v.url);
+													auth.push(v.author);
+                          auth_url.push(v.id);
 							        });
 						        });
 				            });
 
 					        for (i = 0; i < auth.length; i++) {
-					        	lst += '<div><a href="'+auth_url[i]+'" target="blank">'+auth[i]+'</a></div>';
+					        	lst += '<div><a href="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/'+auth_url[i]+'" target="blank">'+auth[i]+'</a></div>';
 					        	$('#artists').html(lst);
 				        	};
 			            }
