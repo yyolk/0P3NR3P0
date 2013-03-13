@@ -185,8 +185,8 @@
 			            dataType: 'jsonp',
 			            success: function(data) {            
 			                $(data).each(function(index, el) {
-								$(el.rows).each(function(k, v) {
-									$(v.value).each(function(k, v) {
+											$(el.rows).each(function(k, v) {
+											$(v.value).each(function(k, v) {
 													auth.push(v.author);
                           auth_url.push(v.id);
 							        });
