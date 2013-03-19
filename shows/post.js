@@ -17,6 +17,14 @@ function(doc, req) {
       return false;
     }
   }
+  function checkMPF(str){
+    var pattern = new RegExp(/\.(mp4)$/i);
+    if (pattern.test(str)){
+      return true;
+    } else {
+      return false;
+    }
+  }
   if(checkImg(doc.url)){
     return {
       code : 200,
