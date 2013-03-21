@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<! --
+ A very basic example in Javascript of how to attach a file to a CouchDB document. This will work wether or not the Document ID you define exists.
+ Log in at /_utils, upload this file to a document, and then view it for your own uploader.  See the code for comments. ajaxSubmit() is the magic that attaches
+ as long as the Couch Doc exists because you can't submit a new Couch Document with an attachment.
+ by @rjsteinert http://rjsteinert.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <!-- jQuery assets -->
+    <script src="/_utils/script/json2.js"></script>
+    <script src="/_utils/script/jquery.js?1.2.6"></script>
+    <script src="/_utils/script/jquery.couch.js?0.8.0"></script>
+    <script src="/_utils/script/jquery.form.js?0.9.0"></script>
+    <script type="text/javascript">
+
+      $(function() {
+        $('form.documentForm').submit(function(e) {
+          
+          // Prevent submit because we will use ajaxSubmit() to actually send the
+          // attachment to CouchDB.
+          e.preventDefault();
+
+          // Get the user supplied details
+          var input_db = $('.documentForm input#_db').val()
+          var input_id = $('.documentForm input#_id').val()
+          var input_rev = $('.documentForm input#_rev').val()
+         
+          // Start by trying to open a Couch Doc at the _id and _db specified
+          $.couch.db(input_db).openDoc(input_id, {
+            // If found, then set the revision in the form and save
+            success: function(couchDoc) {
+              // Defining a revision on saving over a Couch Doc that exists is required.
+              // This puts the last revision of the Couch Doc into the input#rev field
+              // so that it will be submitted using ajaxSubmit.
+              $('.documentForm input#_rev').val(couchDoc._rev);
+               
+              // Submit the form with the attachment
+              $('form.documentForm').ajaxSubmit({
+                url: "/"+ input_db +"/"+ input_id,
+                success: function(response) {
+                  alert("Your attachment was submitted.")
+                }
+              })
+            }, // End success, we have a Doc
+            
+            // If there is no CouchDB document with that ID then we'll need to create it before we can attach a file to it.
+            error: function(status) {
+              $.couch.db(input_db).saveDoc({"_id":input_id}, {
+                success: function(couchDoc) {
+                  // Now that the Couch Doc exists, we can submit the attachment,
+                  // but before submitting we have to define the revision of the Couch
+                  // Doc so that it gets passed along in the form submit.
+                  $('.documentForm input#_rev').val(couchDoc.rev);
+                  $('form.documentForm').ajaxSubmit({
+                    // Submit the form with the attachment
+                    url: "/"+ input_db +"/"+ input_id,
+                    success: function(response) {
+                      alert("Your attachment was submitted.")
+                    }
+                  })
+                }
+              })
+            } // End error, no Doc
+
+          }) // End openDoc()
+
+        }) /* End form.documentForm submit */
+      }) /* End jQuery ready */
+      
+    </script>
+  </head>
+   
+  <body> 
+    <form class="documentForm" method="post" action="" enctype="multipart/form-data">
+      <input type="text" name="_db" id="_db" placeholder="Database ID" />
+      <input type="text" name="_id" id="_id" placeholder="Document ID" />
+      <input type="text" name="_rev" id="_rev" placeholder="Revision ID (always overridden in code)" />
+      <input type="file" name="_attachments" id="_attachments" multiple="multiple" />
+      <input type="submit" class="Submit" value="Submit" />
+    </form>
+  </body>
+</html>
