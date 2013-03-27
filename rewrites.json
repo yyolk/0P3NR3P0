@@ -24,15 +24,6 @@
   "to": "index.html"
 },
 {
-  "from": "_views/*",
-  "to": "../../../_views/recent-items/*",
-  "query" : {
-    "descending" : true,
-    "limit" : 5,
-    "front" : true
-  }
-},
-{
   "from": "submit.html/*",
   "to": "/openrepo/*"
 

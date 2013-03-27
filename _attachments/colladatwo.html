@@ -50,13 +50,13 @@
 
       var loader = new THREE.ColladaLoader();
       loader.options.convertUpAxis = true;
-      loader.load( '/openrepo/collada/fukdwarehouse.dae', function ( collada ) {
+      loader.load( '/openrepo/collada/fukdmonastery.dae', function ( collada ) {
 
         dae = collada.scene;
         skin = collada.skins[ 0 ];
 
         // dae.scale.x = dae.scale.y = dae.scale.z = 0.002;
-        dae.scale.x = dae.scale.y = dae.scale.z = .01;
+        dae.scale.x = dae.scale.y = dae.scale.z = 1.0;
 
         dae.updateMatrix();
 
