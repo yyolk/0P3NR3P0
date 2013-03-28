@@ -32,7 +32,7 @@ function(doc, req) {
         "Access-Control-Allow-Origin" : "*",
         "Content-Type:" : "text/html"
        },
-      body :  '<head><link rel="stylesheet" href="/openrepo/_design/0P3NR3P0/style/post.css" type="text/css"></link></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"></body>"
+      body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"></body>"
     };
   } else if(checkFB(doc.url)){
     return { code : 302, headers : { "Access-Control-Allow-Origin": "*", "Location" : doc.url } };
@@ -41,7 +41,7 @@ function(doc, req) {
     return { code : 200, headers : { 
       "Access-Control-Allow-Origin": "*", 
       "Content-Type:" : "text/html"   },
-      body: '<html><head><link rel="stylesheet" href="/openrepo/_design/0P3NR3P0/style/post.css" type="text/css"></link></head><body><iframe src="'+doc.url+'"></iframe></body></html>'
+      body: '<html><head><link rel="stylesheet" href="/style/post.css" type="text/css"></link></head><body><iframe src="'+doc.url+'"></iframe></body></html>'
        };
   }
 }
