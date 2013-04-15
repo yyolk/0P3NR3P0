@@ -27,7 +27,11 @@
   "from": "submit.html/*",
   "to": "/openrepo/*"
 
-}, 
+},
+{
+  "from": "post/*",
+  "to": "_show/post/*"
+},
 {
   "from": "*",
   "to": "*"
