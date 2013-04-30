@@ -1,5 +1,5 @@
 function(doc) {
-  if (doc.tags[0]=='furtherfield') {
+  if (doc.tags[0]=='furtherfieldgallery') {
       emit(doc.author, {
           id : doc._id,
           title: doc.title,

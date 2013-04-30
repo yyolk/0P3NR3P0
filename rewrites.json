@@ -20,13 +20,16 @@
   "to": "script/*"
 },
 {
+  "from": "vendor/*",
+  "to": "/vendor/*"
+},
+{
   "from": "/",
   "to": "index.html"
 },
 {
-  "from": "submit.html/*",
-  "to": "/openrepo/*"
-
+  "from": "openrepo/*",
+  "to": "../../../openrepo/*"
 },
 {
   "from": "post/*",
