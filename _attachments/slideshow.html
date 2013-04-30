@@ -73,7 +73,7 @@
         <h1>&#10162; 0P3NR3P0</h1>
         <h4>sample web gallery</h4>
                 
-        The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch worx. Anyone can <a href="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/submit.html" target="blank">submit</a> their worx to the 0P3NR3P0
+        The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch worx. Anyone can <a href="https://0p3nr3p0.net/submit.html" target="blank">submit</a> their worx to the 0P3NR3P0
         and curate/program/source work from the 0P3NR3P0 for inclusion in their own glitch art events. This page is a sample web-gallery
         template to use with the 0P3NR3P0. You can <a href="#">download</a> this template and/or fork it on <a href="#">github</a>.
         <br><br>
@@ -99,7 +99,7 @@
         var isNfo = false;
         $ = jQuery;
         jQuery.ajax({
-            url: 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_view/recent-items',
+            url: 'http://0p3nr3p0.net/_view/recent-items',
             type: 'get',
             dataType: 'jsonp',
             success: function(data) {
@@ -135,7 +135,7 @@
 
             // i is always the current iteration of the slideshow we're on
             $('#banner').fadeOut(300);
-            $('#frame').attr('src', "http://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/"+ sids[i]);
+            $('#frame').attr('src', "http://0p3nr3p0.net/_show/post/"+ sids[i]);
             $('#leftNfo').html('<a class="title" href="'+slides[i].url+'">'+slides[i].title+'</a><br> by <a class="author" href="'+slides[i].homepage_url+'">'+slides[i].author+'</a>');
             $('#rightNfo').html(slides[i].description); 
             $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
@@ -148,7 +148,7 @@
 
                     console.log(i);
                     console.log(sids[i]);
-                    graburl = "http://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/"+sids[i];
+                    graburl = "http://op3nr3p0.net/_show/post/"+sids[i];
                     jQuery.ajax({
                         url: graburl,
                         type: 'get',
