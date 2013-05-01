@@ -36,6 +36,10 @@
   "to": "_show/post/*"
 },
 {
+  "from": "edit/*",
+  "to": "_show/edit/*"
+},
+{
   "from": "*",
   "to": "*"
 }
