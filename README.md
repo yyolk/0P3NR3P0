@@ -9,7 +9,7 @@
 
     sudo easy_install pip
 
-## Use `pip` to install `couchapp`
+## Use `pip` to install [`couchapp`](http://couchapp.org)
 
     pip install couchapp
 
