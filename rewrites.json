@@ -12,10 +12,6 @@
   "to": "images/*"
 },
 {
-  "from": "vendor/*",
-  "to": "vendor/*"
-},
-{
   "from": "script/*",
   "to": "script/*"
 },
@@ -38,6 +34,10 @@
 {
   "from": "edit/*",
   "to": "_show/edit/*"
+},
+{
+  "from": "edit/vendor/*",
+  "to": "/vendor/*"
 },
 {
   "from": "*",

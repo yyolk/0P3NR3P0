@@ -4,43 +4,87 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>0p3nr3p0</title>
 
-    <style type="text/css" media="screen">
-      form div label {
-        display: table-cell;
-        vertical-align: middle;
-        height: 50px;
+      <style>
+        /*reset*/
+      html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {display: block;}
+      body {line-height: 1;}
+      ol, ul {list-style: none;}
+      blockquote, q {quotes: none;}
+      blockquote:before, blockquote:after,
+      q:before, q:after {content: '';content: none;}
+      table {border-collapse: collapse;border-spacing: 0;}
+      /*boiler*/
+      html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+      pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+      pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+      img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+      svg:not(:root) { overflow: hidden; }
+      td { vertical-align: top; }
+      /* FORM FIXES: including allowing styling on iOS + pointer + consistency sizes/browsers + lots of other stuff */
+      button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+      button[disabled], input[disabled] { cursor: default; }
+      input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+      input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+      input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+      button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+      textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+      /*site specific*/
+        body { 
+          font-family: "HelveticaNeueW01-65Medi", "Helvetica", Arial, sans-serif;
+          font-weight: 600; font-size: 14px; line-height: 24px; color:#555; background-color: #000;
+        }
+
+        input, textarea {
+        font-family: "HelveticaNeueW01-75Bold", "Helvetica", Arial, sans-serif;
+        font-size: 30px; font-weight: 600; color: #fff;
+        line-height: 40px; letter-spacing: -0.03em; word-spacing: 1px;
+        background-color: #000; border:none;
+        border-bottom: 1px solid #555; padding-bottom: 6px; margin-bottom: 6px;
+        }
+        input { width: 350px;}
+      ::-webkit-input-placeholder {  color:    #555; }
+      :-moz-placeholder { color:    #555; }
+      ::-moz-placeholder { color:    #555; }
+      :-ms-input-placeholder { color:    #555; }
+
+        ::-moz-selection { background: #fff; color: #fff; text-shadow: none; }
+        ::selection { background: #fff; color: #fff; text-shadow: none; }
+        
+        a:link, a:visited{ text-decoration: none; color: #222; border-bottom:2px dotted; }
+        a:hover, a:active{ text-decoration: none; color: #fff; outline: 0; border:0px; cursor: pointer; }
+
+
+      #create-link {
+        position: absolute; left:50%; margin-left: -468px;
       }
-      #container {
-        width:960px;
-      }
-      #saved { 
-        position:fixed;
+
+      .left {
         width:350px;
-        right:0;
-        top:40%;
+        position: absolute; left:0px; top:50px;
       }
-      #docid{
-        display:inline-block;
-        padding:4px;
-        background-color:black;
-        color:white;
+      .right { 
+        width: 350px;
+        position: absolute; left:380px; top:50px;
       }
-    </style>
-    <link href="/openrepo/_design/0P3NR3P0/style/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <link href="/openrepo/_design/0P3NR3P0/style/print.css" media="print" rel="stylesheet" type="text/css" />
-    <!--[if IE]>
-    <link href="/openrepo/_design/0P3NR3P0/style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <![endif]-->
+      div { margin-bottom: 15px; }
+      #submit { position: absolute; top: 350px; left: 630px; width: 160px;}
+
+      .lne{ width: 100%; height: 1px; background-color: #888; position: absolute; top:500px; left:0px; }
+
+      #saved{ color:white; }
+      </style>
   </head>
 
-  <body id="Hallo" onload="">
-    <div id="saved">
-    </div>
+  <body>
     <h1>editing: <span id="docid">{{id}}</span></h1>
-    <div id="container">
-      <div id="newitemform">
 
         <form id="create-link">
+        <div class="left">
+
           <input type="hidden" name="multipass" value="{{multipass}}" id="multipass">
           <input type="hidden" name="tags" size="77" value="mcainternetsuperheroes" id="tags">
 
@@ -60,6 +104,9 @@
             size="77" value="{{author}}" id="author">
 
           </div>
+        </div>
+
+        <div class="right">
           <div>
             <label for="homepage_url">your homepage</label>
             <input type="text" name="homepage_url" value="{{homepage_url}}"
@@ -71,45 +118,33 @@
           </div>
           <div>
             <label for="description">description</label>
-            <textarea name="description" cols="53" rows="5"
+            <textarea name="description" cols="24" rows="1"
               value=""
               id="description">{{description}}</textarea>
           </div>
-          <input type="submit" name="submit" value="Update!" id="submit">
-        </form>
-        <div style="clear:both;"></div>
+        </div>  
 
-      </div>
+        <input type="submit" name="submit" value="❯❯ submit" id="submit" style="border:none;">          
+        </form>
+        <div class="lne"></div>
+        <div id="saved"></div>
       <!--
       <div id='preview'>
         <iframe src="{{{url}}}" width="500" height="500">
       </div>
       -->
-    </div>
 
   </body>
 
   <!--
   <script type="text/javascript" src="../../vendor/couchapp/loader.js" charset="utf-8"></script>
   -->
+<script src="/vendor/iriscouch/sha1.js"></script>
+<script src="/vendor/iriscouch/json2.js"></script>
+<script src="/vendor/iriscouch/jquery.js"></script>
+<script src="/vendor/iriscouch/jquery.couch.js"></script>
+<script src="/vendor/couchapp/md5.js"></script>
 
-  <script type="text/javascript" charset="utf-8">
-    function couchapp_load(scripts) {
-      for (var i=0; i < scripts.length; i++) {
-        document.write('<script src="'+scripts[i]+'"><\/script>')
-      };
-    };
-
-couchapp_load([
-    "/_utils/script/sha1.js",
-    "/_utils/script/json2.js",
-    "/_utils/script/jquery.js",
-    "/_utils/script/jquery.couch.js",
-    "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.js",
-    "/openrepo/_design/0P3NR3P0/vendor/couchapp/jquery.couch.app.util.js",
-    "/openrepo/_design/0P3NR3P0/vendor/couchapp/md5.js"
-    ]);
-</script>
 
 <script type="text/javascript" charset="utf-8">
   // friendly helper http://tinyurl.com/6aow6yn
@@ -136,7 +171,7 @@ function stripTrailingSlash(str) {
 }
 
 $.couch.app(function(app) {
-    var path = app.require("vendor/couchapp/lib/path").init(app.req);
+    var path = app.require("/vendor/couchapp/lib/path").init(app.req);
     var postForm;
     var doc = {{{doc}}};
 
