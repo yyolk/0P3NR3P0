@@ -110,8 +110,6 @@ $(function() {
           break;
         case 'author':
           if (doc[i] == "") invalid = 'author';
-
-          break;
         case 'homepage_url':
           if (!ValidURL(doc[i])) invalid='homepage_url';
           //else doc[i] = linkify(doc[i]);
@@ -147,9 +145,36 @@ $(function() {
     var form = this, doc = $(form).serializeObject();
     doc.created_at = new Date();
     // check to see if everything is filled in
-    var valid = checkFields(doc);
+
+    // $.ajax({
+    // async: false,
+    // url: "/_view/by-author?key=%22"+doc.author+"%22",
+    // dataType:"json",
+    // success: function() {
+    //   if (data.rows.length == 0){
+    //     return false;
+    //   } else{
+    //     valid = 'author';
+    //   }
+    // }
+    // });
+    
+    var valid = $.ajax({
+      url: '_view/furtherfield/?key=%22'+doc.author+'%22',
+      dataType: 'json',
+      async: false,
+      success: function(data) {
+
+        if (data.rows.length == 0){
+          return valid = 'author';
+        } else {
+          return valid = checkFields(doc);
+        }
+      }
+    });
+    console.log(valid);
     if (valid === true) { 
-      $(this).find("input[type='submit']").attr("disabled", "disabled");
+      // $(this).find("input[type='submit']").attr("disabled", "disabled");
       // need to return valid as well as where it fuxs up
       //would like this to go directly to the messed up field.
       //$(this).find("input[name=url]").focus();
@@ -160,7 +185,9 @@ $(function() {
       doc.multipass = hex_md5(Date());
 
       db.saveDoc(doc, {
-        success : function() { window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl+"&docid="+doc._id},
+        success : function() { //window.location = "http://gli.tc/h/0P3NR3P0_sample_gallery/email.php?email="+doc.email+"&multipass="+doc.multipass+"&author="+doc.author+"&title="+doc.title+"&url="+uurl+"&docid="+doc._id},
+
+        alert("would be a success.")},
         error: function(){ alert("You're already in the MCA, would you like to change?");}
       });
     }
