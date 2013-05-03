@@ -75,7 +75,12 @@
 
       .lne{ width: 100%; height: 1px; background-color: #888; position: absolute; top:500px; left:0px; }
 
-      #saved{ color:white; }
+      #saved{ 
+        color:white;
+        position:absolute;
+        top:550px;
+        font-size:40px;
+      }
       </style>
   </head>
 
@@ -139,13 +144,32 @@
   <!--
   <script type="text/javascript" src="../../vendor/couchapp/loader.js" charset="utf-8"></script>
   -->
-<script src="/vendor/iriscouch/sha1.js"></script>
+<!-- <script src="/vendor/iriscouch/sha1.js"></script>
 <script src="/vendor/iriscouch/json2.js"></script>
 <script src="/vendor/iriscouch/jquery.js"></script>
 <script src="/vendor/iriscouch/jquery.couch.js"></script>
 <script src="/vendor/couchapp/md5.js"></script>
+ -->
+  <script type="text/javascript" src="/vendor/couchapp/loader.js" charset="utf-8"></script>
+<!--
+<script type="text/javascript" charset="utf-8">
+  function couchapp_load(scripts) {
+    for (var i=0; i < scripts.length; i++) {
+      document.write('<script src="'+scripts[i]+'"><\/script>')
+    };
+  };
 
-
+couchapp_load([
+  "/vendor/iriscouch/sha1.js",
+  "/vendor/iriscouch/json2.js",
+  "/vendor/iriscouch/jquery.js",
+  "/vendor/iriscouch/jquery.couch.js",
+  "/vendor/couchapp/jquery.couch.app.js",
+  "/vendor/couchapp/jquery.couch.app.util.js",
+  "/vendor/couchapp/md5.js"
+  ]);
+</script>
+-->
 <script type="text/javascript" charset="utf-8">
   // friendly helper http://tinyurl.com/6aow6yn
 $.fn.serializeObject = function() {
@@ -170,8 +194,8 @@ function stripTrailingSlash(str) {
   return str;
 }
 
-$.couch.app(function(app) {
-    var path = app.require("/vendor/couchapp/lib/path").init(app.req);
+//$.couch.app(function(app) {
+    var db = $.couch.db("openrepo");
     var postForm;
     var doc = {{{doc}}};
 
@@ -310,7 +334,7 @@ $.couch.app(function(app) {
         var match = pattern.exec(newdoc.url);
         var uurl = match[1];
         newdoc._id = doc._id;
-        app.db.saveDoc(newdoc, {
+        db.saveDoc(newdoc, {
 success : function(resp) { 
 $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
 $(form).find("input[type='submit']").removeAttr("disabled");
@@ -328,7 +352,7 @@ else{
 
 
 
-});
+//});
 
 </script>
   </html>

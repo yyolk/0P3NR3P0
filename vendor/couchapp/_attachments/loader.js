@@ -6,9 +6,11 @@ function couchapp_load(scripts) {
 };
 
 couchapp_load([
-  "vendor/iriscouch/sha1.js",
-  "vendor/iriscouch/json2.js",
-  "vendor/iriscouch/jquery.js",
-  "vendor/iriscouch/jquery.couch.js",
-  "vendor/couchapp/md5.js"
-]);
+  "/vendor/iriscouch/sha1.js",
+  "/vendor/iriscouch/json2.js",
+  "/vendor/iriscouch/jquery.js",
+  "/vendor/iriscouch/jquery.couch.js",
+  "/vendor/couchapp/jquery.couch.app.js",
+  "/vendor/couchapp/jquery.couch.app.util.js",
+  "/vendor/couchapp/md5.js"
+  ]);
