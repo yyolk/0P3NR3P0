@@ -12,25 +12,32 @@
   "to": "images/*"
 },
 {
-  "from": "vendor/*",
-  "to": "vendor/*"
-},
-{
   "from": "script/*",
   "to": "script/*"
+},
+{
+  "from": "vendor/*",
+  "to": "/vendor/*"
 },
 {
   "from": "/",
   "to": "index.html"
 },
 {
-  "from": "submit.html/*",
-  "to": "/openrepo/*"
-
+  "from": "openrepo/*",
+  "to": "../../../openrepo/*"
 },
 {
   "from": "post/*",
   "to": "_show/post/*"
+},
+{
+  "from": "edit/*",
+  "to": "_show/edit/*"
+},
+{
+  "from": "edit/vendor/*",
+  "to": "/vendor/*"
 },
 {
   "from": "*",

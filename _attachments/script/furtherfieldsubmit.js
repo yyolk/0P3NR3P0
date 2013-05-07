@@ -1,36 +1,36 @@
-$(function() {
-
-
-  // var auth = new Array();  
-  var auth = [];
-  //query for the author
-  $(function() {
-    // LIST OUT LINEUP
-    $.ajax({
-      url: 'http://0p3nr3p0.net/_view/furtherfield',
-      type: 'get',
-      dataType: 'jsonp',
-      success: function(data) {
-        $(data).each(function(index, el) {
-          $(el.rows).each(function(k, v) {
-            $(v.value).each(function(k, v) {
-              auth.push(v.author);
-            });
+// var auth = new Array();  
+var auth = [];
+//query for the author
+$((function() {
+  // LIST OUT LINEUP
+  $.ajax({
+    url: 'http://0p3nr3p0.net/_view/furtherfield',
+    type: 'get',
+    dataType: 'jsonp',
+    success: function(data) {
+      $(data).each(function(index, el) {
+        $(el.rows).each(function(k, v) {
+          $(v.value).each(function(k, v) {
+            auth.push(v.author);
           });
         });
-      }
-    });
-
+      });
+    }
   });
 
+})());
+
+
+$(function() {
 
   function checkDuplicateAuthor(author) {
 
     //var a = document.getElementById('author').value;
 
     var x = auth.indexOf(author);
-
-    if (x > 0) {
+    console.log("i see auth as");
+    console.log(auth);
+    if (x >= 0) {
       return true;
     } else {
       return false;
@@ -38,6 +38,9 @@ $(function() {
 
   }
 
+  function stripName(name){
+    return name.toLowerCase().replace(/^\s+|\s+$/g, '');
+  }
 
   // friendly helper http://tinyurl.com/6aow6yn
   $.fn.serializeObject = function() {
