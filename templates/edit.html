@@ -333,7 +333,11 @@ function stripTrailingSlash(str) {
         var pattern = new RegExp(/^http[s]?:\/\/([\.\/a-zA-Z0-9-_]*)[?]?/);
         var match = pattern.exec(newdoc.url);
         var uurl = match[1];
-        newdoc._id = doc._id;
+        if (doc._id.length != 32){
+          newdoc._id = hex_md5(uurl);
+        } else {
+          newdoc._id = doc._id;        
+        }
         db.saveDoc(newdoc, {
 success : function(resp) { 
 $("#saved").text("Saved _rev: "+resp.rev).fadeIn(500).fadeOut(6000);
