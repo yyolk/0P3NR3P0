@@ -140,10 +140,11 @@
 			                $(data).each(function(index, el) {
 								$(el.rows).each(function(k, v) {
 									$(v.value).each(function(k, v) {
-										auth.push(v.author);
-			                            auth_url.push(v.homepage_url);
-			                            piece.push(v.title);
-			                            piece_url.push(v.url);
+													auth.push(v.author);
+                          auth_url.push(v.homepage_url);
+                          piece.push(v.title);
+                          piece_url.push(v.url);
+                          // piece_url.push("http://0p3nr3p0.net/p/"+v.id);
 							        });
 						        });
 				            });
