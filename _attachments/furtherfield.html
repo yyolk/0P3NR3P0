@@ -143,8 +143,11 @@
 													auth.push(v.author);
                           auth_url.push(v.homepage_url);
                           piece.push(v.title);
-                          piece_url.push(v.url);
-                          // piece_url.push("http://0p3nr3p0.net/p/"+v.id);
+                          if ((/\.(gif|jpg|jpeg|png)$/i).test(v.url)){
+														piece_url.push("http://0p3nr3p0.net/post/"+v.id);
+													} else {
+	                          piece_url.push(v.url);
+	                        }
 							        });
 						        });
 				            });
