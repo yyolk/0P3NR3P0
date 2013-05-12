@@ -63,7 +63,8 @@
 				position: absolute; top:0px; left:0px; z-index: 150
 			}
 			#preview iframe { width: 100%; height: 100%; background-color: #fff;}
-			@media (min-width:320px) { #preview{display:none;}}
+			#preview { cursor:pointer; }
+			@media (min-width:1px) { #preview{display:none;}}
 			@media (min-width:1025px) { #preview{display:block;}}
     	</style>
 	</head>
@@ -163,6 +164,7 @@
 					                console.log(x);
 					                if(x != undefined) {
 					                    $('#prevIframe').attr('src',x);
+					                    $("#preview").click(function(){ window.location = x });
 					                }  
 					        	}
 					        });
@@ -196,6 +198,7 @@
 						$('#submitPage').fadeOut(); 
 					}
 				});
+
 
 			});
 
