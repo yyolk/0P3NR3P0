@@ -63,8 +63,8 @@
 				position: absolute; top:0px; left:0px; z-index: 150
 			}
 			#preview iframe { width: 100%; height: 100%; background-color: #fff;}
-
-
+			@media (min-width:320px) { #preview{display:none;}}
+			@media (min-width:1025px) { #preview{display:block;}}
     	</style>
 	</head>
 	<body>
@@ -140,16 +140,20 @@
 			                $(data).each(function(index, el) {
 								$(el.rows).each(function(k, v) {
 									$(v.value).each(function(k, v) {
-										auth.push(v.author);
-			                            auth_url.push(v.homepage_url);
-			                            piece.push(v.title);
-			                            piece_url.push(v.url);
+													auth.push(v.author);
+                          auth_url.push(v.homepage_url);
+                          piece.push(v.title);
+                          if ((/\.(gif|jpg|jpeg|png)$/i).test(v.url) || (/(vimeo|youtube)/i).test(v.url)){
+														piece_url.push("http://0p3nr3p0.net/post/"+v.id);
+													} else {
+	                          piece_url.push(v.url);
+	                        }
 							        });
 						        });
 				            });
 
 					        for (i = 0; i < auth.length; i++) {
-					        	lst += '<li><a class="wrklnk" href="'+piece_url[i]+'" target="blank">'+piece[i]+'</a> by <a class="wrklnk" href="'+auth_url[i]+'" target="blank">'+auth[i]+'</a></li>';
+					        	lst += '<li><a class="wrklnk" href="'+piece_url[i]+'">'+piece[i]+'</a> by <a class="wrklnk" href="'+auth_url[i]+'" target="blank">'+auth[i]+'</a></li>';
 					        	$('#viewList').html(lst);
 				        	};
 							// PREVIEW TRIANGLE

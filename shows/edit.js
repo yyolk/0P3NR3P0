@@ -9,7 +9,7 @@ function(doc, req) {
       index : indexPath,
     },
     scripts : {},
-    pageTitle : doc ? "Edit: "+doc.title : "Create a new post",
+    pageTitle : "Edit: "+doc.title,
   };
   
   if (doc.multipass == ''+req.query.multipass) {
