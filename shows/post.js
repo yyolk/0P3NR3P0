@@ -34,8 +34,6 @@ function(doc, req) {
        },
       body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"><script src='/script/analytics.js'></script></body>"
     };
-  } else if(checkFB(doc.url)){
-    return { code : 302, headers : { "Access-Control-Allow-Origin": "*", "Location" : doc.url } };
 
   } else {
     return { code : 200, headers : { 
