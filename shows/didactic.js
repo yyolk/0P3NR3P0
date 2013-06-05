@@ -18,6 +18,6 @@ function(doc, req) {
   data.nfo = doc.description;
   data.homepage_url = doc.homepage_url;
 
-  return Mustache.to_html(ddoc.templates.didacticPost, data, ddoc.templates.partials);
+  return Mustache.to_html(ddoc.templates.didactic, data, ddoc.templates.partials);
   
 }
