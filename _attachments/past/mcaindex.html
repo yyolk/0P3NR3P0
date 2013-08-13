@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      
+      <title>0P3NR3P0</title>
+      <meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+      <meta name="author" content="Nick Briz && Joseph Chiocchi">
+      <meta name="keywords" content="glitch, art, repo, archive, repository, 0p3nr3p0">
+      <link rel="image_src" href="http://www.domain.com/images/FaceBookthumb.jpg">
+      <link rel="icon" type="image/x-icon"  href="favicon.ico">
+
+      <style>
+        /*reset*/
+      html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {display: block;}
+      body {line-height: 1;}
+      ol, ul {list-style: none;}
+      blockquote, q {quotes: none;}
+      blockquote:before, blockquote:after,
+      q:before, q:after {content: '';content: none;}
+      table {border-collapse: collapse;border-spacing: 0;}
+      /*boiler*/
+      html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+      pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+      pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+      img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+      svg:not(:root) { overflow: hidden; }
+      td { vertical-align: top; }
+      /* FORM FIXES: including allowing styling on iOS + pointer + consistency sizes/browsers + lots of other stuff */
+      button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+      button[disabled], input[disabled] { cursor: default; }
+      input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+      input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+      input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+      button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+      textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+      /*site specific*/
+        body { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; letter-spacing: 1px; line-height: 120%; background-color: #000; color: #fff;}
+
+        ::-moz-selection { background: #cc3399; color: #fff; text-shadow: none; }
+        ::selection { background: #cc3399; color: #fff; text-shadow: none; }
+        
+        a:link, a:visited{ text-decoration: none; color: #fff; border-bottom:2px dotted; }
+        a:hover, a:active{ text-decoration: none; color: #cc3399; outline: 0; border:0px; cursor: pointer; }
+
+
+
+      /*BG*/
+      #slideshow { width: 100%; min-height: 100%; position: fixed; z-index: -2; }
+      #slideshow > div { position: absolute; }
+      #slideshow > div > img { width:120%; }
+
+      /*COUNTER*/
+
+      .count{
+        font-size: 300%;
+        text-align:center;
+        line-height:1.7;
+        padding:10px;
+      }
+
+      
+      /*MAIN WRAP*/
+      .wrap {
+        position: absolute; z-index: 2;
+        top:50px; left: 50%; margin-left: -350px;
+        width: 600px; padding: 50px;
+        background-color: rgba(0,0,0,0.8);
+      }
+      .logo { position: relative; left:50%; margin-left: -250px;}
+      .line { width:100%; height:1px;background-color:#fff;margin:25px 0;}
+      .lineup {text-align: center;}
+
+      /*SUBMIT WINDOW*/
+          #submit {
+              position: relative; z-index: 99999;
+              width: 650px; height: 100%;
+              margin: 0px auto;
+              background-color: #fff;
+              -webkit-border-radius: 15px;
+              -moz-border-radius: 15px;
+              border-radius: 15px;
+              display: none;
+          }
+              #submit_frame {
+                  overflow-x: hidden; overflow-y: scroll;
+                  width:100%; height:100%;
+                  border:0;
+              }
+              .close {
+                  color:#000;
+                  padding: 15px 20px 0px 5px;
+                  float: right;
+              } .close:hover { cursor: pointer;}
+
+      </style>
+  </head>
+  <body>
+
+
+    <div id="slideshow">
+       <div><img src="http://www.0p3nr3p0.net/images/bg0.jpg"></div>
+       <div><img src="http://www.0p3nr3p0.net/images/bg1.jpg"></div>
+       <div><img src="http://www.0p3nr3p0.net/images/bg2.jpg"></div>
+       <div><img src="http://www.0p3nr3p0.net/images/bg3.jpg"></div>
+       <div><img src="http://www.0p3nr3p0.net/images/bg4.jpg"></div>
+       <div><img src="http://www.0p3nr3p0.net/images/bg5.jpg"></div>
+    </div>
+
+
+    <div class="wrap">
+      <div class="logo"><img src="http://www.0p3nr3p0.net/images/logob.png"></div><br>
+      <div>
+        The <a href="http://gli.tc/h/" target="blank">GLI.TC/H</a> 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving <a href="http://www.0p3nr3p0.net/nfo.html" target="blank">multiple goals</a>
+      </div>
+      <div class="line"></div>
+
+      <center><img src="http://www.0p3nr3p0.net/images/mca.gif" style="margin-right:20px;"><img src="http://www.0p3nr3p0.net/images/mca.png"></center>
+
+      <div>
+        <br>
+        The Museum of Contemporary Art Chicago will be hosting an IRL exhibition of glitch worx submitted to the 0P3NR3P0 as part of the <a href="http://www.mcachicago.org/programs/now/all/2012/e1078" target="blank">Internet Superheroes</a> series. Join us at the MCA on March 19 at 6pm to celebrate this bug collection AFK.
+        <br><Br>
+        To include your work in the 'Glitch Art 0P3NR3P0 Share Fest' <a href="#" onclick="submit()">submit a link</a> to any visually wwweb based file (html, jpg, gif, youtube, vimeo, etc.) and your piece will automatically be included in the line-up (one work per artist). 
+      </div>
+
+      <div class="line"></div>
+
+      <div class="count">
+        <span class="tick">0</span> WRKX BY:
+      </div>
+
+      <div class="lineup">
+        
+        <div id="artists"></div>
+
+      </div>
+
+      <div class="line"></div>
+
+      <div style="font-size:12px;line-height:100%;">
+        ** if you've submitted to the 0P3NR3P0 before, fear not the larger archive is undergoing some maintenance, and all entries are still safe. Feel free to [re]submit a piece for the MCA show <br><Br>
+
+        [bg_photos by Ben Syverson]
+      </div>
+
+    </div>
+
+      
+      <div id="submit">
+              <span onclick="closeSubmit()" class="close">[close]</span>
+
+              <iframe id="submit_frame" src="https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/mcasubmit.html"></iframe>
+      </div>  
+    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script>
+
+        // TOGGLE SUBMIT PAGE
+            function submit() {
+                var x = document.getElementById('submit');
+                x.style.display = "block";
+            }
+            
+            function closeSubmit() {
+                var x = document.getElementById('submit');
+                x.style.display = "none";            
+            }
+
+
+
+        // LIST OUT LINEUP
+          var auth = [];                  // the author[s] of the work
+              var auth_url = [];              // the author[s] webpage
+              var lst = '';
+
+              $.ajax({
+                  url: 'http://www.0p3nr3p0.net/_view/mcainternetsuperheroes',
+                  type: 'get',
+                  dataType: 'jsonp',
+                  success: function(data) {            
+                      $(data).each(function(index, el) {
+                      $(el.rows).each(function(k, v) {
+                      $(v.value).each(function(k, v) {
+                          auth.push(v.author);
+                          auth_url.push(v.id);
+                      });
+                    });
+                    });
+
+                  for (i = 0; i < auth.length; i++) {
+                    lst += '<div><a href="http://www.0P3NR3P0.net/_show/post/'+auth_url[i]+'" target="blank">'+auth[i]+'</a></div>';
+                    $('#artists').html(lst);
+                  };
+                  }
+              });
+
+
+
+          // BACKGROUND
+      $(function() {
+
+        $("#slideshow > div:gt(0)").hide();
+
+        setInterval(function() { 
+          $('#slideshow > div:first')
+            .fadeOut(3000)
+            .next()
+            .fadeIn(3000)
+            .end()
+            .appendTo('#slideshow');
+        },  8000);
+
+      });
+
+    $(function(){
+
+      $.ajax({
+        url: 'http://www.0P3NR3P0.net/_view/mcacount?reduce=true',
+        type: 'get',
+        dataType: 'jsonp',
+        async: false,
+        success: function(data) { $('.count .tick').text(data.rows[0].value);}
+      });
+    })
+    </script>
+
+      <script>
+          var _gaq=[['_setAccount','UA-37972984-1'],['_trackPageview']]; 
+          (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+          g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+
+  </body>
+</html>
