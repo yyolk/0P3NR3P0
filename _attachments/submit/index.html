@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    
+	  	<title>0P3NR3P0.NET</title>
+	  	
+      	<meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+      	<meta name="author" content="Nick Briz && Joseph Chiocchi">
+      	<meta name="keywords" content="glitch, art, repo, archive, repository, 0p3nr3p0">
+      	<meta property="og:image" content="http://0p3nr3p0.net/images/500.png" />
+      	<meta property="og:title" content="0P3NR3P0" />
+      	<meta property="og:url" content="http://0p3nr3p0.net" />
+      
+      	<link rel="icon" type="image/x-icon"  href="favicon.ico">
+      	<link rel="stylesheet" href="../css/styles.css">
+
+
+    	<style>
+    		
+			/* page specific */
+		    body { 
+		    	font-family: "HelveticaNeueW01-65Medi", "Helvetica", Arial, sans-serif;
+		    	color:#555; background-color: #000;
+		    }
+
+		    input, textarea {
+				font-family: "HelveticaNeueW01-75Bold", "Helvetica", Arial, sans-serif;
+				font-size: 30px; font-weight: 600; color: #fff;
+				line-height: 40px; letter-spacing: -0.03em; word-spacing: 1px;
+				background-color: #000; border:none;
+				border-bottom: 1px solid #555; padding-bottom: 6px; margin-bottom: 6px;
+		    }
+		    input { width: 350px;}
+			::-webkit-input-placeholder {  color:    #555; }
+			:-moz-placeholder { color:    #555; }
+			::-moz-placeholder { color:    #555; }
+			:-ms-input-placeholder { color:    #555; }
+
+		    ::-moz-selection { background: #fff; color: #fff; text-shadow: none; }
+		    ::selection { background: #fff; color: #fff; text-shadow: none; }
+
+
+			#create-link {
+				position: absolute; left:50%; margin-left: -468px;
+			}
+
+			.left {
+				width:350px;
+				position: absolute; left:0px; top:130px;
+			}
+			.right { 
+				width: 350px;
+				position: absolute; left:380px; top:130px;
+			}
+			form div { margin-bottom: 25px; }
+			#submit { position: absolute; top: 429px; left: 598px; width: 160px;}
+
+			/*.lne{ width: 100%; height: 1px; background-color: #888; position: absolute; top:500px; left:0px; }*/
+
+			#tips{
+				width: 808px;
+				padding-top: 27px;
+				position: relative;
+				color: #888;
+				top: 490px;
+				line-height: 25px;
+				border-top: 1px solid #888;
+				opacity:0;
+				-webkit-transition: opacity;
+				-moz-transition: opacity;
+				-o-transition: opacity;
+				transition: opacity;
+				-webkit-transition-duration:500ms;
+				-moz-transition-duration:500ms;
+				-o-transition-duration:500ms;
+				transition-duration:500ms;
+			}
+			#tips a:link, #tips a:visited, label a{ text-decoration: none; color: #ccc; border-bottom:2px dotted; }
+			#tips a:hover, #tips a:active{ text-decoration: none; color: #fff; outline: 0; border:0px; cursor: pointer; }
+
+			.nfo { color: #888; width: 800px;margin-top: 10px; padding-bottom:25px; border-bottom:1px solid #888 }
+
+
+    	</style>
+    	<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<!-- HEADER -->
+		<div class="header">
+			<div class="innerdz">
+
+				<a href="../" style="border:none;"><img src="../images/logo.png" alt="0p3nr3p0"></a>
+
+				<div class="menu">
+					<a href="../about" style="border:none;margin-right:30px;">about</a>
+					<a href="index.html" style="border:none;margin-right:30px;">submit</a>
+					<a href="../curate" style="border:none;">curate</a>
+				</div>
+				
+			</div>
+		</div>
+		<div class="underHead"></div>
+
+
+
+		<form id="create-link">
+
+			<p class="nfo">
+				
+				There are no usernames + no passwords. <br>
+				Every work submitted to the repo will automatically be included in the database. <br>
+				You will recieve a confirmation email with an edit URL should you ever need to edit your entry. 
+			
+			</p>
+
+			<div class="left">
+
+				 <input type="hidden" name="multipass" value="x" id="multipass">
+			      <input type="hidden" name="tags" placeholder="separate tags with spaces" size="77" value="furtherfieldgallery" id="tags">
+			      
+			      <div>
+			        <input type="text" name="url" size="77" value="" placeholder="http://" id="name"><br>
+			        <label for="url">link to work ( <a onclick="showTips()">view url tips</a> )</label>
+			      </div>
+
+			      <div>
+			       <input type="text" name="title" size="77" value="" placeholder="untitled" id="title"><br>
+			        <label for="title">title</label>
+			      </div>
+
+			      <div>
+			        <input type="text" name="author" size="77" value="" placeholder="you" id="author"><br>
+			        <label for="author">author</label>
+			      </div>
+
+			     <div>
+			        <input type="text" name="tags" size="77" value="" placeholder="tags" id="tags"><br>
+			        <label for="tags">separated by spaces</label>
+			      </div>
+
+			</div>
+
+		     <div class="right">
+
+			      <div>
+			        <input type="text" name="homepage_url" value="" placeholder="http://" id="homepage_url" size="77"><br>
+			        <label for="homepage_url">your homepage</label>
+			      </div>
+
+			      <div>
+			        <input type="text" name="email" size="77" value="" placeholder="you@inter.net" id="email"><br>
+			        <label for="email">email</label>
+			      </div>
+
+			      <div>
+			        <textarea name="description" cols="20" rows="1" value="" placeholder="nfo" id="description"></textarea><br>
+					<label for="description">description of piece</label>
+			      </div>
+				     	
+		     </div>
+
+			<input type="submit" name="submit" value="❯❯ submit" id="submit" style="border:none;">		     	
+
+
+			<div id="tips">
+					It's best to link to a static image (.png, .jpg, .gif) directly to the image, that way it will show up in fullscreen in our internal viewer (<a href="http://0p3nr3p0.net/post/ca0afbe4bf01fc8dd48e3d437ce930e9" target="blank" title="Anthi Tzakou">example</a>)<br><br>
+					When linking to a video, please use the regular, full url so it can be processed correctly.<br> (ie: <a href="http://www.youtube.com/watch?v=LVNTzsTadDA" target="blank" title="Daniel Layne">http://www.youtube.com/watch?v=LVNTzsTadDAa</a> and <a href="https://vimeo.com/47994408" target="blank" title="V5MT">https://vimeo.com/47994408</a>)<br><Br>
+					If you have trouble submitting contact <b>nickb<span></span>riz@gmail.com</b> && <b>jo<span></span>e@yo<span></span>lk.cc
+			</div>
+
+	    </form>
+
+
+		<script>
+			var tips = document.getElementById('tips');
+			function showTips() {
+				tips.style.opacity = "1";
+			}
+		</script>
+
+
+
+	  	<script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
+		<script src="script/furtherfieldsubmit.js"></script>
+
+
+	</body>
+</html>

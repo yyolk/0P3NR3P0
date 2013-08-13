@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    
+		<title>0P3NR3P0.NET</title>
+		<meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+		<meta name="author" content="Nick Briz && Joseph Chiocchi">
+		<meta name="keywords" content="glitch, art, repo, archive, repository, 0p3nr3p0">
+		<meta property="og:image" content="http://0p3nr3p0.net/images/500.png" />
+		<meta property="og:title" content="0P3NR3P0" />
+		<meta property="og:url" content="http://0p3nr3p0.net" />
+		<link rel="icon" type="image/x-icon"  href="favicon.ico">
+	
+		<link rel="stylesheet" href="css/styles.css">
+    	<style>
+
+    		body {  background-color: #000;}
+
+    		span { text-decoration: none; color: #ccc; border-bottom:2px dotted; }
+			span:hover { text-decoration: none; color: #fff; outline: 0; border:0px; cursor: pointer; }
+
+			.content { 
+				width:100%; position: absolute; top: 50px; left:0px; 
+				background-color: #000; padding-top: 63px; 
+				font-family: "HelveticaNeueW01-65Medi", "Helvetica", Arial, sans-serif;
+			
+			}
+			.content .innerdz h1 {
+				font-family: "HelveticaNeueW01-75Bold", "Helvetica", Arial, sans-serif;
+				font-size: 30px; font-weight: 600; color: #888;
+				line-height: 40px; letter-spacing: -0.03em; word-spacing: 1px;
+			}
+			.content .innerdz p {
+				font-family: "HelveticaNeueW01-75Bold", "Helvetica", Arial, sans-serif;
+				font-weight: 500; line-height: 20px; letter-spacing: -0.03em; word-spacing: 1px;
+				font-size: 14px; color: #636363; letter-spacing: 0px;
+			}
+
+			.fLogo {
+				width:707px; height: 78px; background-image: url('images/furtherfield_logo2.png'); cursor: pointer;
+			}
+
+			li {
+				font-family: "HelveticaNeueW01-75Bold", "Helvetica", Arial, sans-serif;
+				font-weight: 500; line-height: 20px; letter-spacing: -0.03em; word-spacing: 1px;
+				font-size: 14px; color: #636363; letter-spacing: 0px;
+			}
+
+			/*submit page --------------------->>>>>*/
+
+			#submitPage {
+				position: absolute; z-index: 200; top:55px; left:0px;
+				width:100%; height:100%; display: none;
+			}
+			#submitPage iframe { width: 100%; height: 100%; }
+
+			/*preview box --------------------->>>>>*/
+
+			#preview { position: fixed; bottom: 0px; right: 0px; z-index: 100; width: 566px; height: 365px; }
+			.blktri { 
+				background-image: url('images/blktri.png'); width: 100%; height: 100%; 
+				position: absolute; top:0px; left:0px; z-index: 150
+			}
+			#preview iframe { width: 100%; height: 100%; background-color: #fff;}
+			#preview { cursor:pointer; }
+			@media (min-width:1px) { #preview{display:none;}}
+			@media (min-width:1025px) { #preview{display:block;}}
+    	</style>
+	</head>
+	<body>
+
+
+		<div class="header">
+			<div class="innerdz">
+
+				<a href="index.html" style="border:none;"><img src="images/logo.png" alt="0p3nr3p0"></a>
+
+				<div class="menu">
+					<b id="about" style="margin-right:30px;">about</b>
+					<b id="submit" style="margin-right:30px;">submit</b>
+					<b id="view">viewww</b>
+
+				</div>
+				
+			</div>
+		</div>
+		<div class="underHead"></div>
+
+
+
+
+	    <div id="submitPage">
+	        <iframe id="submit_frame" src="submitPage.html"></iframe>
+	    </div>	
+
+
+		<div class="content">
+			<div class="innerdz">
+
+				<h1 style="margin-bottom:20px;">
+					<div class="fLogo"></div>
+				</h1>
+				<div class="line" style="margin: 26px 0px;"></div>
+
+				<p>
+					<a href="http://www.furtherfield.org/gallery" target="blank">Furtherfield Gallery</a> will be hosting an IRL exhibition of glitch worx submitted to the 0P3NR3P0 as part of the <a href="http://www.furtherfield.org/programmes/exhibition/glitch-momentums" target="blank">Glitch Moment/ums</a> event from June 8th >> July 28th, 2013. To include your work in the 0P3NR3P0 component of Glitch Moment/ums <span class="submitz">submit</span> a link to any visually wwweb based file (html, jpg, gif, youtube, vimeo, etc.) and your piece will automatically be included in the line-up (one work per artist).
+				</p>
+
+				<div class="count" style="text-align:center;font-size:120%;color:rgb(90,90,90);margin-top:20px;">
+					<span class="furtherfieldCount" style="border-bottom:none;cursor:default;"></span> works
+				</div>
+	
+				<div class="list" style="margin-top:48px;">
+					<ul style="margin-bottom:100px;" id="viewList"></ul>			
+				</div>
+
+
+			</div>
+		</div>
+
+		<div id="preview">
+			<div class="blktri"></div>
+			<iframe id="prevIframe" src="" frameborder="0" scrolling="no"></iframe>
+		</div>
+
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script>
+
+			$(function() {
+
+					// LIST OUT LINEUP
+ 					var auth = [];                  
+			        var auth_url = [];              
+			        var piece = [];
+			        var piece_url = [];
+			        var lst = '';
+
+			        $.ajax({
+			            url: 'http://0p3nr3p0.net/_view/furtherfield',
+			            type: 'get',
+			            dataType: 'jsonp',
+			            success: function(data) {            
+			                $(data).each(function(index, el) {
+								$(el.rows).each(function(k, v) {
+									$(v.value).each(function(k, v) {
+													auth.push(v.author);
+                          auth_url.push(v.homepage_url);
+                          piece.push(v.title);
+                          if ((/\.(gif|jpg|jpeg|png)$/i).test(v.url) || (/(vimeo|youtube)/i).test(v.url)){
+														piece_url.push("http://0p3nr3p0.net/post/"+v.id);
+													} else {
+	                          piece_url.push(v.url);
+	                        }
+							        });
+						        });
+				            });
+
+					        for (i = 0; i < auth.length; i++) {
+					        	lst += '<li><a class="wrklnk" href="'+piece_url[i]+'">'+piece[i]+'</a> by <a class="wrklnk" href="'+auth_url[i]+'" target="blank">'+auth[i]+'</a></li>';
+					        	$('#viewList').html(lst);
+				        	};
+							// PREVIEW TRIANGLE
+					        $('.wrklnk').on({
+					        	mouseover: function() {
+					                var x = $(this).attr('href');
+					                console.log(x);
+					                if(x != undefined) {
+					                    $('#prevIframe').attr('src',x);
+					                    $("#preview").click(function(){ window.location = x });
+					                }  
+					        	}
+					        });
+			            }
+			        });
+
+
+				// LINK TO ABOUT
+				$('#about').on({
+					click: function() { window.location = 'index.html#footer'; }
+				});
+
+
+				// SUBMIT LNX
+				$('#submit').on({
+					click: function() { 
+						$('#submitPage').fadeIn(); 
+					}
+				});
+				$('.submitz').on({
+					click: function() { 
+						$('#submitPage').fadeIn(); 
+					}
+				});
+
+
+
+				// LNX TO GALLERY/VIEW
+				$('#view').on({
+					click: function() { 
+						$('#submitPage').fadeOut(); 
+					}
+				});
+
+
+			});
+
+		</script>
+		<script>
+    $(function(){
+      $.ajax({
+        url: 'http://www.0P3NR3P0.net/_view/furtherfieldcount?reduce=true',
+        type: 'get',
+        dataType: 'jsonp',
+        async: false,
+        success: function(data) { $('.count .furtherfieldCount').text(data.rows[0].value);}
+      });
+    })
+		</script>
+	    <script>
+	        var _gaq=[['_setAccount','UA-37972984-1'],['_trackPageview']]; 
+	        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	        s.parentNode.insertBefore(g,s)}(document,'script'));
+	    </script>
+	</body>
+</html>

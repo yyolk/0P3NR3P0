@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>0p3nr3p0</title>
+
+    <style type="text/css" media="screen">
+      form div label {
+        display: table-cell;
+        vertical-align: middle;
+        height: 50px;
+      }
+      #container {
+        width:960px;
+      }
+    </style>
+    <link href="style/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="style/print.css" media="print" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+    <link href="style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+  </head>
+
+  <body id="Hallo" onload="">
+    <h1>welcome to the 0p3nr3p0 submission page, fill out all the following
+      fields && your work will automatically be included in the archive</h1>
+    <div id="container">
+      <div id="newitemform"></div>
+    </div>
+
+  </body>
+
+
+  <script type="text/javascript" src="vendor/couchapp/loader.js" charset="utf-8"></script>
+
+  <!-- templates -->
+  <script id="new-link" type="text/x-mustache" charset="utf-8">
+    <form id="create-link">
+      <input type="hidden" name="multipass" value="x" id="multipass">
+      <input type="hidden" name="tags" placeholder="separate tags with spaces" size="77" value="mcainternetsuperheroes" id="tags">
+      <div>
+        <label for="url">link to work</label>
+        <input type="text" name="url" size="77" value=""
+        placeholder="http://" id="name">
+      </div>
+      <div>
+        <label for="title">title (of the work)</label><input type="text" name="title"
+        size="77" value="" id="title">
+      </div>
+      <div>
+        <label for="author">author (your name)</label>
+        <input type="text" name="author"
+        size="77" value="" id="author">
+
+      </div>
+      <div>
+        <label for="homepage_url">your homepage</label>
+        <input type="text" name="homepage_url" value=""
+        placeholder="http://" id="homepage_url" size="77">
+      </div>
+      <div>
+        <label for="email">email</label>
+        <input type="text" name="email" size="77" value="" id="email">
+      </div>
+      <div>
+        <label for="description">description</label>
+        <textarea name="description" cols="53" rows="5" value=""
+          id="description"></textarea>
+
+      </div>
+      <input type="submit" name="submit" value="Submit!" id="submit">
+    </form>
+    <div style="clear:both;"></div>
+  </script>
+
+
+  <script src="script/mcasubmit.js"></script>
+
+</html>
+
