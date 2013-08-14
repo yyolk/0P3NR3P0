@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      
+      <title>0P3NR3P0 MCA</title>
+      <meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+      <meta name="author" content="Nick Briz && Joseph Chiocchi">
+      <meta name="keywords" content="glitch, art, repo, archive, repository, 0p3nr3p0">
+      <link rel="image_src" href="http://www.domain.com/images/FaceBookthumb.jpg">
+      <link rel="icon" type="image/x-icon"  href="favicon.ico">
+
+      <style>
+        /*reset*/
+      html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {display: block;}
+      body {line-height: 1;}
+      ol, ul {list-style: none;}
+      blockquote, q {quotes: none;}
+      blockquote:before, blockquote:after,
+      q:before, q:after {content: '';content: none;}
+      table {border-collapse: collapse;border-spacing: 0;}
+      /*boiler*/
+      html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+      pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+      pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+      img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+      svg:not(:root) { overflow: hidden; }
+      td { vertical-align: top; }
+      /* FORM FIXES: including allowing styling on iOS + pointer + consistency sizes/browsers + lots of other stuff */
+      button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+      button[disabled], input[disabled] { cursor: default; }
+      input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+      input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+      input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+      button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+      textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+      /*site specific*/
+        body { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; letter-spacing: 1px; line-height: 120%; background-color: #000; color: #fff;}
+
+        ::-moz-selection { background: #cc3399; color: #fff; text-shadow: none; }
+        ::selection { background: #cc3399; color: #fff; text-shadow: none; }
+        
+        a:link, a:visited{ text-decoration: none; color: #444; border-bottom:2px dotted; }
+        a:hover, a:active{ text-decoration: none; color: #cc3399; outline: 0; border:0px; cursor: pointer; }
+
+
+      /*GALLERY STYLES*/
+      #nfo_wrap {
+              position:absolute; display:none;
+              top:0px; left:0px; z-index:9999;
+              background-color:rgba(255,255,255,0.9);
+              width:100%; 
+              color:#444;
+          }
+              #nfo {
+                  padding:25px;
+              }
+                  #leftNfo {  float:left; margin-right:25px; padding-bottom:25px; line-height:180%;}
+                  #rightNfo { width:700px;}
+                  .title { font-size:24px; margin-bottom:10px;  }
+                  .author { font-size: 18px; }            
+          #keyboard{
+            z-index:5;
+            position:absolute;
+            bottom:40px;
+            right:0;
+            color:black;
+            font-size:120%;
+            background-color:rgba(255,255,255,0.5);
+            padding:10px;
+            line-height: 1.3;
+          }
+          #keyboard kbd{
+            border: 1px solid #aaa; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; -moz-box-shadow: 1px 2px 2px #ddd; -webkit-box-shadow: 1px 2px 2px #ddd; box-shadow: 1px 2px 2px #ddd; background-color: #f9f9f9; background-image: -moz-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -ms-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -o-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: -webkit-linear-gradient(top, #eee, #f9f9f9, #eee); background-image: linear-gradient(top, #eee, #f9f9f9, #eee); padding: 1px 3px; font-family: monospace; font-size: 0.85em;
+          }
+          iframe {
+              position:absolute;
+              top:0px; left:0px; 
+              border: 0; 
+              width:100%;
+              height:100%;
+              min-height:100%;
+          }
+
+      </style>
+  </head>
+  <body>
+
+
+    <div id="nfo_wrap">
+          <div id='nfo'><div id="leftNfo"></div><div id="rightNfo"></div></div> <!-- this is where the particular piece's info will appear: author, title, description, etc -->
+      </div>  
+
+<!--     <div id="keyboard">
+      <h3>Keyboard Map</h3>
+      <p><kbd>-</kbd> to go to previous</p>
+      <p><kbd>=</kbd> to go to next</p>
+      <p><kbd>I</kbd> toggle info</p>
+    </div>
+ -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+
+          // LIST OUT LINEUP
+              var url =[];                    // the work url
+              var title = [];                 // the title of the work
+              var nfo =[];                    // the description of the work
+              var auth = [];                  // the author[s] of the work
+              var auth_url = [];              // the author[s] webpage
+
+              var ididx = [];               // id index
+
+              var i = 0;                      // item number for arrays
+              var isNfo = false;        // is the didactic nfo displayed
+
+
+              $.ajax({
+                  url: 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_view/mcainternetsuperheroes',
+                  type: 'get',
+                  dataType: 'jsonp',
+                  success: function(data) {            
+                      $(data).each(function(index, el) {
+                $(el.rows).each(function(k, v) {
+                  $(v.value).each(function(k, v) {
+                    auth.push(v.author);
+                                  auth_url.push(v.url);
+                                    url.push(v.url);
+                                    title.push(v.title);
+                                    nfo.push(v.description);
+                                    ididx.push(v.id);
+                      });
+                    });
+                    });
+
+                    runGallery();
+                  }
+              });
+
+              function runGallery() {
+                  l = url.length;
+                  // $('#frame').attr('src', url[i]);
+                  $('#frame').attr('src', 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/'+ididx[i]);
+                  $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
+                  $('#rightNfo').html(nfo[i]); 
+                  // $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+              }
+
+              // toggle the piece info when [ i ] is clicked    
+              // progress to next peice when [ + ] is clicked 
+              document.onkeypress=function(e){
+                  var e=window.event || e
+
+                  if(e.charCode == 105 && isNfo == false) {
+                      $('#nfo_wrap').slideDown(500); isNfo = true;
+                  } else if(e.charCode == 105 && isNfo == true) {
+                      $('#nfo_wrap').slideUp(500); isNfo = false;
+                  }
+
+                  if(e.keyCode == 61) {
+                      i++; if(i>=l){i=0;}
+                      // $('#frame').attr('src', url[i]);
+                      $('#frame').attr('src', 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/'+ididx[i]);
+
+                      $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
+                      $('#rightNfo').html(nfo[i]);
+                      // $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+                      // isNfo = false;                 
+                  } 
+
+                  if(e.keyCode == 45) {
+                      i--; if(i<0){i=l;}
+                      // $('#frame').attr('src', url[i]);
+                      $('#frame').attr('src', 'https://glitch.iriscouch.com/openrepo/_design/0P3NR3P0/_show/post/'+ididx[i]);
+
+                      $('#leftNfo').html('<a class="title" href="'+url[i]+'">'+title[i]+'</a><br> by <a class="author" href="'+auth_url[i]+'">'+auth[i]+'</a>');
+                      $('#rightNfo').html(nfo[i]);
+                      // $('#nfo_wrap').slideDown(500).delay(3000).slideUp(500);
+                      // isNfo = false;                 
+                  } 
+              }
+
+
+    </script>
+
+    
+      <iframe id="frame" height="100%" width="100%" allowfullscreen/> <!-- this iframe rotates between pieces in the 0P3NR3P0 -->
+
+      <script>
+          var _gaq=[['_setAccount','UA-37972984-1'],['_trackPageview']]; 
+          (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+          g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+          s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+
+  </body>
+</html>
