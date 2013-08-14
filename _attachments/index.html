@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    
+	    <title>0P3NR3P0.NET</title>
+	    <meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+	    <meta name="author" content="Nick Briz && Joseph Chiocchi">
+	    <meta name="keywords" content="glitch, art, repo, archive, repository, 0p3nr3p0">
+	    <meta property="og:image" content="http://0p3nr3p0.net/images/500.png" />
+	    <meta property="og:title" content="0P3NR3P0" />
+	    <meta property="og:url" content="http://0p3nr3p0.net" />
+	    <link rel="icon" type="image/x-icon"  href="favicon.ico">
+		<link rel="stylesheet" href="css/styles.css">
+
+	</head>
+	<body>
+
+
+		<div class="loader">
+	    <div id="spinner" class="active">
+	    	<img src="images/logo.png" alt="0p3nr3p0" class="loadimg">
+	        <span id="first" class="ball"></span>
+	        <span id="second" class="ball"></span>
+	        <span id="third" class="ball"></span>
+	    </div>		
+		</div>
+
+
+		<!-- HEADER -->
+		<div class="header">
+			<div class="innerdz">
+
+				<a href="/" style="border:none;"><img src="images/logo.png" alt="0p3nr3p0"></a>
+
+				<div class="menu">
+					<a href="about" style="border:none;margin-right:30px;">about</a>
+					<a href="submit" style="border:none;margin-right:30px;">submit</a>
+					<a href="curate" style="border:none;">curate</a>
+				</div>
+				
+			</div>
+		</div>
+		<div class="underHead"></div>
+
+
+		<!-- MAIN -->
+
+		<!-- BG -->
+		<div class="bgimg"><div><img src="images/bg.jpg"></div></div>
+		<div class="bgTile"></div>
+		<div class="zero"></div>
+
+		<!-- VIDEO -->
+		<video id="video" width="560" height="315" autoplay loop style="display:none">
+		  <source src="video/tachyon_shift_comp.mp4" type="video/mp4">
+		  <source src="video/tachyon_shift_comp.ogv" type="video/ogv">
+		</video>
+
+
+		<!-- SEARCH AREA -->
+		<div class="content_search"><div class="inner">
+
+			    <input type="text" name="search" value="" placeholder="search the repo" id="search" onsubmit="fuzzySearch()"><br>
+			    <ul class="results"></ul>
+		
+		</div></div>
+
+
+		<!-- PREVIEW WINDOW -->
+		<div id="preview">
+			<iframe id="prevIframe" src="" frameborder="0" scrolling="no"></iframe>
+			<div class="nfo">
+				<div class="title"></div>
+				<div class="author"></div>
+				<div class="site"><a href="" target="_blank">visit artist site</a></div>
+				<div class="contact"><a href="">contact artist</a></div>
+				<div class="description"></div>
+				<div class="proj"><a href="" target="_blank">view project</a></div>
+			</div>
+			<div class="close">✖</div>
+		</div>
+
+		<!-- <div id="frame"></div> -->
+
+
+
+		
+
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/tween.min.js"></script>
+
+		<script>
+
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			// MAIN '0' LOGO ----------------------------------------------------
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			
+			var cnt = 0;
+			function loopLogo() {
+				if(cnt==5){ 
+					$('.zero').css({
+						'background-image':'url("images/0c.gif")',
+						'width':'425px',
+						'height':'448px',
+						'margin-left':'-250px',
+						'margin-top':'-70px'
+					});
+				}
+				else if(cnt==6){ 
+					$('.zero').css('background-image','url("images/0.png")'); 
+					$('.zero').css({
+						'background-image':'url("images/0.png")',
+						'width':'300px',
+						'height':'300px',
+						'margin-left':'-150px',
+						'margin-top':'0px'
+					});
+				}
+				cnt++; if(cnt > 20){ cnt = 0; }
+			}
+			setInterval('loopLogo()',500);
+
+
+
+
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			// SEARCH ANIMATION ----------------------------------------------------
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+
+
+			var db = new Array();				// array for entire db
+			
+			
+			$('#search').bind('input', function() {
+
+				var v = $(this).val();				// current value
+				var match = '';						// collect new li's
+				var noDuplicates = new Array();		// check for duplicates
+
+			    //Animate search bar
+			    $(this).css('font-size','24px');
+			    $('.zero').css('display','none');
+			    $('.content_search').css({
+			    	'top':'50px',
+			    	'height':'calc(100% - 17px)'
+			    });
+
+			    // search through db for matches
+				for (var i=0; i<db.length; i++) {
+
+					for(var j = 0; j<7; j++){
+
+						if ( db[i][j].toString().toLowerCase().indexOf(v) != -1 ){
+
+							if(noDuplicates.indexOf(i) == -1){	// check for duplicates (ie. don't list more than once)
+								noDuplicates.push(i); 
+								match += '<li class="p">'+db[i][0]+'<br><b onclick="details('+i+')"> show details</b></li>';	
+							}
+				        	// console.log( i+' - '+j );
+				        }	
+					}
+			    }
+
+				$('.results').html(match);	// add matches to results list
+			    
+				// revert back to normal state if no input
+			    if(v==undefined || v==''){	
+
+			    	setup(); draw();
+
+				    $(this).css('font-size','60px');
+				    $('.zero').css('display','block');
+				    $('.content_search').css({
+				    	'top':'450px',
+				    	'height':'calc(100% - 450px)'
+				    });
+				    $('.results').empty();
+				    	
+			    } else {
+
+			    	$( '#container' ).remove(); 
+
+			    }
+
+			});
+
+
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			// OPEN PREVIEW ----------------------------------------------------
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+
+
+			function details(i){
+
+				$('#prevIframe').attr( 'src' , '' );
+
+				$('#preview').css('display','block');
+
+				$('.title').html( db[i][0] );
+				$('.author').html( 'by '+db[i][2] );
+				$('.site > a').attr( 'href' , db[i][3] );
+				$('.contact > a').attr( 'href' , 'mailto:'+db[i][5] );
+				$('.description').html( db[i][4] );
+				$('.proj > a').attr( 'href' , db[i][1] );
+
+				$('#prevIframe').attr( 'src' , db[i][1] );
+
+			}
+			$('.close').on({
+				click:function(){
+					$('#preview').css('display','none');
+					$('#prevIframe').attr( 'src' , '' );
+				}
+			});
+
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			// AJAX!!! ----------------------------------------------------
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+
+			$(function() {
+
+		        $.ajax({
+		            url: 'http://0p3nr3p0.net/_view/all',
+		            type: 'get',
+		            dataType: 'jsonp',
+		            success: function(data) {            
+		                $(data).each(function(index, el) {
+							$(el.rows).each(function(k, v) {
+								$(v.value).each(function(k, v) {
+
+		                            var e = new Array();
+		                            	e[0] = v.title;
+		                            	e[1] = v.url;
+		                            	e[2] = v.author;
+		                            	e[3] = v.homepage_url;
+		                            	e[4] = v.description;
+		                            	e[5] = v.email;
+		                            	e[6] = v.tags;
+
+		                            	db.push(e);
+
+						        });
+					        });
+			            });
+
+			        	$('.loader').fadeOut('slow');
+		            }
+		        });
+
+
+			});
+
+
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+			// WEB_GL ----------------------------------------------------
+			// ---- ----------------------- ---- ----------------------- ---- -----------------------
+
+			if ( ! Detector.webgl ) {
+				// conditional for no gl
+				$('.bgimg').css('display','block');
+			}
+			
+			var camera, scene, renderer, light, W, H;
+			var video, texture, geometry, material, mesh;
+			var mouseX = 0, mouseY = 0;
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+			var cube_count,
+				meshes = [],
+				materials = [],
+				xgrid = 20,
+				ygrid = 10;
+
+			var xArray = new Array();
+			var yArray = new Array();
+			var stopGL = false;
+
+
+
+			function setup() {
+
+				W = window.innerWidth, H = 500;
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( W, H );
+				var container = document.createElement( 'div' );
+					container.id = "container";
+					container.appendChild( renderer.domElement );
+					container.style.position = "relative";
+					container.style.zIndex = "-10";
+				document.body.appendChild( container );
+				// document.body.appendChild( renderer.domElement );
+
+
+				camera = new THREE.PerspectiveCamera( 50, W/H, 1, 10000 );
+				camera.position.z = 500;
+
+				scene = new THREE.Scene();
+
+				var light = new THREE.DirectionalLight( 0xffffff );
+				light.position.set( 0.5, 1, 1 ).normalize();
+				scene.add( light );
+
+				video = document.getElementById( 'video' );
+
+				texture = new THREE.Texture( video );
+				texture.minFilter = THREE.LinearFilter;
+				texture.magFilter = THREE.LinearFilter;
+				texture.format = THREE.RGBFormat;
+				texture.generateMipmaps = false;
+
+				var parameters = { color: 0xffffff, map: texture },
+					material_base = new THREE.MeshLambertMaterial( parameters );
+
+				renderer.initMaterial( material_base, scene.__lights, scene.fog );
+				
+				var i, j, ux, uy, ox, oy,
+					geometry,
+					xsize, ysize;
+				ux = 1 / xgrid;
+				uy = 1 / ygrid;
+				xsize = W / xgrid;
+				ysize = 630 / ygrid;
+
+				cube_count = 0;
+
+				for ( i = 0; i < xgrid; i ++ )
+				for ( j = 0; j < ygrid; j ++ ) {
+
+					ox = i;
+					oy = j;
+
+					geometry = new THREE.CubeGeometry( xsize, ysize, xsize );
+					change_uvs( geometry, ux, uy, ox, oy );
+
+					materials[ cube_count ] = new THREE.MeshLambertMaterial( parameters );
+
+					material = materials[ cube_count ];
+
+					mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.x =   ( i - xgrid/2 ) * xsize; xArray.push( mesh.position.x );
+					mesh.position.y =   ( j - ygrid/2 ) * ysize; yArray.push( mesh.position.y );
+
+					// mesh.position.x = (Math.random()*xgrid/2) * xsize;
+					// mesh.position.y = (Math.random()*ygrid/2) * ysize;
+					mesh.position.z = 0;
+
+					mesh.scale.x = mesh.scale.y = mesh.scale.z = 1;
+
+					scene.add( mesh );
+
+					mesh.dx = 0.001 * ( 0.5 - Math.random() );
+					mesh.dy = 0.001 * ( 0.5 - Math.random() );
+
+					meshes[ cube_count ] = mesh;
+
+					cube_count += 1;
+
+				}
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				window.addEventListener( 'resize', onWindowResize, false );
+			}
+
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				var W = window.innerWidth; var H = window.innerHeight;
+			}
+
+			function onDocumentMouseMove(event) {
+				mouseX = event.clientX;
+				mouseY = event.clientY;
+			}
+
+
+			function change_uvs( geometry, unitx, unity, offsetx, offsety ) {
+				var i, j, uv;
+				for ( i = 0; i < geometry.faceVertexUvs[ 0 ].length; i++ ) {
+					uv = geometry.faceVertexUvs[ 0 ][ i ];
+					for ( j = 0; j < uv.length; j++ ) {
+						uv[j].x = ( uv[j].x + offsetx ) * unitx;
+						uv[j].y = ( uv[j].y + offsety ) * unity;
+					}
+				}
+			}
+
+
+			// var bool=true;
+			function tweenOut() {
+				TWEEN.removeAll();
+
+				var time = Math.abs(mouseY-H);
+				// console.log( time );
+
+				if(mouseY<50){
+					var o = meshes;
+					for ( var i = 0; i < meshes.length; i ++ ) { 
+						var obj = o[ i ];		
+						var xpos = xArray[ i ];
+						var ypos = yArray[ i ];
+						var zpos = 0;
+						new TWEEN.Tween( obj.position )
+								.to( { x: xpos, y: ypos, z: zpos}, 500 )
+								.easing( TWEEN.Easing.Quadratic.InOut )
+								.start();
+						new TWEEN.Tween( obj.rotation )
+								.to( { x: 0, y: 0, z: 0}, 500 )
+								.easing( TWEEN.Easing.Quadratic.InOut )
+								.start();
+					}
+				} else {
+					var o = meshes;
+					for ( var i = 0; i < meshes.length; i ++ ) { 
+						var obj = o[ i ];		
+						var ranx = Math.random()*W - (W/2); 
+						var rany = (Math.random()*H) -200;
+						var ranz = Math.random()*200;
+						var rotx = Math.random()*10;
+						var roty = Math.random()*10;
+						var rotz = Math.random()*10;
+						new TWEEN.Tween( obj.position )
+								.to( { x: ranx, y: rany, z: ranz}, time )
+								// .easing( TWEEN.Easing.Quadratic.InOut )
+								.start();
+						new TWEEN.Tween( obj.rotation )
+								.to( { x: rotx, y: roty, z: rotz}, time )
+								// .easing( TWEEN.Easing.Quadratic.InOut )
+								.start();
+					}
+				}
+
+
+
+				setTimeout(tweenOut,time);		
+			} 
+
+			setTimeout(tweenOut,2000);
+
+			function draw() {
+
+				requestAnimationFrame( draw );
+
+				TWEEN.update();
+				
+				if ( video.readyState === video.HAVE_ENOUGH_DATA ) {
+
+					if ( texture ) texture.needsUpdate = true;
+
+				}
+				renderer.render( scene, camera );
+
+			}
+
+			setup();
+			draw();
+
+
+		</script>
+	    <script>
+	        var _gaq=[['_setAccount','UA-37972984-1'],['_trackPageview']]; 
+	        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	        s.parentNode.insertBefore(g,s)}(document,'script'));
+	    </script>
+	</body>
+</html>

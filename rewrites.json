@@ -1,0 +1,46 @@
+[
+{
+  "from": "favicon.ico",
+  "to": "favicon.ico"
+},
+{
+  "from": "style/*",
+  "to": "style/*"
+},
+{
+  "from": "images/*",
+  "to": "images/*"
+},
+{
+  "from": "script/*",
+  "to": "script/*"
+},
+{
+  "from": "vendor/*",
+  "to": "vendor/*"
+},
+{
+  "from": "/",
+  "to": "index.html"
+},
+{
+  "from": "openrepo/*",
+  "to": "../../../openrepo/*"
+},
+{
+  "from": "post/*",
+  "to": "_show/post/*"
+},
+{
+  "from": "edit/*",
+  "to": "_show/edit/*"
+},
+{
+  "from": "edit/vendor/*",
+  "to": "/vendor/*"
+},
+{
+  "from": "*",
+  "to": "*"
+}
+]
