@@ -226,10 +226,11 @@
 		        $.ajax({
 		            url: 'http://0p3nr3p0.net/_view/all',
 		            type: 'get',
-		            dataType: 'jsonp',
+		            dataType: 'json',
 		            success: function(data) {            
 		                $(data).each(function(index, el) {
 							$(el.rows).each(function(k, v) {
+              	// console.log(el);
 								$(v.value).each(function(k, v) {
 
 		                            var e = new Array();
