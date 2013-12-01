@@ -2,7 +2,7 @@ function (head, req) {
      
     // specify that we're providing a JSON response
 
-    send(head);
+    // send(JSON.stringify(head));
     provides('json', function() {
         
         var results = [];
@@ -25,6 +25,7 @@ function (head, req) {
 
         // make sure to stringify the results :)
         send(JSON.stringify(results));
+        // send(results);
 
     });
 }
