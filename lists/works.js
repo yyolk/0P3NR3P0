@@ -21,6 +21,7 @@ function (head, req) {
                 tags : row.value.tags
 
             });
+            // send(JSON.stringify(row.value));
         }
 
         // make sure to stringify the results :)
