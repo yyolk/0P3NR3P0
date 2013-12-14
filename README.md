@@ -26,7 +26,7 @@ requirementx.txt`
 4. Use `pip` to install `couchapp` with the `requirements.txt`
 
 		pip install -r requirements.txt
-5. You can now follow [Push changes to couchDB](#usecouchapp)
+5. You can now follow [Push changes to couchDB](#push-changes-to-couchdb)
 
 
 # Howto (Roll your own):
