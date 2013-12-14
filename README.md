@@ -39,7 +39,7 @@ requirementx.txt`
     pip install couchapp
 
 
-## <a name="usecouchapp"></a>Push changes to couchDB
+## Push changes to couchDB
 
   couchapp push  https://USER:PASS@127.0.0.1:5984/openrepo
 
