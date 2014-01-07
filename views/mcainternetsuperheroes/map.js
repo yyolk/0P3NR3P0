@@ -1,5 +1,5 @@
 function(doc) {
-  if (doc.tags[0]=='mcainternetsuperheroes') {
+  if (doc.show=='mcainternetsuperheroes') {
       emit(doc.author, {
           id : doc._id,
           title: doc.title,

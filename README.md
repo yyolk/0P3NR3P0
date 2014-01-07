@@ -1,10 +1,35 @@
 # UI to 0p3nr3p0
 * * *
 
-###[Visit current proto](http://www.0p3nr3p0.net/index.html)
+###[Visit version v3.0alpha](http://www.0p3nr3p0.net/index.html)
+
+_Currently_ 0P3NR3P0 uses the older version of the couchapp tool._
+
+####**Recommended**: use `virtualenv`
+
+Use `virtualenv` and install `couchapp` with `pip install -r
+requirementx.txt`
+
+#####Howto use Virtualenv:
+1. Install `virtualenv` with `pip`:
+	
+		pip install virtualenv
+
+2. Use `virtualenv` to use a local version of `couchapp` _this will work concurrently if you also have the nodejs `couchapp` installed_
+
+		virtualenv venv --distribute
+		
+3. Activate the newly created `venv`
+
+		source ./venv/bin/activate
+
+4. Use `pip` to install `couchapp` with the `requirements.txt`
+
+		pip install -r requirements.txt
+5. You can now follow [Push changes to couchDB](#push-changes-to-couchdb)
 
 
-# Howto:
+# Howto (Roll your own):
 ## Install [`pip`](http://pypi.python.org/pypi/pip)
 
     sudo easy_install pip
@@ -19,9 +44,3 @@
   couchapp push  https://USER:PASS@127.0.0.1:5984/openrepo
 
 Then open the URL that it prints
-
-
-
-## Iriscouch
-
-sign up for a free account at iris couch and push to the url using your USER:PASS as needed (unless you're in `admin-party`)
