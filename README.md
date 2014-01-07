@@ -5,12 +5,17 @@
 
 _Currently_ 0P3NR3P0 uses the older version of the couchapp tool._
 
-####**Recommended**: use `virtualenv`
+
+
+# Howto (Roll your own):
+
+##**Recommended**: use `virtualenv`
 
 Use `virtualenv` and install `couchapp` with `pip install -r
 requirementx.txt`
 
-#####Howto use Virtualenv:
+###Howto use Virtualenv:
+
 1. Install `virtualenv` with `pip`:
 	
 		pip install virtualenv
@@ -28,9 +33,7 @@ requirementx.txt`
 		pip install -r requirements.txt
 5. You can now follow [Push changes to couchDB](#push-changes-to-couchdb)
 
-
-# Howto (Roll your own):
-## Install [`pip`](http://pypi.python.org/pypi/pip)
+## (not using `venv`): Install [`pip`](http://pypi.python.org/pypi/pip)
 
     sudo easy_install pip
 
@@ -41,6 +44,10 @@ requirementx.txt`
 
 ## Push changes to couchDB
 
-  couchapp push  https://USER:PASS@127.0.0.1:5984/openrepo
+  	couchapp push  https://USER:PASS@127.0.0.1:5984/openrepo
 
-Then open the URL that it prints
+Then open the URL that it prints, which should be something like:
+
+	2014-01-07 11:42:11 [INFO] Visit your CouchApp here:
+	http://localhost:5984/openrepo/_design/0P3NR3P0/index.html
+
