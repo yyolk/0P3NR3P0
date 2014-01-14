@@ -8,5 +8,6 @@
   ".sass-cache",
   ".DS_Store",
   "config.rb",
-  "README.md"
+  "README.md",
+  "venv"
 ]
