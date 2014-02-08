@@ -32,14 +32,14 @@ function(doc, req) {
         "Access-Control-Allow-Origin" : "*",
         "Content-Type:" : "text/html"
        },
-      body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"><script src='/script/analytics.js'></script></body>"
+      body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"></body>"
     };
 
   } else {
     return { code : 200, headers : { 
       "Access-Control-Allow-Origin": "*", 
       "Content-Type:" : "text/html"   },
-      body: '<html><head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body><iframe src="'+doc.url+'"></iframe><script src="/script/analytics.js"></script></body></html>'
+      body: '<html><head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body><iframe src="'+doc.url+'"></iframe></body></html>'
        };
   }
 }

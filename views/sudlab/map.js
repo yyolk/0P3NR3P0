@@ -1,6 +1,6 @@
 function(doc) {
   if (doc.show=='sudlab') {
-      emit(doc.author, {
+      emit(doc._id, {
           id : doc._id,
           title: doc.title,
           url : doc.url,
