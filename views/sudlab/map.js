@@ -1,6 +1,6 @@
 function(doc) {
   if (doc.show=='sudlab') {
-      emit(doc._id, {
+      emit(-doc.created_at, {
           id : doc._id,
           title: doc.title,
           url : doc.url,
