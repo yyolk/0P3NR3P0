@@ -52,6 +52,10 @@
   "to": "about/index.html"
 },
 {
+  "from": "tacticalglitches",
+  "to": "tacticalglitches/index.html"
+},
+{
   "from": "*",
   "to": "*"
 }
