@@ -1,0 +1,114 @@
+      <!DOCTYPE html>
+      <html>
+        <head>
+            <meta charset="utf-8">
+            
+            <title>0P3NR3P0.NET</title>
+            <style>
+
+              body { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; letter-spacing: 1px; line-height: 120%; background-color: #000; color: #fff;}
+
+             /*GALLERY STYLES*/
+            #nfo_wrap {
+                    position:absolute; display:none;
+                    top:0px; left:0px; z-index:9999;
+                    background-color:rgba(255,255,255,0.9);
+                    width:100%; 
+                    color:#444;
+                }
+                    #nfo {
+                        padding:25px;
+                    }
+                        #leftNfo {  margin-right:25px; padding-bottom:20px; line-height:180%;}
+                        #rightNfo { width:100%; font-size: 12px; border-top: 1px solid #ccc; padding-top:15px;}
+                        .title { font-size:24px;  }
+                        .author { font-size: 18px; }            
+                iframe {
+                    position:absolute;
+                    top:0px; left:0px; 
+                    border: 0; 
+                    width:100%;
+                    height:100%;
+                    min-height:100%;
+                }
+
+                /*iframe { position:fixed; top:0; left:0; width:100%!important; height:100%!important; } */
+
+            </style>
+           
+
+        </head>
+        <body>
+
+
+
+            <div id="nfo_wrap">
+                <div id='nfo'><div id="leftNfo"></div><div id="rightNfo"></div></div> <!-- this is where the particular piece's info will appear: author, title, description, etc -->
+            </div>  
+
+
+          <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+          <script src="http://0p3nr3p0.net/_utils/script/jquery.js"></script>
+          <script src="http://0p3nr3p0.net/_utils/script/jquery.couch.js"></script>
+
+        
+          <script>
+
+              $(function() {
+
+                    // LIST OUT LINEUP
+                    var url =[];                    // the work url
+                    var title = [];                 // the title of the work
+                    var nfo =[];                    // the description of the work
+                    var auth = [];                  // the author[s] of the work
+                    var auth_url = [];              // the author[s] webpage
+
+                    var i = 0;                      // item number for arrays
+                    var isNfo = false;        // is the didactic nfo displayed
+                    var s = 0;
+
+                  $.couch.db('openrepo').view('0P3NR3P0/glitchicago', {
+                    success: function(data) {            
+                        $(data).each(function(index, el) {
+                          $(el.rows).each(function(k, v) {
+                              $(v.value).each(function(k, v) {
+         
+                                auth.push(v.author);
+                                auth_url.push(v.url);
+                                // url.push(v.url);
+                                url.push('http://0p3nr3p0.net/post/'+v.id);
+                                title.push(v.title);
+                                nfo.push(v.description);
+         
+                          });
+                        });
+                        });
+           
+                      runGallery();
+                      }
+                  });
+
+
+                    
+                    function runGallery() {
+                        l = url.length;
+                        $('#frame').attr('src', url[i]);
+                        $('#leftNfo').html('<span class="title">'+title[i]+'</span><br> by <span class="author">'+auth[i]+'</span>');
+                        $('#rightNfo').html(nfo[i]); 
+                        $('#nfo_wrap').slideDown(500).delay(10000).slideUp(500);
+                        i++; if(i>=l){i=0;}
+                        setTimeout(runGallery,60000);
+                    }
+       
+       
+        });
+
+
+
+          </script>
+
+              <iframe id="frame" height="100%" width="100%" allowfullscreen/> <!-- this iframe rotates between pieces in the 0P3NR3P0 --> 
+
+
+        </body>
+      </html>
