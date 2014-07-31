@@ -67,7 +67,7 @@
                     var isNfo = false;        // is the didactic nfo displayed
                     var s = 0;
 
-                  $.couch.db('openrepo').view('0P3NR3P0/glitchicago', {
+                  $.couch.db('openrepo').view('0P3NR3P0/all', {
                     success: function(data) {            
                         $(data).each(function(index, el) {
                           $(el.rows).each(function(k, v) {
