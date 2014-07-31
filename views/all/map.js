@@ -1,6 +1,6 @@
 function(doc) {
   if (doc.created_at) {
-    emit(doc._id, {
+    emit(doc.multipass, {
       id : doc._id,
       title: doc.title,
       url : doc.url,
