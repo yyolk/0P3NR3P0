@@ -108,6 +108,8 @@
                         runGallery(true);
                       } else if (e.keyCode === 39) {
                         runGallery();
+                      } else {
+                        window.persistance = setTimeout(runGallery, 11111);
                       }
                     });
        
