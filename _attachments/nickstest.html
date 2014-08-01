@@ -107,8 +107,10 @@
                         window.persistance = setTimeout(runGallery,33333);
                     }
 
-                    $(document).on('keyup', function(e){
+                    $(document).on('keydown', function(e){
                       clearTimeout(window.persistance);
+                    });
+                    $(document).on('keyup', function(e){
                       if (e.keyCode === 37) {
                         runGallery(true);
                       } else if (e.keyCode === 39) {
