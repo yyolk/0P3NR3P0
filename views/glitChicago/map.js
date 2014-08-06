@@ -1,6 +1,6 @@
 function(doc) {
   if (doc.show=='glitChicago') {
-      emit(-doc.created_at, {
+      emit(doc.created_at, {
           id : doc._id,
           title: doc.title,
           url : doc.url,
