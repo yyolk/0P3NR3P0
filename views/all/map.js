@@ -3,6 +3,7 @@ function(doc) {
     emit(doc.multipass, {
       id : doc._id,
       title: doc.title,
+      email: doc.email,
       url : doc.url,
       author: doc.author,
       homepage_url : doc.homepage_url,
