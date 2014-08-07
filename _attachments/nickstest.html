@@ -96,7 +96,8 @@
                         if(window.persistance) {clearTimeout(window.persistance);}
                         l = url.length;
                         if(prev){i--} else {i++} 
-                        if(i>=l||i<0){i=0;}
+                        if(i>=l){i=0;}
+                        if(i<0){i=l+i}
                         $('#frame').attr('src', url[i]);
                         $('#leftNfo').html('<span class="title">'+title[i]+'</span><br> by <span class="author">'+auth[i]+'</span>');
                         $('#rightNfo').html(nfo[i]);
