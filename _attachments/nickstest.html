@@ -96,8 +96,9 @@
                         if(i<0){prev=true}
                         if(window.persistance) {clearTimeout(window.persistance);}
                         l = url.length;
-                        if(prev){i--} else {i++} 
-                        if(i>=l){i=0;}
+                        if(prev===true){i--} else {i++} 
+                        if(i>=l){i=0}
+                        // if(prev==='start'){i=0}
                         s = i;
                         if(i<0){s=l+i}
                         $('#frame').attr('src', url[s]);
