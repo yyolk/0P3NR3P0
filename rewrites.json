@@ -29,7 +29,11 @@
 },
 {
   "from": "post/*",
-  "to": "_show/post/*"
+  "to": "_show/entry/*"
+},
+{
+  "from": "entry/*",
+  "to": "_show/entry/*"
 },
 {
   "from": "edit/*",
@@ -50,6 +54,10 @@
 {
   "from": "about",
   "to": "about/index.html"
+},
+{
+  "from": "contact",
+  "to": "contact/index.html"
 },
 {
   "from": "tacticalglitches",
