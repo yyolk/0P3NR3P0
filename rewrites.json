@@ -44,6 +44,10 @@
   "to": "_show/edit/*"
 },
 {
+  "from": "show/*",
+  "to": "show/index.html"  
+},
+{
   "from": "edit/vendor/*",
   "to": "/vendor/*"
 },
