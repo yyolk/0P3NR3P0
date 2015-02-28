@@ -29,11 +29,23 @@
 },
 {
   "from": "post/*",
-  "to": "_show/post/*"
+  "to": "_show/entry/*"
+},
+{
+  "from": "entry/*",
+  "to": "_show/entry/*"
+},
+{
+  "from": "piece/*",
+  "to": "_show/entry/*"
 },
 {
   "from": "edit/*",
   "to": "_show/edit/*"
+},
+{
+  "from": "show/*",
+  "to": "show/index.html"  
 },
 {
   "from": "edit/vendor/*",
@@ -50,6 +62,10 @@
 {
   "from": "about",
   "to": "about/index.html"
+},
+{
+  "from": "contact",
+  "to": "contact/index.html"
 },
 {
   "from": "tacticalglitches",
