@@ -37,7 +37,7 @@
 },
 {
   "from": "piece/*",
-  "to": "_show/piece/*"
+  "to": "_show/entry/*"
 },
 {
   "from": "edit/*",
