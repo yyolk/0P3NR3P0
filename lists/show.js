@@ -40,8 +40,9 @@ function (head, req) {
         send(Mustache.to_html(templates.show.section, 
         {}
         ));
-        send(Mustache.to_html(templates.show.footer, 
-        {}
-        ));
+        // send(Mustache.to_html(templates.show.footer, 
+        // {}
+        // ));
+        return templates.show.footer
     });
 }
