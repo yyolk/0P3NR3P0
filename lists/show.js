@@ -1,5 +1,7 @@
 function (head, req) {
-    // !json templates.entryview
+    // !json templates.show.header
+    // !json templates.show.section
+    // !json templates.show.footer
     var Mustache = require('vendor/couchapp/lib/mustache');
      
     // specify that we're providing a JSON response
@@ -32,6 +34,14 @@ function (head, req) {
 
     });
     provides('html', function() {
-        
+        send(Mustache.to_html(templates.show.header, 
+        {}
+        ));
+        send(Mustache.to_html(templates.show.section, 
+        {}
+        ));
+        send(Mustache.to_html(templates.show.footer, 
+        {}
+        ));
     });
 }
