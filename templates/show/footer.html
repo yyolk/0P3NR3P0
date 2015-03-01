@@ -40,7 +40,7 @@
         // ~'*'~'*'~'*'~'*'~'*'~'*'~//
         $( "span" ).each(function() { // click function each cell
           $( this ).on({
-            click:function(){ window.open('/piece/' + $( this ).attr('id') );  } // just a suggestion, change if necessary
+            click:function(){ window.open('/piece/' + $( this ).data('piece-id') );  } // just a suggestion, change if necessary
           });
         });
 
