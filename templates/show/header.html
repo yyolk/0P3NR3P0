@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>0P3NR3P0.NET</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="The GLI.TC/H 0P3NR3P0 is an open/public repository of glitch art worx. It's a modular art&&archive project serving multiple goals">
+      <meta name="author" content="Nick Briz && Joseph Chiocchi">
+    <link rel="icon" type="image/x-icon"  href="favicon.ico">
+    <style>
+
+        /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+      html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],/* 1 */input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}b,strong,optgroup{font-weight:700}pre,textarea{overflow:auto}button::-moz-focus-inner,input::-moz-focus-inner,legend{border:0;padding:0}
+
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. GENERAL ~'~._.~'~._.~'~._.~'~._. */
+      /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~.*/
+
+        *, *:before, *:after { -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; }
+
+      html {
+        font: 100%/1.5 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 400;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      @media (min-width:640px)  { html { font-size:112%; } }
+      @media (min-width:1024px) { html { font-size:120%; } }
+
+      body {
+        background-color:#000; color:#fff;
+      }
+      .bg {
+        position: fixed; top: 0; left: 0; z-index: -10; width: 100%; height: 100%;
+        background-image: url('/images/bg.gif'); opacity: 0.3;
+      }
+
+      section { text-align:center; padding:32px 0;  }
+      @media (min-width:640px) { section { padding:64px 0; } }
+
+      .container { margin:0 auto; width:90%; }
+
+      a { color:#99cccc; text-decoration:none; }
+      a:hover { text-decoration:underline; }
+
+      ::-moz-selection { background:#99cccc; color:#fff; text-shadow:none; }
+        ::selection { background:#99cccc; color:#fff; text-shadow:none; }
+
+        .loader{
+        position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999999;
+        background-color:#000; padding-top:12%; text-align:center; color:#fff;
+      }
+
+      footer {
+        position: fixed; bottom:0px; left:0px; z-index:10; width: 100%;
+        padding:50px; padding-top: 100px;
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%,  rgba(0,0,0,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1)));
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%);
+        background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%);
+        background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%);
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+      }
+        .fright { float: right } .fleft { float: left; max-width: 300px; max-height: 50px; }
+
+
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. TABLES  ~'~._.~'~._.~'~._.~'~._. */
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~.*/
+
+        /*! page css >> RWD via http://www.adamkaplan.me/grid/ */
+
+        .column { margin-bottom: 1.5rem; }
+        @media (min-width: 640px) {
+          .column {
+            float: left;
+            margin: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+          .column.fourth { width: 24.95%; }
+          .column.flow-opposite { float: right; }
+        }
+
+        /* table grid --- style  */
+
+        .grid { text-align: center; }
+          h1, h2 { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+          h1 { font-family: "Trebuchet MS", Arial, sans-serif; font-size:24px; }
+        h2 { font-size:18px; }
+        .grid span {
+          cursor: pointer;
+          background: rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.8); display: block;
+            padding: 1rem; font-size: 0.9rem; font-weight: 600; color:#fff;
+        }
+        .grid .container {
+          border: 2px dashed rgba(255,255,255,0.3);
+          padding: 1rem 1rem 0 1rem;
+        }
+        @media (min-width: 640px) {
+          .grid .container { padding: 1rem 0 0 0; }
+        }
+        .grid .column { margin-bottom: 1rem; }
+
+
+        /* ------------- Clearfix by Nicolas Gallagher ------------- */
+        .clearfix:before,
+        .clearfix:after { content: " "; display: table;}
+        .clearfix:after { clear: both; }
+        .clearfix { *zoom: 1; }
+
+
+
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. ANIMATION ~._.~'~._.~'~._.~'~._. */
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~.*/
+
+      /* ------------- Animate.css by Daniel Eden >>> http://daneden.github.io/animate.css/ ------------- */
+      .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}.animated.hinge{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}@-webkit-keyframes fadeInUp {
+        0% { opacity: 0; -webkit-transform: translateY(20px);}
+        100% { opacity: 1; -webkit-transform: translateY(0);}
+      }
+      @-moz-keyframes fadeInUp { 0% { opacity: 0; -moz-transform: translateY(20px); } 100% { opacity: 1; -moz-transform: translateY(0); } }
+      @-o-keyframes fadeInUp { 0% { opacity: 0; -o-transform: translateY(20px); } 100% { opacity: 1; -o-transform: translateY(0); }
+      @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+      .fadeInUp { -webkit-animation-name: fadeInUp; -moz-animation-name: fadeInUp; -o-animation-name: fadeInUp; animation-name: fadeInUp; }
+
+      </style>
+  </head>
+  <body>
+
+    <div class="loader">loading</div>
+
+    <div class="bg"></div>
+
+    <section>
+      <div class="container">
