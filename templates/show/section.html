@@ -1,27 +1,11 @@
-<!-- ROW 1  -->
+{{! requires four pieces}}
 <div class="row clearfix grid">
+    {{#works}}
     <div class="column fourth">
-      <span id="ENTRY_ID_NUMBER">
-        <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
-      <h2>by Nick Kegeyan</h2>
+      <span id="{{id}}">
+        <h1>{{description}}</h2>
+      <h2>by {{author}}</h2>
       </span>
     </div>
-    <div class="column fourth">
-      <span id="ENTRY_ID_NUMBER">
-      <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
-      <h2>by Nick Kegeyan</h2>
-      </span>
-    </div>
-    <div class="column fourth">
-      <span id="ENTRY_ID_NUMBER">
-      <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
-      <h2>by Nick Kegeyan</h2>
-      </span>
-    </div>
-    <div class="column fourth">
-      <span id="ENTRY_ID_NUMBER">
-      <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
-      <h2>by Nick Kegeyan</h2>
-      </span>
-    </div>
+    {{/works}}
 </div>
