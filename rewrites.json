@@ -48,6 +48,10 @@
   "to": "show/index.html"  
 },
 {
+  "from": "testing/*",
+  "to": "_list/show/*"
+},
+{
   "from": "edit/vendor/*",
   "to": "/vendor/*"
 },
