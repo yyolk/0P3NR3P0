@@ -1,0 +1,52 @@
+      </div>
+    </section>
+
+    <br><br><br>
+
+
+
+    <footer class="animated fadeInUp">
+      <a href="" target="_blank" id="showURL">
+        <img src="" class="fleft" id="showImg">
+      </a>
+      <a href="http://0p3nr3p0.net" target="_blank">
+        <img src="http://submit.0p3nr3p0.net/img/logo.png" class="fright">
+      </a>
+    </footer>
+
+
+
+
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+
+        $('.loader').fadeOut();
+
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        // --- LOAD FOOTER INFO --- //
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        // show is {{show}}
+        var showImg = "/images/{{show_logo}}";
+        var showURL = "http://furtherfield.org/netartizens/"; // <-- UPATE
+        var eIMG = document.getElementById('showImg');
+        var eURL = document.getElementById('showURL');
+        eIMG.src = showImg;
+        eURL.href = showURL;
+
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        //  --- LINK TO ENTRY   --- //
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        $( "span" ).each(function() { // click function each cell
+          $( this ).on({
+            click:function(){ window.open('/piece/' + $( this ).data('piece-id') );  } // just a suggestion, change if necessary
+          });
+        });
+
+
+      });
+    </script>
+  </body>
+</html>

@@ -45,7 +45,7 @@
 },
 {
   "from": "show/*",
-  "to": "show/index.html"  
+  "to": "_list/show/*"
 },
 {
   "from": "edit/vendor/*",

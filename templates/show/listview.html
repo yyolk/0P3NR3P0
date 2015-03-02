@@ -33,10 +33,11 @@
         position: fixed; top: 0; left: 0; z-index: -10; width: 100%; height: 100%;
         background-image: url('/images/bg.gif'); opacity: 0.3;
       }
-      .work iframe {
-        position: fixed; top: 0; left: 0; z-index: -10; width: 100%; height: 100%;
-        width:100%; height:100%;
-      }
+
+      section { text-align:center; padding:32px 0;  }
+      @media (min-width:640px) { section { padding:64px 0; } }
+
+      .container { margin:0 auto; width:90%; }
 
       a { color:#99cccc; text-decoration:none; }
       a:hover { text-decoration:underline; }
@@ -61,30 +62,14 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
       }
         .fright { float: right } .fleft { float: left; max-width: 300px; max-height: 50px; }
-        #show { font-weight: bold; color: #ccc; cursor: pointer;  margin: 0 0 20px 0; display: none;}
-        #show:hover { color:#fff; }
-        @media (min-width:640px)  { #show { margin:0 0 0 50px; } }
 
 
-
-        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. ENTRY  ~'~._.~'~._.~'~._.~'~._. */
+        /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. TABLES  ~'~._.~'~._.~'~._.~'~._. */
         /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~._.~'~.*/
 
-
-      section {
-        text-align:center; padding:32px 0;
-        width: 100%; height: 60%; background-color: #000;
-        position: fixed; bottom: 0; left: 0; margin-bottom: 0;
-      }
-      .container { margin:0 auto; width:90%; }
-
-        #hide { position: absolute; top: 10px; left: 10px;font-weight: bold; color: #ccc; cursor: pointer; }
-        #hide:hover { color:#fff; }
-        h1, h2 { margin:0; text-align: left; }
-        p { text-align: left; margin:0; border-top:2px solid #fff; margin-top:25px; padding-top:5px; }
         /*! page css >> RWD via http://www.adamkaplan.me/grid/ */
+
         .column { margin-bottom: 1.5rem; }
-        .column.third {font-weight: bold; text-align: right;}
         @media (min-width: 640px) {
           .column {
             float: left;
@@ -92,14 +77,37 @@
             padding-left: 1rem;
             padding-right: 1rem;
           }
-          .column.two-thirds { width: 66.7%; }
-          .column.third { width: 33.3%; }
+          .column.fourth { width: 24.95%; }
+          .column.flow-opposite { float: right; }
         }
-        /*------ Clearfix by Nicolas Gallagher ------------- */
+
+        /* table grid --- style  */
+
+        .grid { text-align: center; }
+          h1, h2 { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+          h1 { font-family: "Trebuchet MS", Arial, sans-serif; font-size:24px; }
+        h2 { font-size:18px; }
+        .grid span {
+          cursor: pointer;
+          background: rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.8); display: block;
+            padding: 1rem; font-size: 0.9rem; font-weight: 600; color:#fff;
+        }
+        .grid .container {
+          border: 2px dashed rgba(255,255,255,0.3);
+          padding: 1rem 1rem 0 1rem;
+        }
+        @media (min-width: 640px) {
+          .grid .container { padding: 1rem 0 0 0; }
+        }
+        .grid .column { margin-bottom: 1rem; }
+
+
+        /* ------------- Clearfix by Nicolas Gallagher ------------- */
         .clearfix:before,
         .clearfix:after { content: " "; display: table;}
         .clearfix:after { clear: both; }
         .clearfix { *zoom: 1; }
+
 
 
         /* ~'~._.~'~._.~'~._.~'~._.~'~._.~'~._. ANIMATION ~._.~'~._.~'~._.~'~._. */
@@ -123,44 +131,129 @@
 
     <div class="bg"></div>
 
-
-
-    <div class="work">
-      <!-- EMBED PIECE -->
-      <iframe src="{{{ url }}}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-      <!-- END EMBED PIECE -->
-    </div>
-
-
     <section>
       <div class="container">
-        <div id="hide"> hide.nfo </div>
 
-        <div class="row clearfix">
-            <div class="column third">
-              <a href="{{{ artist_homepage_url }}}" target="_blank">visit artist site</a><br>
-              <a href="mailto:{{ artist_email }}" target="_blank">contact artist</a><br>
-              <a href="{{{ url }}}" target="_blank">view project</a>
+        <!-- ROW 1  -->
+        <div class="row clearfix grid">
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+                <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
             </div>
-            <div class="column two-thirds">
-              <h1> {{ title }} </h1>
-            <h2> by {{ artist_name }} </h2>
-              <p>
-              {{ description }}
-            </p>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
             </div>
         </div>
 
+        <!-- ROW 2  -->
+        <div class="row clearfix grid">
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+                <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+        </div>
 
+        <!-- ROW 3  -->
+        <div class="row clearfix grid">
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+                <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+        </div>
 
+        <!-- ETC  -->
+        <div class="row clearfix grid">
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+                <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+            <div class="column fourth">
+              <span id="ENTRY_ID_NUMBER">
+              <h1>i went home this winter (or my friends, lights, a game, and the last time i saw my childhood home)</h2>
+              <h2>by Nick Kegeyan</h2>
+              </span>
+            </div>
+        </div>
 
       </div>
     </section>
 
+    <br><br><br>
+
 
 
     <footer class="animated fadeInUp">
-      <span id="show">show.nfo</span>
       <a href="" target="_blank" id="showURL">
         <img src="" class="fleft" id="showImg">
       </a>
@@ -180,36 +273,24 @@
 
         $('.loader').fadeOut();
 
-
         // ~'*'~'*'~'*'~'*'~'*'~'*'~//
         // --- LOAD FOOTER INFO --- //
         // ~'*'~'*'~'*'~'*'~'*'~'*'~//
-        var showImg = "/images/{{show_logo}}"; // <-- UPDATE
+        var showImg = "/images/netartizens.png";
         var showURL = "http://furtherfield.org/netartizens/"; // <-- UPATE
         var eIMG = document.getElementById('showImg');
         var eURL = document.getElementById('showURL');
         eIMG.src = showImg;
         eURL.href = showURL;
 
-
-        $('#hide').on({
-          click:function(){
-            $('section').animate({
-              'margin-bottom': -(window.innerHeight*0.6)+'px'
-            },1000);
-            $('#show').fadeIn(1000);
-          }
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        //  --- LINK TO ENTRY   --- //
+        // ~'*'~'*'~'*'~'*'~'*'~'*'~//
+        $( "span" ).each(function() { // click function each cell
+          $( this ).on({
+            click:function(){ window.open('entryview.html?id=' + $( this ).attr('id') );  } // just a suggestion, change if necessary
+          });
         });
-
-        $('#show').on({
-          click:function(){
-            $('section').animate({
-              'margin-bottom': '0px'
-            },1000);
-            $('#show').fadeOut(1000);
-          }
-        });
-
 
 
       });
