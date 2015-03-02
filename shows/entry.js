@@ -37,7 +37,6 @@ function(doc, req){
       body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"></body>"
     };
   } else {
-    var show_logo = logo.getShowLogo(req);
     return Mustache.to_html(templates.entryview, {
       doc: doc,
       url: doc.url,
@@ -46,7 +45,7 @@ function(doc, req){
       artist_email: doc.email,
       artist_homepage_url: doc.homepage_url,
       description: doc.description,
-      show_logo: show_logo
+      show_logo: logo.getShowLogo(req)
     });
   }
 }

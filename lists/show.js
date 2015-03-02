@@ -59,16 +59,9 @@ function (head, req) {
         send(Mustache.to_html(templates.show.section, 
             {works: works}
         ));
-        var logoMap = {
-            'netartizens': "netartizens.png",
-            'furtherfield': "furtherfield_logo.png",
-            'glitChicago': "glitchicago.jpg"
-        }
-        // var show_logo = logoMap[req.path[req.path.length-1]]
-        var show_logo = logo.getShowLogo(req);
         return Mustache.to_html(
             templates.show.footer, {
-                show_logo: show_logo,
+                show_logo: logo.getShowLogo(req);,
             });
     });
 }
