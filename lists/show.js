@@ -3,6 +3,7 @@ function (head, req) {
     // !json templates.show.section
     // !json templates.show.footer
     var Mustache = require('vendor/couchapp/lib/mustache');
+    var logo = require('vendor/openrepo/logo');
      
     // specify that we're providing a JSON response
 
@@ -34,36 +35,40 @@ function (head, req) {
 
     });
     provides('html', function() {
-        send(Mustache.to_html(templates.show.header, 
-        {}
-        ));
+        var row, key, counter;
+        counter = 0;
+        var works = [];
+
+        send(templates.show.header);
+
+        while (row = getRow()) {
+            var piece = row.value;
+            key = row.key;
+            works.push(piece);
+            counter++
+            if (counter % 4 == 0) {
+                send(Mustache.to_html(templates.show.section, 
+                {works: works}
+                ));
+                works = [];
+                counter = 0;
+            }
+        }
+
+        //send any remaining works
         send(Mustache.to_html(templates.show.section, 
-        {works: [
-            {
-                'id': '2d737897c814468aaf0989a49805b017',
-                'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis scelerisque dolor, feugiat cursus eros malesuada id. Nullam porta, erat in euismod molestie, turpis tellus pharetra augue, commodo consequat justo felis quis mauris. Donec enim urna, ultrices vel nisi eu, pretium eleifend ex. Cras quis laoreet tortor, quis fermentum ipsum. Sed bibendum maximus ex eu tincidunt. Pellentesque ac ligula nec velit aliquet aliquet vitae ut nunc. Integer imperdiet odio pharetra, porta lectus id, gravida diam. Duis et justo hendrerit, tristique ipsum sit amet, aliquet ex. Nullam eros velit, vulputate in fringilla et, pretium sit amet justo. Aliquam malesuada iaculis mauris, id fringilla magna vehicula a. Nulla suscipit tortor mi, vitae pretium elit dapibus eu. Phasellus consequat ex at iaculis condimentum. Pellentesque molestie molestie massa et facilisis. Integer risus est, finibus eget blandit a, interdum et massa. Donec fringilla vulputate vehicula. Sed est eros, posuere ac porttitor sit amet, sollicitudin blandit sem.',
-                'author': 'Testing Bot'
-            },
-            {
-                'id': '2d737897c814468aaf0989a49805b017',
-                'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis scelerisque dolor, feugiat cursus eros malesuada id. Nullam porta, erat in euismod molestie, turpis tellus pharetra augue, commodo consequat justo felis quis mauris. Donec enim urna, ultrices vel nisi eu, pretium eleifend ex. Cras quis laoreet tortor, quis fermentum ipsum. Sed bibendum maximus ex eu tincidunt. Pellentesque ac ligula nec velit aliquet aliquet vitae ut nunc. Integer imperdiet odio pharetra, porta lectus id, gravida diam. Duis et justo hendrerit, tristique ipsum sit amet, aliquet ex. Nullam eros velit, vulputate in fringilla et, pretium sit amet justo. Aliquam malesuada iaculis mauris, id fringilla magna vehicula a. Nulla suscipit tortor mi, vitae pretium elit dapibus eu. Phasellus consequat ex at iaculis condimentum. Pellentesque molestie molestie massa et facilisis. Integer risus est, finibus eget blandit a, interdum et massa. Donec fringilla vulputate vehicula. Sed est eros, posuere ac porttitor sit amet, sollicitudin blandit sem.',
-                'author': 'Testing Bot'
-            },
-            {
-                'id': '2d737897c814468aaf0989a49805b017',
-                'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis scelerisque dolor, feugiat cursus eros malesuada id. Nullam porta, erat in euismod molestie, turpis tellus pharetra augue, commodo consequat justo felis quis mauris. Donec enim urna, ultrices vel nisi eu, pretium eleifend ex. Cras quis laoreet tortor, quis fermentum ipsum. Sed bibendum maximus ex eu tincidunt. Pellentesque ac ligula nec velit aliquet aliquet vitae ut nunc. Integer imperdiet odio pharetra, porta lectus id, gravida diam. Duis et justo hendrerit, tristique ipsum sit amet, aliquet ex. Nullam eros velit, vulputate in fringilla et, pretium sit amet justo. Aliquam malesuada iaculis mauris, id fringilla magna vehicula a. Nulla suscipit tortor mi, vitae pretium elit dapibus eu. Phasellus consequat ex at iaculis condimentum. Pellentesque molestie molestie massa et facilisis. Integer risus est, finibus eget blandit a, interdum et massa. Donec fringilla vulputate vehicula. Sed est eros, posuere ac porttitor sit amet, sollicitudin blandit sem.',
-                'author': 'Testing Bot'
-            },
-            {
-                'id': '2d737897c814468aaf0989a49805b017',
-                'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce iaculis scelerisque dolor, feugiat cursus eros malesuada id. Nullam porta, erat in euismod molestie, turpis tellus pharetra augue, commodo consequat justo felis quis mauris. Donec enim urna, ultrices vel nisi eu, pretium eleifend ex. Cras quis laoreet tortor, quis fermentum ipsum. Sed bibendum maximus ex eu tincidunt. Pellentesque ac ligula nec velit aliquet aliquet vitae ut nunc. Integer imperdiet odio pharetra, porta lectus id, gravida diam. Duis et justo hendrerit, tristique ipsum sit amet, aliquet ex. Nullam eros velit, vulputate in fringilla et, pretium sit amet justo. Aliquam malesuada iaculis mauris, id fringilla magna vehicula a. Nulla suscipit tortor mi, vitae pretium elit dapibus eu. Phasellus consequat ex at iaculis condimentum. Pellentesque molestie molestie massa et facilisis. Integer risus est, finibus eget blandit a, interdum et massa. Donec fringilla vulputate vehicula. Sed est eros, posuere ac porttitor sit amet, sollicitudin blandit sem.',
-                'author': 'Testing Bot'
-            },
-        ]}
+            {works: works}
         ));
-        // send(Mustache.to_html(templates.show.footer, 
-        // {}
-        // ));
-        return templates.show.footer
+        var logoMap = {
+            'netartizens': "netartizens.png",
+            'furtherfield': "furtherfield_logo.png",
+            'glitChicago': "glitchicago.jpg"
+        }
+        // var show_logo = logoMap[req.path[req.path.length-1]]
+        var show_logo = logo.getShowLogo(req);
+        return Mustache.to_html(
+            templates.show.footer, {
+                show_logo: show_logo,
+            });
     });
 }
