@@ -26,26 +26,14 @@ function(doc, req){
       return false;
     }
   }
-  if(checkImg(doc.url)){
-    return {
-      code : 200,
-      headers: {
-        "Access-Control-Allow-Origin" : "*",
-        "X-Frame-Options": "ALLOWALL",
-        "Content-Type:" : "text/html"
-       },
-      body :  '<head><link rel="stylesheet" href="/style/post.css" type="text/css"></link><title>'+doc.title+' by '+doc.author+'</title></head><body style="'+"background-image:url('" + doc.url +"');"+'"'+"></body>"
-    };
-  } else {
-    return Mustache.to_html(templates.entryview, {
-      doc: doc,
-      url: doc.url,
-      title: doc.title,
-      artist_name: doc.author,
-      artist_email: doc.email,
-      artist_homepage_url: doc.homepage_url,
-      description: doc.description,
-      show_logo: logo.getShowLogo(doc.show)
-    });
-  }
+  return Mustache.to_html(templates.entryview, {
+    doc: doc,
+    url: doc.url,
+    title: doc.title,
+    artist_name: doc.author,
+    artist_email: doc.email,
+    artist_homepage_url: doc.homepage_url,
+    description: doc.description,
+    show_logo: logo.getShowLogo(doc.show)
+  });
 }
