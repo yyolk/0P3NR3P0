@@ -45,7 +45,7 @@ function(doc, req){
       artist_email: doc.email,
       artist_homepage_url: doc.homepage_url,
       description: doc.description,
-      show_logo: logo.getShowLogo(req)
+      show_logo: logo.getShowLogo(doc.show)
     });
   }
 }

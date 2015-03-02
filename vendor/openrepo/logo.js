@@ -4,5 +4,5 @@ exports.getShowLogo = function(req) {
       'furtherfield': "furtherfield_logo.png",
       'glitChicago': "glitchicago.jpg"
   }
-  return logoMap[req.path[req.path.length-1]]
+  return logoMap[req]
 }
