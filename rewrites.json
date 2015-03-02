@@ -45,10 +45,6 @@
 },
 {
   "from": "show/*",
-  "to": "show/index.html"  
-},
-{
-  "from": "testing/*",
   "to": "_list/show/*"
 },
 {
