@@ -61,7 +61,7 @@ function (head, req) {
         ));
         return Mustache.to_html(
             templates.show.footer, {
-                show_logo: logo.getShowLogo(req);,
+                show_logo: logo.getShowLogo(req.path[req.path.length-1]),
             });
     });
 }
