@@ -5,6 +5,7 @@ function(doc) {
           title: doc.title,
           url : doc.url,
           author: doc.author,
+          email: doc.email,
           homepage_url : doc.homepage_url,
           description : doc.description,
           created_at : doc.created_at,
