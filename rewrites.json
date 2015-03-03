@@ -48,6 +48,10 @@
   "to": "_list/show/*"
 },
 {
+  "from": "emails/*",
+  "to": "_list/emails/*"
+},
+{
   "from": "edit/vendor/*",
   "to": "/vendor/*"
 },
