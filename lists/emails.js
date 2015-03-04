@@ -1,0 +1,61 @@
+function (head, req) {
+    // !json templates.show.header
+    // !json templates.show.section
+    // !json templates.show.footer
+    var Mustache = require('vendor/couchapp/lib/mustache');
+    var logo = require('vendor/openrepo/logo');
+     
+    // specify that we're providing a JSON response
+
+    // send(JSON.stringify(head));
+    provides('json', function() {
+        
+        var results = [];
+        
+        var row;
+        
+        
+        while (row = getRow()) {
+            results.push({
+                author: row.value.author,
+                email: row.value.email
+            });
+            // send(JSON.stringify(row.value));
+        }
+
+        // make sure to stringify the results :)
+        send(JSON.stringify(results));
+        // send(results);
+
+    });
+    // provides('html', function() {
+    //     var row, key, counter;
+    //     counter = 0;
+    //     var works = [];
+
+    //     send(templates.show.header);
+
+    //     while (row = getRow()) {
+    //         var piece = row.value;
+    //         key = row.key;
+    //         works.push(piece);
+    //         counter++
+    //         if (counter % 4 == 0) {
+    //             send(Mustache.to_html(templates.show.section, 
+    //             {works: works}
+    //             ));
+    //             works = [];
+    //             counter = 0;
+    //         }
+    //     }
+
+    //     //send any remaining works
+    //     send(Mustache.to_html(templates.show.section, 
+    //         {works: works}
+    //     ));
+    //     return Mustache.to_html(
+    //         templates.show.footer, {
+    //             show_logo: logo.getShowLogo(req.path[req.path.length-1]),
+    //         });
+    // });
+}
