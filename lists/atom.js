@@ -23,7 +23,7 @@ function(head, req) {
     var feedHeader = Atom.header({
       updated : (row ? new Date(row.value.created_at) : new Date()),
       title : "0P3NR3P0",
-      feed_id : "http://0p3nr3p0.net/_list/atom/furtherfield?format=atom",
+      feed_id : "http://0p3nr3p0.net/atom/" + req.path[req.path.length-1] + "?format=atom",
       feed_link : path.absolute(feedPath),
     });
     
@@ -35,12 +35,13 @@ function(head, req) {
       do {
         // generate the entry for this row
         var feedEntry = Atom.entry({
-          entry_id : path.absolute('/'+encodeURIComponent(req.info.db_name)+'/'+encodeURIComponent(row.id)),
+          entry_id : "http://0p3nr3p0.net/piece/" + row.id,
           title : row.value.title,
-          content : row.value.url,
+          content : "http://0p3nr3p0.net/piece/" + row.id,
           updated : new Date(row.value.created_at),
           author : row.value.author,
-          description : row.value.description
+          description : row.value.description,
+          alternate: row.value.url
         });
         // send the entry to client
         send(feedEntry);
