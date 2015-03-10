@@ -52,6 +52,10 @@
     "to": "_list/atom/*"  
   },
   {
+    "from": "emails/*",
+    "to": "_list/emails/*"
+  },
+  {
     "from": "edit/vendor/*",
     "to": "/vendor/*"
   },
